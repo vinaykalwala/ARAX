@@ -52,6 +52,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ARAX.urls'
 
+LOGIN_REDIRECT_URL = '/contactlist/'
+
+LOGOUT_REDIRECT_URL = '/login/'
+
 import os
 
 TEMPLATES = [

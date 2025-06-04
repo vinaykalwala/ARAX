@@ -1,0 +1,10 @@
+<h2>Gallery</h2>
+<div style="display: flex; flex-wrap: wrap;">
+    {% for img in images %}
+        <div style="margin: 10px;">
+            <img src="{{ img.image.url }}" alt="{{ img.title }}" width="200" />
+            <p>{{ img.title }}</p>
+            <small>{{ img.description }}</small>
+        </div>
+    {% endfor %}
+</div>
