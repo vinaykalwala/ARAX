@@ -9,6 +9,15 @@ def about_us(request):
 def services(request):
     return render(request, 'services.html')
 
+def securityservices(request):
+    return render(request, 'securityservices.html')
+    
+def outsourcing(request):
+    return render(request, 'outsourcing.html')
+    
+def housekeeping(request):
+    return render(request, 'housekeeping.html')
+
 
 from django.shortcuts import render, redirect
 from .models import GalleryImage

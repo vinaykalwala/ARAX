@@ -1,3 +1,10 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Conatct us | Arax Security{% endblock %}
+
+{% block content %}
 <h2>Contact Us</h2>
 <form method="post">
     {% csrf_token %}
@@ -8,4 +15,4 @@
     {% for message in messages %}
         <p style="color: green;">{{ message }}</p>
     {% endfor %}
-{% endif %}
+{% endif %}{% endblock %}
