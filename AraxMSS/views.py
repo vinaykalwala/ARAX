@@ -28,7 +28,7 @@ def contact_us(request):
 
 def gallery(request):
     images = GalleryImage.objects.all().order_by('-uploaded_at')
-    return render(request, 'gallery.html', {'images': images})
+    return render(request, 'gallary.html', {'images': images})
 
 from django.contrib.auth.decorators import login_required
 from .models import Contact
