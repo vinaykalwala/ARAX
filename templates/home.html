@@ -3,5 +3,242 @@
 {% block title %}Home | Arax Security{% endblock %}
 
 {% block content %}
- <h1>Home page</h1>
+{% load static %}
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "banner.jpg" %}') no-repeat center center/cover;
+    color: white;
+    padding: 100px 20px 120px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .hero h1 span {
+    color: #f9b000;
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    max-width: 600px;
+    margin-bottom: 25px;
+  }
+
+  .btn-orange {
+    background-color: #f9b000;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .btn-orange:hover {
+    background-color: #d89e00;
+  }
+
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    text-align: left;
+  }
+
+  .angled-frame {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    clip-path: polygon(0 5%, 100% 0, 100% 90%, 0% 100%);
+    overflow: hidden;
+    border: 5px solid #f9b000;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .angled-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.05);
+  }
+
+  .about-text {
+    max-width: 500px;
+  }
+
+  .about-text h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .about-text h2 span {
+    color: #f9b000;
+  }
+
+  .about-text p {
+    margin-bottom: 10px;
+  }
+
+  .services {
+    padding: 25px 20px;
+    background: #f8f8f8;
+    text-align: center;
+  }
+
+  .services h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .services h2 span {
+    color: #f9b000;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .service-box {
+    background: #222;
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+
+  .service-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .service-box i {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #f9b000;
+  }
+
+  .service-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 992px) {
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 28px;
+    }
+
+    .about {
+      flex-direction: column;
+    }
+
+    .about-text {
+      text-align: center;
+    }
+
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-box {
+      text-align: center;
+    }
+  }
+  .orange-card {
+  background-color: #d89e00;
+  color: #fff;
+}
+
+.orange-card i {
+  color: #fff;
+}
+
+.orange-card:hover {
+  background-color: #f9b000;
+}
+
+</style>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h1><span>Arax</span> Management & Security Services</h1>
+  <p>We specialize in delivering trusted <strong>Security Services</strong> and reliable <strong>Outsourcing Solutions</strong> for businesses, institutions, and residential communities.</p>
+  <a href="{% url 'contact_us' %}" class="btn-orange">Contact Now</a>
+</section>
+
+
+<!-- About Section -->
+<section class="about">
+  <div class="angled-frame">
+    <img src="{% static 'securityguards.jpg' %}" alt="Security Guards">
+  </div>
+  <div class="about-text">
+    <h2>Welcome to <span>ARAX Security</span> Services</h2>
+    <p>Our vision is to become the most reliable and trusted partner in security services.</p>
+    <p>We are driven by a clear mission to deliver safety with unwavering integrity and the highest standards of professionalism.</p>
+    <p>Our commitment is to ensure your peace of mind—because your safety is always our top priority.</p>
+    <a href="{% url 'about_us' %}" class="btn-orange" style="margin-top: 15px; display: inline-block;">Read More</a>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services">
+  <h2>Our <span>Services</span> Include</h2>
+  <div class="service-grid">
+    <div class="service-box">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Hi-Tech Security Solutions</h3>
+      <p>Modern surveillance systems and equipment for efficient protection.</p>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-user-shield"></i>
+      <h3>Bouncers & Bodyguards</h3>
+      <p>Trained security bouncers, gunmen, and ex-servicemen for elite protection.</p>
+    </div>
+    <div class="service-box orange-card">
+      <i class="fas fa-broom"></i>
+      <h3>Housekeeping Services</h3>
+      <p>Clean solutions for malls, institutions, hospitals, gated communities, and more.</p>
+    </div>
+    <div class="service-box orange-card">
+      <i class="fas fa-tools"></i>
+      <h3>Facility Management</h3>
+      <p>Complete end-to-end management services for residential and commercial properties.</p>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-users-cog"></i>
+      <h3>Manpower Outsourcing</h3>
+      <p>Professional staffing for industries, hotels, corporate offices, and government organizations.</p>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-seedling"></i>
+      <h3>Gardening & Landscaping</h3>
+      <p>Beautiful horticulture, gardening, and landscape maintenance solutions.</p>
+    </div>
+  </div>
+</section>
 {% endblock %}
