@@ -1,19 +1,208 @@
-
-
-
 {% extends 'base.html' %}
 
 {% block title %}Gallery | Arax Security{% endblock %}
+{% load static %}
 
 {% block content %}
-<h2>Gallery</h2>
-<div style="display: flex; flex-wrap: wrap;">
-    {% for img in images %}
-        <div style="margin: 10px;">
-            <img src="{{ img.image.url }}" alt="{{ img.title }}" width="200" />
-            <p>{{ img.title }}</p>
-            <small>{{ img.description }}</small>
-        </div>
-    {% endfor %}
-</div>{% endblock %}
+<style>
+  .gallery-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "banner1.jpg" %}') no-repeat center center/cover;
+    color: white;
+    height: 320px;
+    text-align: center;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    padding: 0 20px;
+  }
 
+  .gallery-hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .gallery-hero h1 span {
+    color: #f9b000;
+  }
+
+  .gallery-hero p {
+    font-size: 16px;
+    max-width: 700px;
+  }
+
+  .gallery-grid {
+    column-count: 3;
+    column-gap: 20px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  @media (max-width: 992px) {
+    .gallery-grid {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .gallery-grid {
+      column-count: 1;
+    }
+  }
+
+  .gallery-item {
+    position: relative;
+    margin-bottom: 20px;
+    break-inside: avoid;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    display: block;
+    height: auto;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-overlay-content {
+    color: white;
+    word-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .gallery-overlay-content h3 {
+    font-size: 18px;
+    color: #f9b000;
+    margin-bottom: 5px;
+  }
+
+  .gallery-overlay-content p {
+    font-size: 14px;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+  }
+
+  .modal-content {
+    margin: 5% auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    text-align: center;
+    color: #111;
+  }
+
+  .modal-content img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  .modal-content h3 {
+    margin-bottom: 10px;
+    color: #f9b000;
+  }
+
+  .modal-content p {
+    font-size: 15px;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 1002;
+  }
+</style>
+
+<!-- Hero Banner -->
+<section class="gallery-hero">
+  <div>
+    <h1><span>Our</span> Gallery</h1>
+<br><br>
+  </div>
+</section>
+
+<!-- Gallery Grid -->
+<div class="gallery-grid">
+  {% for img in images %}
+    <div class="gallery-item" onclick="openModal('{{ img.image.url }}', '{{ img.title|escapejs }}', '{{ img.description|escapejs }}')">
+      <img src="{{ img.image.url }}" alt="{{ img.title }}">
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-content">
+          <h3>{{ img.title }}</h3>
+          <p>{{ img.description }}</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- Modal -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+  <span class="close-modal" onclick="closeModal()">&times;</span>
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <img id="modalImage" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<script>
+  function openModal(imageSrc, title, desc) {
+    document.getElementById("modalImage").src = imageSrc;
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalDesc").innerText = desc;
+    document.getElementById("imageModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+</script>
+{% endblock %}
