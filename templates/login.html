@@ -1,11 +1,165 @@
-<h2>Login</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+  .login-section {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+  }
 
-{% if form.errors %}
-    <p style="color: red;">Invalid credentials. Please try again.</p>
-{% endif %}
+  .login-box {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid #f9b000;
+  }
+
+  .login-box h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: bold;
+  }
+
+  .login-box h2 span {
+    color: #f9b000;
+  }
+
+  .login-box form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-box label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .login-box input {
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #f9b000;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #fff;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .login-box input:focus {
+    border-color: #f9b000;
+    box-shadow: 0 0 0 3px rgba(249, 176, 0, 0.2);
+    outline: none;
+  }
+
+  .login-box button {
+    background-color: #f9b000;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-box button:hover {
+    background-color: #d89e00;
+  }
+
+  .login-box .error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+
+  .back-home {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .back-home:hover {
+    color: #f9b000;
+  }
+
+  @media (max-width: 768px) {
+    .login-box {
+      padding: 35px 25px;
+    }
+
+    .login-box h2 {
+      font-size: 26px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .login-box {
+      padding: 30px 20px;
+    }
+
+    .login-box h2 {
+      font-size: 22px;
+    }
+
+    .login-box input {
+      font-size: 14px;
+      padding: 10px 12px;
+    }
+
+    .login-box button {
+      font-size: 15px;
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+    
+
+<section class="login-section">
+  <div class="login-box">
+    <h2><span>Login</span> to Your Account</h2>
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <label for="id_username">Username</label>
+      <input type="text" name="username" id="id_username" required placeholder="Enter your username">
+
+      <label for="id_password">Password</label>
+      <input type="password" name="password" id="id_password" required placeholder="Enter your password">
+
+      {% if form.errors %}
+        <div class="error">Invalid credentials. Please try again.</div>
+      {% endif %}
+
+      <button type="submit">Login</button>
+    </form>
+
+    <a href="{% url 'home' %}" class="back-home">← Back to Home</a>
+  </div>
+</section>
+
+
+{% endblock %}
+</body>
+</html>

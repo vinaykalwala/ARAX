@@ -117,24 +117,31 @@
     margin: auto;
   }
 
-  .service-box {
-    background: #222;
-    color: #fff;
-    padding: 40px 30px;
-    border-radius: 12px;
-    text-align: left;
-    transition: transform 0.3s ease;
-  }
+ .service-box {
+  background: #222;
+  color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
 
-  .service-box:hover {
-    transform: translateY(-5px);
-  }
+.service-box i {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #f9b000;
+  transition: color 0.3s ease;
+}
 
-  .service-box i {
-    font-size: 28px;
-    margin-bottom: 15px;
-    color: #f9b000;
-  }
+.service-box:hover {
+  background: #f9b000;
+  color: white; /* or #111 for better contrast */
+  transform: translateY(-5px);
+}
+
+.service-box:hover i {
+  color: white;
+}
 
   .service-box h3 {
     font-size: 20px;
@@ -168,17 +175,81 @@
       text-align: center;
     }
   }
-  .orange-card {
-  background-color: #d89e00;
+ .orange-card {
+  background-color: #f9b000;
   color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .orange-card i {
   color: #fff;
+  transition: color 0.3s ease;
 }
 
 .orange-card:hover {
-  background-color: #f9b000;
+  background-color: #000; /* Change to black */
+  color: #fff; /* Keep text white */
+}
+
+.orange-card:hover i {
+  color: #f9b000; /* Ensure icon stays white */
+}
+
+.clients {
+  padding: 25px 0px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.clients h2 {
+  font-size: 28px;
+}
+
+.clients h2 span {
+  color: #f9b000;
+}
+
+.client-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.client-logos::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.client-logo {
+  flex: 0 0 auto;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  padding: 10px;
+  border-radius: 12px;
+  animation: heartbeat 3s ease-in-out infinite;
+}
+
+.client-logo:hover {
+  animation: none;
+  filter: grayscale(0%);
+  transform: scale(1.08);
+}
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.client-logo img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
 }
 
 </style>
@@ -241,4 +312,23 @@
     </div>
   </div>
 </section>
+<section class="clients">
+  <h2>Our <span>Esteemed Clients</span></h2>
+  <div class="client-logos">
+    <div class="client-logo">
+      <img src="{% static 'client1.jpg' %}" alt="Client 1">
+    </div>
+    <div class="client-logo">
+      <img src="{% static 'client2.png' %}" alt="Client 2">
+    </div>
+    <div class="client-logo">
+      <img src="{% static 'client3.jpg' %}" alt="Client 3">
+    </div>
+    <div class="client-logo">
+      <img src="{% static 'client4.png' %}" alt="Client 4">
+    </div>
+  </div>
+</section>
+
+
 {% endblock %}
