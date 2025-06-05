@@ -3,5 +3,984 @@
 {% block title %}Security Services | Arax Security{% endblock %}
 
 {% block content %}
- <h1>Security Services </h1>
+{% load static %}
+<style>
+  /* Animation Keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Hero Section with before/after */
+  .security-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "images/security-banner.jpg" %}') no-repeat center center/cover;
+    color: white;
+    padding: 40px 20px 160px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  {% comment %} .security-hero::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(-3deg);
+    z-index: 1;
+  } {% endcomment %}
+
+  .security-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(3deg);
+    z-index: 1;
+  }
+
+  .security-hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: -12px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+
+  .security-hero h1 span {
+    color: #f9b000;
+  }
+
+  .security-hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.4s both;
+  }
+
+  .btn-orange {
+    background-color: #f9b000;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: fadeInUp 1s ease-out 0.6s both;
+  }
+
+  .btn-orange:hover {
+    background-color: #d89e00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  }
+
+  /* Updated Security Overview Section with before/after */
+  .security-overview-wrapper {
+    position: relative;
+    padding: 0px 0;
+    background: #fff;
+  }
+
+  .security-overview {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+
+  .security-overview-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-left: 5px solid #f9b000;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .security-overview-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  }
+
+  .security-overview-text h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #222;
+    position: relative;
+    padding-bottom: 15px;
+  }
+
+
+  .security-overview-text h2 span {
+    color: #f9b000;
+  }
+
+  .security-overview-text p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  .security-overview-image {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transition: all 0.5s ease;
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+
+  .security-overview-image:hover {
+    transform: translateY(-10px) rotate(1deg);
+  }
+
+  .security-overview-image img {
+    width: 100%;
+    height: 625px;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .security-overview-image:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Security Services Grid with before/after */
+  .security-services {
+    padding: 85px 20px;
+    background: #f8f8f8;
+    position: relative;
+  }
+
+  .security-services::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  {% comment %} .security-services::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #222;
+    transform: skewY(3deg);
+    z-index: 1;
+  } {% endcomment %}
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+  }
+
+
+  .section-title h2 span {
+    color: #f9b000;
+  }
+
+  .section-title p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #666;
+    font-size: 18px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .service-card:nth-child(1) { animation-delay: 0.1s; }
+  .service-card:nth-child(2) { animation-delay: 0.2s; }
+  .service-card:nth-child(3) { animation-delay: 0.3s; }
+  .service-card:nth-child(4) { animation-delay: 0.4s; }
+  .service-card:nth-child(5) { animation-delay: 0.5s; }
+  .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+
+  .service-card-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .service-card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+
+  
+
+  .service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .service-card:hover .service-card-image img {
+    transform: scale(1.1);
+  }
+
+  .service-card-content {
+    padding: 25px;
+  }
+
+  .service-card-content h3 {
+    color: #f9b000;
+    font-size: 22px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .service-card-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #f9b000;
+  }
+
+  .service-card-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .service-features {
+    margin-bottom: 20px;
+  }
+
+  .service-features li {
+    margin-bottom: 8px;
+    color: #444;
+    position: relative;
+    padding-left: 25px;
+  }
+
+  .service-features li:before {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #f9b000;
+    position: absolute;
+    left: 0;
+  }
+
+  /* Updated Security Features Section */
+  .security-features {
+    padding: 90px 20px;
+    background: linear-gradient(to right, #222222, #111111);
+    color: white;
+    position: relative;
+  }
+
+  .security-features::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: #f8f8f8;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .security-features::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(3deg);
+    z-index: 1;
+  }
+
+  .features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 30px 25px;
+  border-radius: 12px;
+  background: white;
+  transition: all 0.4s ease;
+  border-left: 5px solid transparent;
+  position: relative;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.feature-item:hover {
+  transform: translateX(10px);
+  border-left: 5px solid #f9b000;
+  background: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.feature-icon {
+  font-size: 36px;
+  color: #f9b000;
+  margin-bottom: 15px;
+}
+
+.feature-item h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.feature-item p {
+  color: black;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+
+  /* Updated Security Process Section */
+.security-process {
+    padding: 20px 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+  }
+
+  .process-step {
+    flex: 1;
+    min-width: 130px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 40px;
+  }
+
+  .process-step:not(:last-child):after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    right: -30px;
+    width: 60px;
+    height: 2px;
+    background: #f9b000;
+  }
+
+  .step-number {
+    width: 80px;
+    height: 80px;
+    background: #f9b000;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 auto 20px;
+  }
+
+  .process-step h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #222;
+  }
+
+  .process-step p {
+    color: #666;
+    line-height: 1.6;
+  }
+
+
+
+  /* Enhanced CTA Section */
+  .security-cta {
+    padding: 70px 20px;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "images/security-cta-bg.jpg" %}') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+
+  .security-cta::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .cta-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .cta-content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0px 40px;
+    border-radius: 20px;
+    border: 2px solid #f9b000;
+    transition: all 0.3s ease;
+  }
+
+  .cta-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .cta-heading {
+    font-size: 36px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+  }
+
+
+
+  .cta-heading span {
+    color: #f9b000;
+  }
+
+  .cta-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .cta-column {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .cta-box {
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .cta-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .yellow-bg {
+    background: #f9b000;
+    color: #000;
+  }
+
+  .transparent-bg {
+    background: rgba(249, 176, 0, 0.2);
+    color: #fff;
+    border: 1px solid #f9b000;
+  }
+
+  .cta-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cta-box h3 i {
+    margin-right: 10px;
+  }
+
+  .cta-message p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+  }
+
+  .cta-offer {
+    background: rgba(249, 176, 0, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #f9b000;
+    animation: pulse 2s ease infinite;
+  }
+
+  .cta-offer p {
+    font-style: italic;
+    margin: 0;
+  }
+
+  .cta-offer i {
+    color: #f9b000;
+    margin-right: 5px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .btn-orange {
+    background-color: #f9b000;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-orange:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(249, 176, 0, 0.4);
+  }
+
+  .btn-orange.btn-outline {
+    background: transparent;
+    border: 2px solid #f9b000;
+  }
+
+  .btn-orange.btn-outline:hover {
+    background: #f9b000;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .security-hero h1 {
+      font-size: 36px;
+    }
+    
+    .process-step {
+      min-width: 150px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .security-hero {
+      padding: 100px 20px 120px;
+    }
+    
+    .security-hero h1 {
+      font-size: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 28px;
+    }
+    
+    .security-cta h2 {
+      font-size: 28px;
+    }
+    .security-cta {
+      padding: 80px 20px;
+    }
+     .cta-content {
+      padding: 40px 20px;
+    }
+     
+    .process-step {
+      min-width: 100%;
+    }
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="security-hero">
+  <h1>Premium <span>Security Solutions</span> for Your Safety</h1>
+  <p>Comprehensive protection services backed by cutting-edge technology and highly trained professionals.</p>
+  <a href="{% url 'contact_us' %}" class="btn-orange">Request Free Security Assessment</a>
+</section>
+
+<!-- Security Overview Section -->
+<div class="security-overview-wrapper">
+  <section class="security-overview">
+    <div class="security-overview-text">
+      <h2>Our <span>Security</span> Philosophy</h2>
+      <p>At Arax Security, we believe true security comes from a combination of highly trained personnel, advanced technology, and proactive strategies. Our approach goes beyond traditional guarding to create comprehensive protection ecosystems.</p>
+      <p>Each of our security professionals undergoes rigorous background checks, psychological evaluation, and continuous training to ensure they meet our exacting standards. We combine this human element with state-of-the-art surveillance and monitoring technology.</p>
+      <p>Whether you need corporate security, residential protection, or event security, we develop customized solutions that address your specific risks and vulnerabilities.</p>
+      <a href="{% url 'contact_us' %}" class="btn-orange" style="margin-top: 20px; display: inline-block;">Speak to Our Security Experts</a>
+    </div>
+    <div class="security-overview-image">
+      <img src="{% static 'images/policy.jpg' %}" alt="Professional Security Team">
+    </div>
+  </section>
+</div>
+
+<!-- Security Services Grid -->
+<section class="security-services">
+  <div class="section-title">
+    <h2>Our <span>Security Services</span></h2>
+    <p>Comprehensive protection solutions designed for various sectors and needs</p>
+  </div>
+  
+  <div class="services-grid">
+    <!-- Manned Guarding Services -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/industrial-security.jpg' %}" alt="Manned Guarding Services">
+      </div>
+      <div class="service-card-content">
+        <h3>Manned Guarding Services</h3>
+        <p>Professional security personnel for various environments and requirements.</p>
+        <ul class="service-features">
+          <li>Industrial Security (factories, warehouses)</li>
+          <li>Corporate Office Security</li>
+          <li>Residential Security</li>
+          <li>Retail Security</li>
+          <li>Educational Institutions</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Event Security Management -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/event-security.jpg' %}" alt="Event Security Management">
+      </div>
+      <div class="service-card-content">
+        <h3>Event Security Management</h3>
+        <p>Professional security for all types of events and gatherings.</p>
+        <ul class="service-features">
+          <li>Concerts & Public Events</li>
+          <li>VIP & Political Events</li>
+          <li>Exhibitions and Trade Shows</li>
+          <li>Religious Gatherings</li>
+          <li>Crowd control and access screening</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Electronic Surveillance -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/electronic-servilence.jpg' %}" alt="Electronic Surveillance">
+      </div>
+      <div class="service-card-content">
+        <h3>Electronic Surveillance</h3>
+        <p>Advanced technology solutions for comprehensive monitoring.</p>
+        <ul class="service-features">
+          <li>CCTV Installation (HD, Night Vision)</li>
+          <li>Biometric Access Control</li>
+          <li>Fire Alarm Systems</li>
+          <li>Intruder Detection</li>
+          <li>Centralized Monitoring</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Elite Protection Services -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/corporate-security.jpg' %}" alt="Elite Protection Services">
+      </div>
+      <div class="service-card-content">
+        <h3>Elite Protection Services</h3>
+        <p>High-level security for individuals and executives.</p>
+        <ul class="service-features">
+          <li>Bodyguards / PSOs (armed/unarmed)</li>
+          <li>Executive Escort & Convoy</li>
+          <li>VIP Close Protection</li>
+          <li>Discreet mobile security</li>
+          <li>Residential executive protection</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Quick Response Teams -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/mobile-patrol.jpg' %}" alt="Quick Response Teams">
+      </div>
+      <div class="service-card-content">
+        <h3>Quick Response Teams</h3>
+        <p>Rapid deployment security for emergencies.</p>
+        <ul class="service-features">
+          <li>24/7 emergency-ready patrol units</li>
+          <li>First Aid and evacuation</li>
+          <li>Crisis handling</li>
+          <li>Alarm response</li>
+          <li>Theft prevention and response</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- NEW: Cybersecurity Services -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/cyber-security.jpg' %}" alt="Cybersecurity Services">
+      </div>
+      <div class="service-card-content">
+        <h3>Cybersecurity Services</h3>
+        <p>Protecting your digital assets from online threats.</p>
+        <ul class="service-features">
+          <li>Network Security Assessments</li>
+          <li>Vulnerability Testing</li>
+          <li>Data Protection Solutions</li>
+          <li>Incident Response</li>
+          <li>Security Awareness Training</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Updated Security Features Section -->
+<section class="security-features">
+  <div class="section-title">
+    <h2>Why Choose <span>Arax Security</span></h2>
+    <p style="color: #ccc;">Our commitment to excellence sets us apart in the security industry</p>
+  </div>
+  
+  <div class="features-container">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-user-shield"></i>
+      </div>
+      <h3>Vetted Professionals</h3>
+      <p>Every team member undergoes comprehensive background checks, drug testing, and psychological evaluation.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <h3>Continuous Training</h3>
+      <p>Monthly training programs ensure our personnel stay current with the latest security protocols and techniques.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h3>Technology Integration</h3>
+      <p>We combine physical security with advanced surveillance, access control, and monitoring systems.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-clipboard-check"></i>
+      </div>
+      <h3>Custom Solutions</h3>
+      <p>Tailored security plans designed specifically for your unique requirements and risk profile.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <h3>24/7 Support</h3>
+      <p>Round-the-clock customer service and rapid response teams always available.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-certificate"></i>
+      </div>
+      <h3>Industry Certified</h3>
+      <p>Fully licensed and insured with all necessary certifications and accreditations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Updated Security Process Section -->
+<section class="security-process">
+  <div class="section-title">
+    <h2>Our <span>Security Process</span></h2>
+    <p>How we deliver comprehensive protection tailored to your needs</p>
+  </div>
+  
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h3>Needs Assessment</h3>
+      <p>Detailed evaluation of your security requirements and risk factors.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h3>Solution Design</h3>
+      <p>Creating a customized security plan with optimal manpower and technology mix.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h3>Team Deployment</h3>
+      <p>Assigning vetted professionals matched to your specific security needs.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <h3>Implementation</h3>
+      <p>Seamless deployment with all necessary equipment and protocols.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">5</div>
+      <h3>Continuous Monitoring</h3>
+      <p>Regular reviews and adjustments to maintain optimal security.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Enhanced CTA Section -->
+<section class="security-cta">
+  <div class="cta-container">
+    <div class="cta-content">
+      <h2 class="cta-heading">
+        <span>Your Safety</span> Is Our Top Priority
+      </h2>
+
+      <div class="cta-flex">
+        <div class="cta-column">
+          <div class="cta-box yellow-bg">
+            <h3><i class="fas fa-shield-alt"></i> Immediate Response</h3>
+            <p>Our rapid deployment team can be on-site within hours of your request.</p>
+          </div>
+
+          <div class="cta-box transparent-bg">
+            <h3><i class="fas fa-lock"></i> 24/7 Protection</h3>
+            <p>Round-the-clock monitoring and support for uninterrupted security coverage.</p>
+          </div>
+        </div>
+
+        <div class="cta-column text-center">
+          <div class="cta-message">
+            <p>Don't wait until it's too late. Our security experts are standing by to assess your needs and recommend the perfect solution for your home or business.</p>
+            <a href="{% url 'contact_us' %}" class="btn-orange">
+              <i class="fas fa-phone-alt"></i> Call Now
+            </a>
+            <a href="{% url 'contact_us' %}" class="btn-orange btn-outline">
+              <i class="fas fa-envelope"></i> Email Us
+            </a>
+          </div>
+
+          <div class="cta-offer">
+            <p>
+              <i class="fas fa-star"></i>
+              <strong>Limited Time Offer:</strong> First month of service at 20% discount for new clients
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
