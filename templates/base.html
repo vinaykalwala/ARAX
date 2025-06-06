@@ -49,7 +49,7 @@
     }
 
     .logo img {
-      height: 40px;
+      height: 60px;
       margin-right: 10px;
     }
 
@@ -256,8 +256,7 @@
   <div class="header-top">
     <div class="logo">
       <img src="{% static 'araxlogo.png' %}" alt="Logo">
-      <div><span>Arax</span> Security</div>
-    </div>
+<img src="{% static 'logo1.png' %}" alt="Logo">    </div>
     <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
   </div>
 
@@ -268,13 +267,18 @@
       <li onclick="toggleDropdown(event)">
         <a href="{% url 'services' %}">SERVICES <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
         <div class="dropdown">
-          <a href="{% url 'housekeeping' %}">House Keeping Services</a>
-          <a href="{% url 'securityservices' %}">Security Services</a>
-          <a href="{% url 'outsourcing' %}">Out Sourcing Services</a>
+          <a href="{% url 'securityservices' %}">ARAX Security Services</a>
+          <a href="{% url 'housekeeping' %}">ARAX House Keeping Services</a>
+          <a href="{% url 'outsourcing' %}">ARAX A To Z Facility Services</a>
+          <a href="{% url 'ert' %}">ARAX 24/7 Emergency Response Team</a>
+          <a href="{% url 'qrt' %}">ARAX 24/7 QRT Vehicle Facility</a>
+
         </div>
       </li>
       
       <li><a href="{% url 'gallery' %}">GALLERY</a></li>
+      <li><a href="{% url 'video' %}">VIDEOS</a></li>
+
       <li class="mobile-contact"><a href="{% url 'contact_us' %}">CONTACT</a></li>
     </ul>
   </nav>
