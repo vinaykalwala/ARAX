@@ -1,12 +1,1005 @@
 {% extends 'base.html' %}
 
-{% block title %}ERT | Arax Security{% endblock %}
-{% load static %}
+{% block title %}24/7 Emergency Response Team | Arax Security{% endblock %}
 
 {% block content %}
+{% load static %}
 <style>
- 
+  /* Animation Keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Hero Section with before/after */
+  .emergency-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "images/araxemergencybanner.jpg" %}') no-repeat center center/cover;
+    color: white;
+    padding: 40px 20px 160px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .emergency-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(3deg);
+    z-index: 1;
+  }
+
+  .emergency-hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+
+  .emergency-hero h1 span {
+    color: #f9b000;
+  }
+
+  .emergency-hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.4s both;
+  }
+
+  .btn-orange {
+    background-color: #f9b000;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: fadeInUp 1s ease-out 0.6s both;
+  }
+
+  .btn-orange:hover {
+    background-color: #d89e00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  }
+
+  /* Emergency Overview Section */
+  .emergency-overview-wrapper {
+    position: relative;
+    padding: 0px 0;
+    background: #fff;
+  }
+
+  .emergency-overview {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .emergency-overview-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-left: 5px solid #f9b000;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .emergency-overview-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  }
+
+  .emergency-overview-text h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #222;
+    position: relative;
+    padding-bottom: 15px;
+  }
+
+  .emergency-overview-text h2 span {
+    color: #f9b000;
+  }
+
+  .emergency-overview-text p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  .emergency-overview-image {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transition: all 0.5s ease;
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+
+  .emergency-overview-image:hover {
+    transform: translateY(-10px) rotate(1deg);
+  }
+
+  .emergency-overview-image img {
+    width: 100%;
+    height: 625px;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .emergency-overview-image:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Emergency Services Grid */
+  .emergency-services {
+    padding: 85px 20px;
+    background: #f8f8f8;
+    position: relative;
+  }
+
+  .emergency-services::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title h2 span {
+    color: #f9b000;
+  }
+
+  .section-title p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #666;
+    font-size: 18px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+    border-top: 3px solid #f9b000;
+  }
+
+  .service-card:nth-child(1) { animation-delay: 0.1s; }
+  .service-card:nth-child(2) { animation-delay: 0.2s; }
+  .service-card:nth-child(3) { animation-delay: 0.3s; }
+  .service-card:nth-child(4) { animation-delay: 0.4s; }
+  .service-card:nth-child(5) { animation-delay: 0.5s; }
+  .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+
+  .service-card-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .service-card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+
+  .service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .service-card:hover .service-card-image img {
+    transform: scale(1.1);
+  }
+
+  .service-card-content {
+    padding: 25px;
+  }
+
+  .service-card-content h3 {
+    color: #f9b000;
+    font-size: 22px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .service-card-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #f9b000;
+  }
+
+  .service-card-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .service-features {
+    margin-bottom: 20px;
+  }
+
+  .service-features li {
+    margin-bottom: 8px;
+    color: #444;
+    position: relative;
+    padding-left: 25px;
+  }
+
+  .service-features li:before {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #f9b000;
+    position: absolute;
+    left: 0;
+  }
+
+  /* Emergency Features Section */
+  .emergency-features {
+    padding: 90px 20px;
+    background: linear-gradient(to right, #222222, #111111);
+    color: white;
+    position: relative;
+  }
+
+  .emergency-features::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: #f8f8f8;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .emergency-features::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(3deg);
+    z-index: 1;
+  }
+
+  .features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
+
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 30px 25px;
+    border-radius: 12px;
+    background: white;
+    transition: all 0.4s ease;
+    border-left: 5px solid transparent;
+    position: relative;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  .feature-item:hover {
+    transform: translateX(10px);
+    border-left: 5px solid #f9b000;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .feature-icon {
+    font-size: 36px;
+    color: #f9b000;
+    margin-bottom: 15px;
+  }
+
+  .feature-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  .feature-item p {
+    color: black;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* Emergency Response Process Section */
+  .emergency-process {
+    padding: 90px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 50px;
+  }
+
+  .process-step {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border-top: 5px solid #f9b000;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .process-step:nth-child(1) { animation-delay: 0.1s; }
+  .process-step:nth-child(2) { animation-delay: 0.2s; }
+  .process-step:nth-child(3) { animation-delay: 0.3s; }
+  .process-step:nth-child(4) { animation-delay: 0.4s; }
+  .process-step:nth-child(5) { animation-delay: 0.5s; }
+
+  .process-step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: #f9b000;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+  }
+
+  .process-step:hover .step-number {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(249, 176, 0, 0.4);
+  }
+
+  .process-step h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #222;
+  }
+
+  .process-step p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* Enhanced CTA Section */
+  .emergency-cta {
+    padding: 70px 20px;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "images/emergency-cta-bg.jpg" %}') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+
+  .emergency-cta::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .cta-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .cta-content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0px 40px;
+    border-radius: 20px;
+    border: 2px solid #f9b000;
+    transition: all 0.3s ease;
+  }
+
+  .cta-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .cta-heading {
+    font-size: 36px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+  }
+
+  .cta-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f9b000;
+  }
+
+  .cta-heading span {
+    color: #f9b000;
+  }
+
+  .cta-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .cta-column {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .cta-box {
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .cta-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .red-bg {
+    background: #f9b000;
+    color: #fff;
+  }
+
+  .transparent-bg {
+    background: rgba(249, 176, 0, 0.2);
+    color: #fff;
+    border: 1px solid #f9b000;
+  }
+
+  .cta-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cta-box h3 i {
+    margin-right: 10px;
+  }
+
+  .cta-message p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+  }
+
+  .cta-offer {
+    background: rgba(249, 176, 0, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #f9b000;
+    animation: pulse 2s ease infinite;
+  }
+
+  .cta-offer p {
+    font-style: italic;
+    margin: 0;
+  }
+
+  .cta-offer i {
+    color: #f9b000;
+    margin-right: 5px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .btn-orange {
+    background-color: #f9b000;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-orange:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(249, 176, 0, 0.4);
+  }
+
+  .btn-orange.btn-outline {
+    background: transparent;
+    border: 2px solid #f9b000;
+  }
+
+  .btn-orange.btn-outline:hover {
+    background: #f9b000;
+  }
+
+  /* Response Time Counter */
+  .response-counter {
+    background: #f9b000;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 30px auto;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .counter-number {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .counter-label {
+    font-size: 18px;
+    opacity: 0.9;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .emergency-hero h1 {
+      font-size: 36px;
+    }
+    
+    .process-step {
+      min-width: 150px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .emergency-hero {
+      padding: 100px 20px 120px;
+    }
+    
+    .emergency-hero h1 {
+      font-size: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 28px;
+    }
+    
+    .emergency-cta h2 {
+      font-size: 28px;
+    }
+    .emergency-cta {
+      padding: 80px 20px;
+    }
+     .cta-content {
+      padding: 40px 20px;
+    }
+     
+    .process-step {
+      min-width: 100%;
+    }
+  }
 </style>
 
-<div></div>
+<!-- Hero Section -->
+<section class="emergency-hero">
+  <h1>24/7 <span>Emergency Response</span> Team</h1>
+  <p>Rapid, professional security response for critical situations - anytime, anywhere.</p>
+  <a href="tel:+1234567890" class="btn-orange">Call Emergency Hotline Now</a>
+</section>
+
+<!-- Emergency Overview Section -->
+<div class="emergency-overview-wrapper">
+  <section class="emergency-overview">
+    <div class="emergency-overview-text">
+      <h2>Rapid Response <span>Security</span> Solutions</h2>
+      <p>Our 24/7 Emergency Response Team is specially trained to handle critical situations with speed, precision, and professionalism. When seconds count, you can count on our rapid deployment teams to be there when you need them most.</p>
+      <p>Each response unit is equipped with state-of-the-art communication gear, first aid supplies, and specialized equipment to handle a wide range of emergency scenarios. Our teams maintain constant readiness to deploy at a moment's notice.</p>
+      <p>Whether you're facing a security breach, medical emergency, or natural disaster, our emergency response professionals are trained to assess, stabilize, and secure the situation until authorities arrive or the threat is neutralized.</p>
+      <a href="{% url 'contact_us' %}" class="btn-red" style="margin-top: 20px; display: inline-block;">Request Emergency Response Plan</a>
+    </div>
+    <div class="emergency-overview-image">
+      <img src="{% static 'images/araxert1.jpg' %}" alt="Emergency Response Team">
+    </div>
+  </section>
+</div>
+
+
+
+<!-- Emergency Services Grid -->
+<section class="emergency-services">
+  <div class="section-title">
+    <h2>ARAX <span>Emergency Services</span></h2>
+    <p>Comprehensive emergency response solutions for critical situations</p>
+  </div>
+  
+  <div class="services-grid">
+    <!-- Armed Response -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/securitymonitoring.jpg' %}" alt="Armed Response">
+      </div>
+      <div class="service-card-content">
+        <h3>Access Control & Monitoring</h3>
+        <p>Comprehensive entry and exit monitoring solutions for secure premises.</p>
+        <ul class="service-features">
+        <li>24/7 gate and door supervision</li>
+        <li>Employee and visitor ID checks</li>
+        <li>Surveillance system integration</li>
+        <li>Real-time access logs and reporting</li>
+        <li>Unauthorized entry prevention</li>
+        </ul>
+
+        <a href="{% url 'contact_us' %}" class="btn-red" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Medical Emergency Response -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/medicalresponse.jpg' %}" alt="Medical Emergency Response">
+      </div>
+      <div class="service-card-content">
+        <h3>Medical Emergency Response</h3>
+        <p>First responder teams for medical emergencies and trauma situations.</p>
+        <ul class="service-features">
+          <li>CPR and basic life support</li>
+          <li>Trauma first response</li>
+          <li>Emergency evacuation</li>
+          <li>Medical standby for events</li>
+          <li>Coordination with EMS</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-red" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Alarm Response -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/alarmresponse.jpg' %}" alt="Alarm Response">
+      </div>
+      <div class="service-card-content">
+        <h3>Alarm Response</h3>
+        <p>Immediate investigation and response to security alarms.</p>
+        <ul class="service-features">
+          <li>24/7 intrusion alarm response</li>
+          <li>Fire alarm verification</li>
+          <li>Panic alarm response</li>
+          <li>Rapid site assessment</li>
+          <li>Police notification</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-red" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Crisis Intervention -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/dangerinvention.jpg' %}" alt="Crisis Intervention">
+      </div>
+      <div class="service-card-content">
+        <h3>Crisis Intervention</h3>
+        <p>Specialized teams for de-escalation and crisis management.</p>
+        <ul class="service-features">
+          <li>Hostage situations</li>
+          <li>Suicide prevention</li>
+          <li>Workplace violence</li>
+          <li>Domestic disturbance</li>
+          <li>Mental health crises</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-red" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Natural Disaster Response -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/disasterresponse.jpg' %}" alt="Natural Disaster Response">
+      </div>
+      <div class="service-card-content">
+        <h3>Natural Disaster Response</h3>
+        <p>Emergency teams for weather events and natural disasters.</p>
+        <ul class="service-features">
+          <li>Hurricane/storm response</li>
+          <li>Flood evacuation</li>
+          <li>Earthquake response</li>
+          <li>Wildfire protection</li>
+          <li>Emergency shelter security</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-red" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Mobile Patrol Response -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/mobile-patrol.jpg' %}" alt="Mobile Patrol Response">
+      </div>
+      <div class="service-card-content">
+        <h3>Mobile Patrol Response</h3>
+        <p>Roving security teams for rapid response across multiple locations.</p>
+        <ul class="service-features">
+          <li>24/7 mobile patrol units</li>
+          <li>Randomized route patterns</li>
+          <li>GPS-tracked vehicles</li>
+          <li>Property checks</li>
+          <li>Vacation property watch</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-red" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Emergency Features Section -->
+<section class="emergency-features">
+  <div class="section-title">
+    <h2>Why Our <span>Emergency Response</span> Stands Out</h2>
+    <p style="color: #ccc;">Key differentiators that make our emergency services exceptional</p>
+  </div>
+  
+  <div class="features-container">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-clock"></i>
+      </div>
+      <h3>Guaranteed Response Time</h3>
+      <p>We commit to specific response time windows based on your location and service level.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <h3>Dedicated Emergency Line</h3>
+      <p>Priority phone line that bypasses regular queues for immediate emergency dispatch.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-ambulance"></i>
+      </div>
+      <h3>Medical Trained Personnel</h3>
+      <p>All responders certified in first aid, CPR, and emergency medical response.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-map-marked-alt"></i>
+      </div>
+      <h3>GPS Tracking</h3>
+      <p>Real-time tracking of response units for optimized routing and ETA monitoring.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-siren-on"></i>
+      </div>
+      <h3>Police Coordination</h3>
+      <p>Established protocols for seamless collaboration with local law enforcement.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-database"></i>
+      </div>
+      <h3>Site-Specific Protocols</h3>
+      <p>Custom emergency plans for each client location with access details and floor plans.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Emergency Response Process Section -->
+<section class="emergency-process">
+  <div class="section-title">
+    <h2>Our <span>Emergency Response</span> Protocol</h2>
+    <p>How we handle emergency situations from initial alert to resolution</p>
+  </div>
+  
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h3>Emergency Alert</h3>
+      <p>24/7 monitoring center receives your emergency call or alarm activation.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h3>Immediate Dispatch</h3>
+      <p>Nearest response team is deployed within 90 seconds of alert.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h3>En Route Assessment</h3>
+      <p>Team gathers critical information while in transit to your location.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <h3>Scene Arrival</h3>
+      <p>Team secures perimeter and assesses situation upon arrival.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">5</div>
+      <h3>Situation Resolution</h3>
+      <p>Team stabilizes situation and coordinates with authorities as needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Enhanced CTA Section -->
+<section class="emergency-cta">
+  <div class="cta-container">
+    <div class="cta-content">
+      <h2 class="cta-heading">
+        <span>Emergency</span> Response When You Need It
+      </h2>
+
+      <div class="cta-flex">
+        <div class="cta-column">
+          <div class="cta-box red-bg">
+            <h3><i class="fas fa-bolt"></i> Immediate Dispatch</h3>
+            <p>Our teams are on standby 24/7/365 for rapid deployment to your emergency.</p>
+          </div>
+
+          <div class="cta-box transparent-bg">
+            <h3><i class="fas fa-shield-alt"></i> Priority Protection</h3>
+            <p>Your emergency becomes our top priority from the moment you call.</p>
+          </div>
+        </div>
+
+        <div class="cta-column text-center">
+          <div class="cta-message">
+            <p>Don't wait for an emergency to happen. Establish your emergency response plan today and ensure rapid protection when seconds count.</p>
+            <a href="tel:+1234567890" class="btn-orange">
+              <i class="fas fa-phone-alt"></i> Call Emergency Line
+            </a>
+            <a href="{% url 'contact_us' %}" class="btn-orange btn-outline">
+              <i class="fas fa-envelope"></i> Email Our Team
+            </a>
+          </div>
+
+          <div class="cta-offer">
+            <p>
+              <i class="fas fa-star"></i>
+              <strong>Emergency Preparedness Special:</strong> Free security assessment for new clients
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
