@@ -18,6 +18,15 @@ def outsourcing(request):
 def housekeeping(request):
     return render(request, 'housekeeping.html')
 
+def video(request):
+    return render(request, 'video.html')
+
+def qrt(request):
+    return render(request, 'qrt.html')
+
+def ert(request):
+    return render(request, 'ert.html')
+
 
 from django.shortcuts import render, redirect
 from .models import GalleryImage
