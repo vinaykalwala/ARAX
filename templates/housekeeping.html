@@ -1,7 +1,911 @@
 {% extends 'base.html' %}
 
-{% block title %}House Keeping | Arax Security{% endblock %}
+{% block title %}Housekeeping Services | Arax Security{% endblock %}
 
 {% block content %}
- <h1>House Keeping services</h1>
+{% load static %}
+<style>
+  /* Animation Keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Hero Section */
+  .housekeeping-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "images/araxhousekeepingbanner.jpg" %}') no-repeat center center/cover;
+    color: white;
+    padding: 40px 20px 160px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .housekeeping-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(3deg);
+    z-index: 1;
+  }
+
+  .housekeeping-hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+
+  .housekeeping-hero h1 span {
+    color: #f9b000;
+  }
+
+  .housekeeping-hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.4s both;
+  }
+
+  .btn-orange {
+    background-color: #f9b000;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: fadeInUp 1s ease-out 0.6s both;
+  }
+
+  .btn-orange:hover {
+    background-color: #d89e00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  }
+
+  /* Overview Section */
+  .housekeeping-overview-wrapper {
+    position: relative;
+    padding: 0px 0;
+    background: #fff;
+  }
+
+  .housekeeping-overview {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .housekeeping-overview-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-left: 5px solid #f9b000;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .housekeeping-overview-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  }
+
+  .housekeeping-overview-text h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #222;
+    position: relative;
+    padding-bottom: 15px;
+  }
+
+  .housekeeping-overview-text h2 span {
+    color: #f9b000;
+  }
+
+  .housekeeping-overview-text p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  .housekeeping-overview-image {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transition: all 0.5s ease;
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+
+  .housekeeping-overview-image:hover {
+    transform: translateY(-10px) rotate(1deg);
+  }
+
+  .housekeeping-overview-image img {
+    width: 100%;
+    height: 625px;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .housekeeping-overview-image:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Services Grid */
+  .housekeeping-services {
+    padding: 85px 20px;
+    background: #f8f8f8;
+    position: relative;
+  }
+
+  .housekeeping-services::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title h2 span {
+    color: #f9b000;
+  }
+
+  .section-title p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #666;
+    font-size: 18px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .service-card:nth-child(1) { animation-delay: 0.1s; }
+  .service-card:nth-child(2) { animation-delay: 0.2s; }
+  .service-card:nth-child(3) { animation-delay: 0.3s; }
+  .service-card:nth-child(4) { animation-delay: 0.4s; }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+
+  .service-card-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .service-card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+
+  .service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .service-card:hover .service-card-image img {
+    transform: scale(1.1);
+  }
+
+  .service-card-content {
+    padding: 25px;
+  }
+
+  .service-card-content h3 {
+    color: #f9b000;
+    font-size: 22px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .service-card-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #f9b000;
+  }
+
+  .service-card-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .service-features {
+    margin-bottom: 20px;
+  }
+
+  .service-features li {
+    margin-bottom: 8px;
+    color: #444;
+    position: relative;
+    padding-left: 25px;
+  }
+
+  .service-features li:before {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #f9b000;
+    position: absolute;
+    left: 0;
+  }
+
+  /* Features Section */
+  .housekeeping-features {
+    padding: 90px 20px;
+    background: linear-gradient(to right, #222222, #111111);
+    color: white;
+    position: relative;
+  }
+
+  .housekeeping-features::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: #f8f8f8;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .housekeeping-features::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(3deg);
+    z-index: 1;
+  }
+
+  .features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
+
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 30px 25px;
+    border-radius: 12px;
+    background: white;
+    transition: all 0.4s ease;
+    border-left: 5px solid transparent;
+    position: relative;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  .feature-item:hover {
+    transform: translateX(10px);
+    border-left: 5px solid #f9b000;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .feature-icon {
+    font-size: 36px;
+    color: #f9b000;
+    margin-bottom: 15px;
+  }
+
+  .feature-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  .feature-item p {
+    color: black;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* Process Section */
+  .housekeeping-process {
+    padding: 90px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 50px;
+  }
+
+  .process-step {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border-top: 5px solid #f9b000;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .process-step:nth-child(1) { animation-delay: 0.1s; }
+  .process-step:nth-child(2) { animation-delay: 0.2s; }
+  .process-step:nth-child(3) { animation-delay: 0.3s; }
+  .process-step:nth-child(4) { animation-delay: 0.4s; }
+
+  .process-step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: #f9b000;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+  }
+
+  .process-step:hover .step-number {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 5px rgba(249, 176, 0, 0.3);
+  }
+
+  .process-step h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #222;
+  }
+
+  .process-step p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* CTA Section */
+  .housekeeping-cta {
+    padding: 70px 20px;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "images/housekeeping-cta-bg.jpg" %}') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+
+  .housekeeping-cta::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .cta-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .cta-content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0px 40px;
+    border-radius: 20px;
+    border: 2px solid #f9b000;
+    transition: all 0.3s ease;
+  }
+
+  .cta-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .cta-heading {
+    font-size: 36px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+  }
+
+  .cta-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f9b000;
+  }
+
+  .cta-heading span {
+    color: #f9b000;
+  }
+
+  .cta-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .cta-column {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .cta-box {
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .cta-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .yellow-bg {
+    background: #f9b000;
+    color: #000;
+  }
+
+  .transparent-bg {
+    background: rgba(249, 176, 0, 0.2);
+    color: #fff;
+    border: 1px solid #f9b000;
+  }
+
+  .cta-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cta-box h3 i {
+    margin-right: 10px;
+  }
+
+  .cta-message p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+  }
+
+  .cta-offer {
+    background: rgba(249, 176, 0, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #f9b000;
+    animation: pulse 2s ease infinite;
+  }
+
+  .cta-offer p {
+    font-style: italic;
+    margin: 0;
+  }
+
+  .cta-offer i {
+    color: #f9b000;
+    margin-right: 5px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .housekeeping-hero h1 {
+      font-size: 36px;
+    }
+    
+    .process-step {
+      min-width: 150px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .housekeeping-hero {
+      padding: 100px 20px 120px;
+    }
+    
+    .housekeeping-hero h1 {
+      font-size: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 28px;
+    }
+    
+    .housekeeping-cta h2 {
+      font-size: 28px;
+    }
+    .housekeeping-cta {
+      padding: 80px 20px;
+    }
+     .cta-content {
+      padding: 40px 20px;
+    }
+     
+    .process-step {
+      min-width: 100%;
+    }
+  }
+
+  
+</style>
+
+<!-- Hero Section -->
+<section class="housekeeping-hero">
+  <h1>Professional <span>Housekeeping</span> Services</h1>
+  <p>DYNAMIC SECURITY & FACILITY MANAGEMENT is committed to deliver world class quality services in the areas of Housekeeping, Security Service and Out Sourcing.</p>
+  <a href="{% url 'contact_us' %}" class="btn-orange">Request a Quote</a>
+</section>
+
+<!-- Overview Section -->
+<div class="housekeeping-overview-wrapper">
+  <section class="housekeeping-overview">
+    <div class="housekeeping-overview-text">
+      <h2>Our <span>Housekeeping</span> Philosophy</h2>
+      <p>At Arax Security, we believe true cleanliness comes from a combination of highly trained personnel, advanced cleaning technology, and proactive maintenance strategies. Our approach goes beyond traditional cleaning to create comprehensive hygiene ecosystems.</p>
+      <p>Each of our housekeeping professionals undergoes rigorous training and continuous evaluation to ensure they meet our exacting standards. We combine this human element with state-of-the-art cleaning equipment and eco-friendly products.</p>
+      <p>Whether you need commercial cleaning, industrial maintenance, or residential housekeeping, we develop customized solutions that address your specific needs and schedule.</p>
+      <a href="{% url 'contact_us' %}" class="btn-orange" style="margin-top: 20px; display: inline-block;">Speak to Our Cleaning Experts</a>
+    </div>
+    <div class="housekeeping-overview-image">
+      <img src="{% static 'images/araxhousekeeping1.jpg' %}" alt="Professional Housekeeping Team">
+    </div>
+  </section>
+</div>
+
+<!-- Services Grid -->
+<section class="housekeeping-services">
+  <div class="section-title">
+    <h2>Our <span>Housekeeping Services</span></h2>
+    <p>Comprehensive cleaning solutions designed for various sectors and needs</p>
+  </div>
+  
+  <div class="services-grid">
+    <!-- Mechanized Cleaning -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/araxmechanized-cleaning.jpg' %}" alt="Mechanized Cleaning">
+      </div>
+      <div class="service-card-content">
+        <h3>Mechanized Cleaning</h3>
+        <p>Advanced cleaning solutions using modern equipment for superior results.</p>
+        <ul class="service-features">
+          <li>Upkeep of Common areas, offices, Shopping Malls floors</li>
+          <li>Complete Commercial and Industrial Cleaning support</li>
+          <li>Mechanical Cleaning with Eco Friendly Solutions</li>
+          <li>Work Area, Carleen Cleaning, Mobbing</li>
+          <li>Cleaning of all office Equipments</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Specialized Services -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/araxspecializedservices.jpg' %}" alt="Specialized Services">
+      </div>
+      <div class="service-card-content">
+        <h3>Specialized Services</h3>
+        <p>Targeted solutions for specific cleaning challenges.</p>
+        <ul class="service-features">
+          <li>Pest Control services</li>
+          <li>Waste management solutions</li>
+          <li>Facade cleaning for buildings</li>
+          <li>Carpet Cleaning: Vacuuming, Spotting, Shampooing</li>
+          <li>Landscaping and Potted Plant Maintenance</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Facility Management -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/araxfacilitymanagement.jpg' %}" alt="Facility Management">
+      </div>
+      <div class="service-card-content">
+        <h3>Facility Management</h3>
+        <p>Comprehensive solutions for maintaining your premises.</p>
+        <ul class="service-features">
+          <li>Premise cleaning, mechanized cleaning</li>
+          <li>External and Façade Cleaning</li>
+          <li>Green Cleaning and Hygiene services</li>
+          <li>Landscaping and Waste management</li>
+          <li>Deep cleaning on weekly/monthly basis</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+    
+    <!-- Deep Cleaning -->
+    <div class="service-card">
+      <div class="service-card-image">
+        <img src="{% static 'images/araxdeepcleaning.jpg' %}" alt="Deep Cleaning Services">
+      </div>
+      <div class="service-card-content">
+        <h3>Deep Cleaning Services</h3>
+        <p>Intensive cleaning for thorough sanitation and hygiene.</p>
+        <ul class="service-features">
+          <li>Complete sanitization of premises</li>
+          <li>High-pressure washing for tough areas</li>
+          <li>Grout and tile deep cleaning</li>
+          <li>Upholstery and carpet deep cleaning</li>
+          <li>Post-construction cleanup</li>
+        </ul>
+        <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="housekeeping-features">
+  <div class="section-title">
+    <h2>Why Choose <span>Our Housekeeping</span></h2>
+    <p style="color: #ccc;">Our commitment to excellence sets us apart in the cleaning industry</p>
+  </div>
+  
+  <div class="features-container">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-user-shield"></i>
+      </div>
+      <h3>Trained Professionals</h3>
+      <p>Every team member undergoes comprehensive training in cleaning techniques and safety protocols.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-leaf"></i>
+      </div>
+      <h3>Eco-Friendly Products</h3>
+      <p>We use environmentally safe cleaning products that are effective yet gentle on surfaces.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-clock"></i>
+      </div>
+      <h3>Flexible Scheduling</h3>
+      <p>Services available 24/7 to accommodate your business hours and minimize disruption.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-clipboard-check"></i>
+      </div>
+      <h3>Custom Solutions</h3>
+      <p>Tailored cleaning plans designed specifically for your unique requirements.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <h3>24/7 Support</h3>
+      <p>Round-the-clock customer service always available for your needs.</p>
+    </div>
+    
+    <div class="feature-item">
+      <div class="feature-icon">
+        <i class="fas fa-certificate"></i>
+      </div>
+      <h3>Quality Guarantee</h3>
+      <p>We stand behind our work with a 100% satisfaction guarantee.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="housekeeping-process">
+  <div class="section-title">
+    <h2>Our <span>Cleaning Process</span></h2>
+    <p>How we deliver comprehensive cleaning services tailored to your needs</p>
+  </div>
+  
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h3>Assessment</h3>
+      <p>Detailed evaluation of your cleaning requirements and facility layout.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h3>Plan Development</h3>
+      <p>Creating a customized cleaning plan with optimal products and schedule.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h3>Team Assignment</h3>
+      <p>Assigning trained professionals matched to your specific cleaning needs.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <h3>Quality Execution</h3>
+      <p>Thorough cleaning with all necessary equipment and eco-friendly products.</p>
+    </div>
+    
+    <div class="process-step">
+      <div class="step-number">5</div>
+      <h3>Continuous Improvement</h3>
+      <p>Regular reviews and adjustments to maintain optimal cleanliness.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="housekeeping-cta">
+  <div class="cta-container">
+    <div class="cta-content">
+      <h2 class="cta-heading">
+        <span>Cleanliness</span> Is Our Commitment
+      </h2>
+
+      <div class="cta-flex">
+        <div class="cta-column">
+          <div class="cta-box yellow-bg">
+            <h3><i class="fas fa-broom"></i> Immediate Service</h3>
+            <p>Our cleaning team can be on-site within hours of your request.</p>
+          </div>
+
+          <div class="cta-box transparent-bg">
+            <h3><i class="fas fa-calendar-alt"></i> Flexible Scheduling</h3>
+            <p>Daily, weekly or monthly cleaning to suit your needs.</p>
+          </div>
+        </div>
+
+        <div class="cta-column text-center">
+          <div class="cta-message">
+            <p>Don't compromise on cleanliness. Our housekeeping experts are standing by to assess your needs and recommend the perfect cleaning solution for your premises.</p>
+            <a href="{% url 'contact_us' %}" class="btn-orange">
+              <i class="fas fa-phone-alt"></i> Call Now
+            </a>
+            <a href="{% url 'contact_us' %}" class="btn-orange btn-outline">
+              <i class="fas fa-envelope"></i> Email Us
+            </a>
+          </div>
+
+          <div class="cta-offer">
+            <p>
+              <i class="fas fa-star"></i>
+              <strong>Limited Time Offer:</strong> First month of service at 20% discount for new clients
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
