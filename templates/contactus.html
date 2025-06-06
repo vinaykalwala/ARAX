@@ -1,18 +1,446 @@
-
-
 {% extends 'base.html' %}
 
-{% block title %}Conatct us | Arax Security{% endblock %}
+{% block title %}Contact Us | Arax Security{% endblock %}
 
 {% block content %}
-<h2>Contact Us</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Send</button>
-</form>
-{% if messages %}
-    {% for message in messages %}
-        <p style="color: green;">{{ message }}</p>
-    {% endfor %}
-{% endif %}{% endblock %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  body {
+    color: #333;
+  }
+
+  /* Banner Section */
+  .banner {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "contact-banner.jpg" %}') no-repeat center center/cover;
+    background-attachment: fixed;
+    padding: 0 20px;
+    overflow: hidden;
+  }
+
+  .banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(249, 176, 0, 0.3), transparent);
+    animation: glow 4s infinite ease-in-out;
+  }
+
+  @keyframes glow {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+  }
+
+  .banner h1 {
+    font-size: 36px;
+    font-weight: 900;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: slideIn 1.5s ease forwards;
+    color: #fff;
+  }
+
+  .banner h1 span {
+    color: #f9b000;
+    text-shadow: 0 0 15px #f9b000;
+  }
+
+  @keyframes slideIn {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Contact Section */
+  .contact-section {
+    position: relative;
+    padding: 60px 20px;
+    background: #fff;
+  }
+
+  .contact-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .contact-info{
+    background: #222;
+  }
+  .contact-info, .contact-form {
+    /* background: #fff; */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .contact-info {
+    animation-delay: 0.2s;
+  }
+
+  .contact-form {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Contact Info Styling */
+  .contact-info h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  .contact-info h2 span {
+    color: #f9b000;
+  }
+
+  .contact-info .info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .contact-info .info-item i {
+    font-size: 20px;
+    color: #f9b000;
+    margin-right: 15px;
+    margin-top: 4px;
+  }
+
+  .contact-info .info-item div {
+    flex: 1;
+  }
+
+  .contact-info .info-item h3 {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+
+  .contact-info .info-item p, .contact-info .info-item a {
+    font-size: 16px;
+    color: #cbc4c4;
+    line-height: 1.6;
+    margin: 0;
+    text-decoration: none;
+  }
+
+  .contact-info .info-item a:hover {
+    color: #f9b000;
+  }
+
+  .social-media {
+    margin-top: 20px;
+  }
+
+  .social-media h3 {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 10px;
+  }
+
+  .social-media a {
+    color: #f9b000;
+    font-size: 20px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+  }
+
+  .social-media a:hover {
+    color: #d89e00;
+  }
+
+  /* Contact Form Styling */
+  .contact-form h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #222;
+  }
+
+  .contact-form h2 span {
+    color: #f9b000;
+  }
+
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .contact-form p {
+    margin-bottom: 0;
+  }
+
+  .contact-form label {
+    font-size: 16px;
+    color: #222;
+    text-align: left;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #f9b000;
+    outline: none;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .contact-form button {
+    background-color: #f9b000;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .contact-form button:hover {
+    background-color: #d89e00;
+  }
+
+  .contact-form .message {
+    color: #00cc00;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  /* Map Section */
+  .map-section {
+    padding: 60px 20px;
+    background: linear-gradient(to right, #111111e0, #111111a6), url('{% static "map-bg.jpg" %}') no-repeat center center/cover;
+    position: relative;
+  }
+
+  .map-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(249, 176, 0, 0.2), transparent);
+    animation: glow 4s infinite ease-in-out;
+  }
+
+  .map-container {
+    max-width: 1200px;
+    margin: auto;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    position: relative;
+    z-index: 1;
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .contact-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-info, .contact-form {
+      max-width: 600px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .banner {
+      height: 50vh;
+      background-attachment: scroll;
+    }
+
+    .banner h1 {
+      font-size: 28px;
+    }
+
+    .contact-section {
+      padding: 40px 15px;
+    }
+
+    .contact-info, .contact-form {
+      padding: 30px 20px;
+    }
+
+    .contact-info h2, .contact-form h2 {
+      font-size: 24px;
+    }
+
+    .map-section {
+      padding: 40px 15px;
+    }
+
+    .map-container {
+      height: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .banner h1 {
+      font-size: 24px;
+    }
+
+    .contact-info h2, .contact-form h2 {
+      font-size: 20px;
+    }
+
+    .contact-info .info-item i {
+      font-size: 18px;
+    }
+
+    .contact-info .info-item h3 {
+      font-size: 16px;
+    }
+
+    .contact-info .info-item p, .contact-info .info-item a {
+      font-size: 14px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      font-size: 14px;
+    }
+
+    .contact-form button {
+      padding: 10px 20px;
+      align-self: center;
+    }
+  }
+</style>
+
+<!-- Banner Section -->
+<section class="banner" role="banner">
+  <h1>Contact <span>Us</span></h1>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section" role="region" aria-labelledby="contact-heading">
+  <div class="contact-container">
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <h2 id="contact-heading">Get in <span>Touch</span></h2>
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <h3>Office Address</h3>
+          <p>Hitech City Main Road, Madhapur,</p>
+          <p>Ayyappa Society, Hyderabad,</p>
+          <p>Telangana – 500081</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-user-tie"></i>
+        <div>
+          <h3>General Manager</h3>
+          <p>Pradeep Verma</p>
+          <p><a href="tel:+919618299458">+91 96182 99458</a> / <a href="tel:+918116904838">+91 81169 04838</a></p>
+        </div>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-phone-alt"></i>
+        <div>
+          <h3>Office Contact</h3>
+          <p><a href="tel:+919515393916">+91 95153 93916</a></p>
+        </div>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <h3>Email</h3>
+          <p><a href="mailto:araxmanagementservices@gmail.com">araxmanagementservices@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-id-card"></i>
+        <div>
+          <h3>GST Number</h3>
+          <p>36BBTPA5902N4Z7</p>
+        </div>
+      </div>
+      <div class="social-media">
+        <h3>Follow Our Social Media</h3>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h2>Send Us a <span>Message</span></h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+      </form>
+      {% if messages %}
+        {% for message in messages %}
+          <p class="message">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Map Section -->
+<section class="map-section" role="region" aria-label="Office Location Map">
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.376773671392!2d78.39168431487662!3d17.441618588049137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e4b7b8b5e5%3A0x4e4f3b0d1b5c4b1e!2sHitech%20City%20Main%20Road%2C%20Madhapur%2C%20Hyderabad%2C%20Telangana%20500081!5e0!3m2!1sen!2sin!4v1698234567890!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+{% endblock %}

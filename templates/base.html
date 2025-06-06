@@ -134,11 +134,9 @@
       background-color: #d89e00;
     }
 
-    .menu-toggle {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
-      margin-left: 20px;
+    /* Updated styles for the hamburger menu icon */
+    header .menu-toggle {
+      display: none !important;
     }
 
     .mobile-contact {
@@ -157,8 +155,8 @@
         align-items: center;
       }
 
-      .menu-toggle {
-        display: block;
+      header .menu-toggle {
+        display: block !important;
         font-size: 24px;
         margin-left: auto;
         margin-right: 0;
@@ -195,14 +193,14 @@
       }
 
      nav ul li .dropdown {
-    display: block !important; /* Force show in mobile */
-    position: relative;
-    background-color: #f9f9f9;
-    padding-left: 10px;
-    box-shadow: none;
-    border-radius: 0;
-    margin-top: 15px;
-  }
+        display: block !important; /* Force show in mobile */
+        position: relative;
+        background-color: #f9f9f9;
+        padding-left: 10px;
+        box-shadow: none;
+        border-radius: 0;
+        margin-top: 15px;
+      }
 
       nav ul li.show-dropdown .dropdown {
         display: block;
@@ -247,7 +245,7 @@
 
   <!-- Top bar -->
   <div class="top-bar">
-    <div>Have any questions? &nbsp; 9618299458</div>
+    <div>Have any questions?   9618299458</div>
     <div class="socials">
       <i class="fab fa-facebook-f"></i>
       <i class="fab fa-twitter"></i>
@@ -273,7 +271,7 @@
         <div class="dropdown">
           <a href="{% url 'housekeeping' %}">House Keeping Services</a>
           <a href="{% url 'securityservices' %}">Security Services</a>
-          <a href="{% url 'outsourcing' %}">Out Souring Services</a>
+          <a href="{% url 'outsourcing' %}">Out Sourcing Services</a>
         </div>
       </li>
       
@@ -284,7 +282,6 @@
 
 <a href="{% url 'contact_us' %}" class="appointment-btn desktop-contact">CONTACT</a>
 </header>
-
 
   <!-- Main Content Area -->
   <main>

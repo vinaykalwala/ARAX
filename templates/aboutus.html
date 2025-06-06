@@ -3,5 +3,732 @@
 {% block title %}About | Arax Security{% endblock %}
 
 {% block content %}
- <h1>About us</h1>
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+
+  body {
+    color: #333;
+  }
+
+  /* Hero Section (Reverted to Original) */
+  .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "about-banner.jpg" %}') no-repeat center center/cover;
+    background-attachment: fixed;
+    padding: 0 20px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(249, 176, 0, 0.3), transparent);
+    animation: glow 4s infinite ease-in-out;
+  }
+
+  @keyframes glow {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 900;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: slideIn 1.5s ease forwards;
+    color: #fff;
+  }
+
+  .hero h1 span {
+    color: #f9b000;
+    text-shadow: 0 0 15px #f9b000;
+  }
+
+  @keyframes slideIn {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* About Section */
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    text-align: left;
+    background: white;
+  }
+
+  .angled-frame {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    clip-path: polygon(0 5%, 100% 0, 100% 90%, 0% 100%);
+    overflow: hidden;
+    border: 5px solid #f9b000;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 0.3s;
+  }
+
+  .angled-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  .angled-frame:hover img {
+    transform: scale(1.1);
+  }
+
+  .about-text {
+    max-width: 500px;
+    color: #111;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 0.5s;
+  }
+
+  .about-text h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .about-text h2 span {
+    color: #f9b000;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Core Values Section */
+  .core-values {
+    padding: 60px 20px;
+    background: #111;
+    text-align: center;
+    color: #fff;
+  }
+
+  .core-values h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .core-values h2 span {
+    color: #f9b000;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .value-box {
+    background: #222;
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .value-box:nth-child(1) { animation-delay: 0.2s; }
+  .value-box:nth-child(2) { animation-delay: 0.4s; }
+  .value-box:nth-child(3) { animation-delay: 0.6s; }
+  .value-box:nth-child(4) { animation-delay: 0.8s; }
+
+  .value-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .value-box i {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #f9b000;
+  }
+
+  .value-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .value-box.orange-card {
+    background-color: #d89e00;
+  }
+
+  .value-box.orange-card i {
+    color: #fff;
+  }
+
+  .value-box.orange-card:hover {
+    background-color: #f9b000;
+  }
+
+  /* Why Choose Us Section */
+  .why-choose {
+    padding: 60px 20px;
+    background: #fff;
+    text-align: center;
+    color: #222;
+  }
+
+  .why-choose h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .why-choose h2 span {
+    color: #f9b000;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .why-box {
+    background: #222;
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .why-box:nth-child(1) { animation-delay: 0.2s; }
+  .why-box:nth-child(2) { animation-delay: 0.4s; }
+  .why-box:nth-child(3) { animation-delay: 0.6s; }
+  .why-box:nth-child(4) { animation-delay: 0.8s; }
+  .why-box:nth-child(5) { animation-delay: 1s; }
+
+  .why-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .why-box i {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #f9b000;
+  }
+
+  .why-box p {
+    font-size: 16px;
+  }
+
+  .why-box.orange-card {
+    background-color: #d89e00;
+  }
+
+  .why-box.orange-card i {
+    color: #fff;
+  }
+
+  .why-box.orange-card:hover {
+    background-color: #f9b000;
+  }
+
+  /* Organizational Structure Section */
+  .org-structure {
+    padding: 60px 20px;
+    background: #111;
+    text-align: center;
+    color: #fff;
+  }
+
+  .org-structure h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .org-structure h2 span {
+    color: #f9b000;
+  }
+
+  .tree-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: auto;
+    position: relative;
+  }
+
+  .tree-level {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .tree-level:nth-child(1) { animation-delay: 0.2s; }
+  .tree-level:nth-child(2) { animation-delay: 0.4s; }
+  .tree-level:nth-child(3) { animation-delay: 0.6s; }
+  .tree-level:nth-child(4) { animation-delay: 0.8s; }
+
+  .tree-node {
+    background: #222;
+    color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 150px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .tree-node:hover {
+    transform: translateY(-5px);
+  }
+
+  .tree-node h3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .tree-node.orange-card {
+    background-color: #d89e00;
+  }
+
+  .tree-node.orange-card:hover {
+    background-color: #f9b000;
+  }
+
+  svg.tree-branches {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  svg path.branch {
+    stroke: #f9b000;
+    stroke-width: 3;
+    fill: none;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    transition: stroke-dashoffset 1s ease;
+  }
+
+  svg path.branch.visible {
+    stroke-dashoffset: 0;
+  }
+
+  /* Services Section */
+  .services {
+    padding: 60px 20px;
+    background: #fff;
+    text-align: center;
+  }
+
+  .services h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .services h2 span {
+    color: #f9b000;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .service-box {
+    background: #222;
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  .service-box:nth-child(1) { animation-delay: 0.2s; }
+  .service-box:nth-child(2) { animation-delay: 0.4s; }
+  .service-box:nth-child(3) { animation-delay: 0.6s; }
+  .service-box:nth-child(4) { animation-delay: 0.8s; }
+  .service-box:nth-child(5) { animation-delay: 1s; }
+  .service-box:nth-child(6) { animation-delay: 1.2s; }
+  .service-box:nth-child(7) { animation-delay: 1.4s; }
+  .service-box:nth-child(8) { animation-delay: 1.6s; }
+  .service-box:nth-child(9) { animation-delay: 1.8s; }
+
+  .service-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .service-box i {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #f9b000;
+  }
+
+  .service-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .service-box.orange-card {
+    background-color: #d89e00;
+  }
+
+  .service-box.orange-card i {
+    color: #fff;
+  }
+
+  .service-box.orange-card:hover {
+    background-color: #f9b000;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .values-grid,
+    .services-grid,
+    .why-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      height: 80vh;
+      background-attachment: scroll;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+    }
+
+    .about {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .about-text {
+      text-align: center;
+    }
+
+    .angled-frame {
+      max-width: 350px;
+      height: 400px;
+    }
+
+    .values-grid,
+    .services-grid,
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tree-level {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tree-node {
+      width: 100%;
+      max-width: 200px;
+      margin: 10px 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 24px;
+    }
+
+    .about-text h2,
+    .core-values h2,
+    .why-choose h2,
+    .org-structure h2,
+    .services h2 {
+      font-size: 24px;
+    }
+
+    .angled-frame {
+      max-width: 300px;
+      height: 350px;
+    }
+
+    .value-box,
+    .why-box,
+    .service-box {
+      padding: 30px 20px;
+    }
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="hero" role="banner">
+  <h1>About <span>Arax Security</span></h1>
+</section>
+
+<!-- About Us Section -->
+<section class="about" role="region" aria-labelledby="about-heading">
+  <div class="angled-frame">
+    <img src="{% static 'security-team.jpg' %}" alt="Arax Security team in action" loading="lazy">
+  </div>
+  <div class="about-text">
+    <h2 id="about-heading">About <span>Us</span></h2>
+    <p>Arax Security Management Services is a leading provider of private security solutions, headquartered in Madhapur, Hyderabad. Founded with the mission to protect lives and assets with utmost professionalism and integrity, we offer a comprehensive range of security services tailored to meet the unique needs of residential communities, corporate offices, commercial establishments, construction sites, and industrial operations.</p>
+    <p>Our strength lies in our highly trained personnel, including security guards, field supervisors, and operations managers, who are selected after rigorous background verification and trained in access control, emergency response, surveillance monitoring, and customer service.</p>
+    <p>At Arax Security, we combine modern security technologies with human intelligence to deliver real-time protection and peace of mind. Whether it's ensuring 24x7 security presence or managing complex event security logistics, we handle every assignment with precision and care.</p>
+  </div>
+</section>
+
+<!-- Core Values Section -->
+<section class="core-values" role="region" aria-labelledby="values-heading">
+  <h2 id="values-heading">Our <span>Core Values</span></h2>
+  <div class="values-grid">
+    <div class="value-box">
+      <i class="fas fa-handshake"></i>
+      <h3>Integrity</h3>
+      <p>Upholding the highest ethical standards in all operations.</p>
+    </div>
+    <div class="value-box orange-card">
+      <i class="fas fa-eye"></i>
+      <h3>Vigilance</h3>
+      <p>Staying alert and proactive in identifying risks.</p>
+    </div>
+    <div class="value-box">
+      <i class="fas fa-clock"></i>
+      <h3>Reliability</h3>
+      <p>Being dependable, timely, and responsive.</p>
+    </div>
+    <div class="value-box orange-card">
+      <i class="fas fa-users"></i>
+      <h3>Customer Focus</h3>
+      <p>Tailoring solutions for every client's unique requirements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="why-choose" role="region" aria-labelledby="why-choose-heading">
+  <h2 id="why-choose-heading">Why <span>Choose Arax?</span></h2>
+  <div class="why-grid">
+    <div class="why-box">
+      <i class="fas fa-user-shield"></i>
+      <p>Professionally trained guards</p>
+    </div>
+    <div class="why-box orange-card">
+      <i class="fas fa-headset"></i>
+      <p>24/7 operational control room</p>
+    </div>
+    <div class="why-box">
+      <i class="fas fa-cogs"></i>
+      <p>Customizable security packages</p>
+    </div>
+    <div class="why-box orange-card">
+      <i class="fas fa-stopwatch"></i>
+      <p>Timely deployment and supervision</p>
+    </div>
+    <div class="why-box">
+      <i class="fas fa-dollar-sign"></i>
+      <p>Affordable and transparent pricing</p>
+    </div>
+  </div>
+</section>
+
+<!-- Organizational Structure Section -->
+<section class="org-structure" role="region" aria-labelledby="org-structure-heading">
+  <h2 id="org-structure-heading">Organization <span>Structure</span></h2>
+  <div class="tree-container">
+    <!-- Level 1: Director -->
+    <div class="tree-level" data-level="1">
+      <div class="tree-node director orange-card" role="treeitem" aria-label="Director">
+        <h3>Director</h3>
+      </div>
+      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMin meet">
+        <path d="M500,150 L500,250" class="branch" />
+      </svg>
+    </div>
+
+    <!-- Level 2: GM -->
+    <div class="tree-level" data-level="2">
+      <div class="tree-node gm" role="treeitem" aria-label="General Manager">
+        <h3>General Manager</h3>
+      </div>
+      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMin meet">
+        <path d="M500,350 L250,450" class="branch" />
+        <path d="M500,350 L500,450" class="branch" />
+        <path d="M500,350 L750,450" class="branch" />
+      </svg>
+    </div>
+
+    <!-- Level 3: Managers -->
+    <div class="tree-level" data-level="3">
+      <div class="tree-node hr-manager orange-card" role="treeitem" aria-label="HR Manager">
+        <h3>HR Manager</h3>
+      </div>
+      <div class="tree-node marketing-manager" role="treeitem" aria-label="Marketing Manager">
+        <h3>Marketing Manager</h3>
+      </div>
+      <div class="tree-node operation-manager orange-card" role="treeitem" aria-label="Operations Manager">
+        <h3>Operations Manager</h3>
+      </div>
+      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMin meet">
+        <path d="M250,550 L150,650" class="branch" />
+        <path d="M250,550 L250,650" class="branch" />
+        <path d="M750,550 L650,650" class="branch" />
+        <path d="M750,550 L850,650" class="branch" />
+      </svg>
+    </div>
+
+    <!-- Level 4: Officers -->
+    <div class="tree-level" data-level="4">
+      <div class="tree-node recruiting-officer" role="treeitem" aria-label="Recruiting Officer">
+        <h3>Recruiting Officer</h3>
+      </div>
+      <div class="tree-node employee-officer orange-card" role="treeitem" aria-label="Employee Relations Officer">
+        <h3>Employee Relations</h3>
+      </div>
+      <div class="tree-node field-officer" role="treeitem" aria-label="Field Officer">
+        <h3>Field Officer</h3>
+      </div>
+      <div class="tree-node training-officer orange-card" role="treeitem" aria-label="Training Officer">
+        <h3>Training Officer</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" role="region" aria-labelledby="services-heading">
+  <h2 id="services-heading">Our <span>Services</span></h2>
+  <div class="services-grid">
+    <div class="service-box">
+      <i class="fas fa-home"></i>
+      <h3>Residential Security</h3>
+    </div>
+    <div class="service-box orange-card">
+      <i class="fas fa-building"></i>
+      <h3>Corporate Office Security</h3>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-store"></i>
+      <h3>Commercial Establishment Security</h3>
+    </div>
+    <div class="service-box orange-card">
+      <i class="fas fa-calendar-alt"></i>
+      <h3>Event Security Management</h3>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-warehouse"></i>
+      <h3>Warehouse & Logistics Security</h3>
+    </div>
+    <div class="service-box orange-card">
+      <i class="fas fa-industry"></i>
+      <h3>Industrial Site Security</h3>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-key"></i>
+      <h3>Access Control & Visitor Management</h3>
+    </div>
+    <div class="service-box orange-card">
+      <i class="fas fa-fire-extinguisher"></i>
+      <h3>Fire & Safety Trained Guards</h3>
+    </div>
+    <div class="service-box">
+      <i class="fas fa-user-shield"></i>
+      <h3>Escort & VIP Protection</h3>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const levels = document.querySelectorAll('.tree-level');
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const connectedBranches = entry.target.querySelectorAll('path.branch');
+          connectedBranches.forEach(branch => {
+            branch.classList.add('visible');
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    levels.forEach(level => {
+      observer.observe(level);
+    });
+
+    // Keyboard navigation for tree nodes
+    const treeNodes = document.querySelectorAll('.tree-node');
+    treeNodes.forEach(node => {
+      node.setAttribute('tabindex', '0');
+      node.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          node.click();
+        }
+      });
+    });
+  });
+</script>
 {% endblock %}
