@@ -54,9 +54,34 @@
   }
 
   .hero h1 span {
-    color: #f9b000;
-    text-shadow: 0 0 15px #f9b000;
+  color: #f9b000;
+  font-size: 60px;
+  text-shadow: 0 0 8px rgba(249, 176, 0, 0.6);
+  animation: lubdub 1.5s ease-in-out infinite;
+  display: inline-block; /* required for transform to work */
+}
+
+@keyframes lubdub {
+  0% {
+    transform: scale(1);
   }
+  10% {
+    transform: scale(1.15);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  40% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
   @keyframes slideIn {
     0% { opacity: 0; transform: translateY(50px); }
@@ -496,7 +521,7 @@
 
 <!-- Hero Section -->
 <section class="hero" role="banner">
-  <h1>About <span>Arax Security</span></h1>
+  <h1>About <span> &nbsp; ARAX &nbsp;</span> Management & Security </h1>
 </section>
 
 <!-- About Us Section -->
@@ -505,16 +530,16 @@
     <img src="{% static 'abouthim.jpg' %}" alt="Arax Security team in action" loading="lazy">
   </div>
   <div class="about-text">
-    <h2 id="about-heading">About <span>Us</span></h2>
+    <h2 id="about-heading">About <span>ARAX</span></h2>
     <p>Arax Security Management Services is a leading provider of private security solutions, headquartered in Madhapur, Hyderabad. Founded with the mission to protect lives and assets with utmost professionalism and integrity, we offer a comprehensive range of security services tailored to meet the unique needs of residential communities, corporate offices, commercial establishments, construction sites, and industrial operations.</p>
-    <p>Our strength lies in our highly trained personnel, including security guards, field supervisors, and operations managers, who are selected after rigorous background verification and trained in access control, emergency response, surveillance monitoring, and customer service.</p>
+    <p><strong>ARAX</strong> strength lies in our highly trained personnel, including security guards, field supervisors, and operations managers, who are selected after rigorous background verification and trained in access control, emergency response, surveillance monitoring, and customer service.</p>
     <p>At Arax Security, we combine modern security technologies with human intelligence to deliver real-time protection and peace of mind. Whether it's ensuring 24x7 security presence or managing complex event security logistics, we handle every assignment with precision and care.</p>
   </div>
 </section>
 
 <!-- Core Values Section -->
 <section class="core-values" role="region" aria-labelledby="values-heading">
-  <h2 id="values-heading">Our <span>Core Values</span></h2>
+  <h2 id="values-heading">ARAX <span>Core Values</span></h2>
   <div class="values-grid">
     <div class="value-box">
       <i class="fas fa-handshake"></i>
@@ -541,7 +566,7 @@
 
 <!-- Why Choose Us Section -->
 <section class="why-choose" role="region" aria-labelledby="why-choose-heading">
-  <h2 id="why-choose-heading">Why <span>Choose Arax?</span></h2>
+  <h2 id="why-choose-heading">Why <span>Choose ARAX?</span></h2>
   <div class="why-grid">
     <div class="why-box">
       <i class="fas fa-user-shield"></i>
@@ -568,7 +593,7 @@
 
 <!-- Organizational Structure Section -->
 <section class="org-structure" role="region" aria-labelledby="org-structure-heading">
-  <h2 id="org-structure-heading">Organization <span>Structure</span></h2>
+  <h2 id="org-structure-heading">ARAX Organization <span>Structure</span></h2>
   <div class="tree-container">
     <!-- Level 1: Director -->
     <div class="tree-level" data-level="1">
@@ -631,7 +656,7 @@
 
 <!-- Services Section -->
 <section class="services" role="region" aria-labelledby="services-heading">
-  <h2 id="services-heading">Our <span>Services</span></h2>
+  <h2 id="services-heading">ARAX <span>Services</span></h2>
   <div class="services-grid">
     <div class="service-box">
       <i class="fas fa-home"></i>
@@ -639,36 +664,52 @@
     </div>
     <div class="service-box">
       <i class="fas fa-building"></i>
-      <h3>Corporate Office Security</h3>
+      <h3>Corporate / Non-Corporate Office Security & A to Z facility services</h3>
     </div>
     <div class="service-box">
       <i class="fas fa-store"></i>
-      <h3>Commercial Establishment Security</h3>
+      <h3>Commercial Establishment Security & A to Z facility services</h3>
     </div>
     <div class="service-box">
       <i class="fas fa-calendar-alt"></i>
-      <h3>Event Security Management</h3>
+      <h3>Event Security Management & A to Z facility services</h3>
     </div>
     <div class="service-box">
       <i class="fas fa-warehouse"></i>
-      <h3>Warehouse & Logistics Security</h3>
+      <h3>Warehouse And Logistics Security & A to Z facility services</h3>
     </div>
     <div class="service-box">
       <i class="fas fa-industry"></i>
-      <h3>Industrial Site Security</h3>
+      <h3>Industrial / Non-Industrial Site Security & A to Z facility services</h3>
     </div>
     <div class="service-box">
       <i class="fas fa-key"></i>
-      <h3>Access Control & Visitor Management</h3>
+      <h3>Access Control / Visitor Management & A to Z facility services</h3>
     </div>
     <div class="service-box">
       <i class="fas fa-fire-extinguisher"></i>
-      <h3>Fire & Safety Trained Guards</h3>
+      <h3>Fire Safety Trained Guards & A to Z facility services</h3>
     </div>
     <div class="service-box">
       <i class="fas fa-user-shield"></i>
-      <h3>Escort & VIP Protection</h3>
+      <h3>Escort / VIP Protection & A to Z facility services</h3>
     </div>
+     <div class="service-box">
+    <i class="fas fa-building"></i>
+    <h3>MNC / Non-MNC & A to Z facility services</h3>
+  </div>
+
+  <!-- Hospital Industry -->
+  <div class="service-box">
+    <i class="fas fa-hospital"></i>
+    <h3>Hospital Industry & A to Z facility services</h3>
+  </div>
+
+  <!-- Housekeeping -->
+  <div class="service-box">
+    <i class="fas fa-broom"></i>
+    <h3>House Keeping & A to Z facility services</h3>
+  </div>
   </div>
 </section>
 

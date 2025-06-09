@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{% block title %}Arax Management & Security Service{% endblock %}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
   <style>
     body {
       margin: 0;
@@ -237,6 +238,10 @@
       text-align: center;
       padding: 20px 10px;
     }
+    .socials a {
+    text-decoration: none;
+    color: inherit; /* keeps the icon color consistent */
+  }
   </style>
   {% block extra_head %}{% endblock %}
 </head>
@@ -244,12 +249,16 @@
 
   <!-- Top bar -->
   <div class="top-bar">
-    <div>Have any questions?   9618299458</div>
-    <div class="socials">
-      <i class="fab fa-facebook-f"></i>
-      <i class="fab fa-twitter"></i>
-      <i class="fab fa-linkedin-in"></i>
-    </div>
+   <div>Have any questions? &nbsp; 9618299458</div>
+<div class="socials">
+  <a href="https://wa.me/919618299458" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <i class="fab fa-facebook-f"></i>
+  <i class="fab fa-twitter"></i>
+  <i class="fab fa-linkedin-in"></i>
+</div>
+
   </div>
 
   <header>

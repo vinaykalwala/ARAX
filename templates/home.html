@@ -4,34 +4,208 @@
 
 {% block content %}
 {% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <style>
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background:  url('{% static "banner2.jpg" %}') no-repeat center center/cover;
-    color: white;
-    padding: 100px 20px 120px;
-   
-  }
+.custom-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+}
 
-  .hero h1 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 15px;
-  }
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
 
-  .hero h1 span {
-    color: #f9b000;
-    font-size: 60px;
-  }
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
 
-  .hero p {
-    font-size: 16px;
-    max-width: 600px;
-    margin-bottom: 25px;
+/* Optional slide out classes if you're animating transitions */
+.carousel-slide.out-left,
+.carousel-slide.out-right {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Arrow Controls */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  z-index: 3;
+}
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
+}
+
+/* Hero Content Inside Slide */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  height: 100%;
+  padding: 100px 20px;
+  z-index: 4;
+  position: relative;
+}
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.5); /* transparent black */
+  padding: 0 30px;
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero h1 span {
+  color: #f9b000;
+  font-size: 60px;
+  text-shadow: 0 0 8px rgba(249, 176, 0, 0.6);
+  animation: lubdub 1.5s ease-in-out infinite;
+  display: inline-block; /* required for transform to work */
+}
+
+@keyframes lubdub {
+  0% {
+    transform: scale(1);
   }
+  10% {
+    transform: scale(1.15);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  40% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.hero p {
+  font-size: 16px;
+  max-width: 600px;
+  margin-bottom: 25px;
+}
+
+/* Slides */
+.slide1 {
+  background-image: url('{% static "home-banner.jpg" %}');
+}
+
+.slide2 {
+  background-image: url('{% static "banner2.jpg" %}');
+}
+
+/* Section background and spacing */
+.mission-section {
+  padding: 0 20px;
+  padding-top: 10px;
+  padding-bottom: 60px;
+}
+
+/* Flex container */
+.mission-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card styling */
+.mission-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 30px 25px;
+  flex: 1 1 300px;
+  max-width: 350px;
+  text-align: center;
+  transition: transform 0.3s ease;
+    border: 2px solid #f9b000;
+
+}
+
+.mission-card:hover {
+  transform: translateY(-6px);
+ 
+}
+
+/* Highlighted card */
+.mission-card.highlight {
+  background: #fef3e2;
+  border: 2px solid #f9b000;
+}
+
+/* Icons */
+.mission-icon {
+  font-size: 40px;
+  color: #f9b000;
+  margin-bottom: 15px;
+}
+
+/* Headings */
+.mission-card h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #f9b000;
+  text-transform: uppercase;
+}
+
+.mission-card h4 {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Paragraph */
+.mission-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+}
 
   .btn-orange {
     background-color: #f9b000;
@@ -60,7 +234,7 @@
   .angled-frame {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     clip-path: polygon(0 5%, 100% 0, 100% 90%, 0% 100%);
     overflow: hidden;
     border: 5px solid #f9b000;
@@ -133,6 +307,7 @@
 
   .services h2 span {
     color: #f9b000;
+    font-size: 40px;
   }
 
   .service-grid {
@@ -443,91 +618,143 @@
 
 </style>
 
-<!-- Hero Section -->
-<section class="hero">
-  <h1><span>ARAX</span> Management & Security Services</h1>
-  <p>We specialize in delivering trusted <strong>Security Services</strong> and reliable <strong>Outsourcing Solutions</strong> for businesses, institutions, and residential communities.</p>
-  <a href="{% url 'contact_us' %}" class="btn-orange">Contact Now</a>
+<section class="custom-carousel">
+  <!-- Slide 1 -->
+  <div class="carousel-slide slide1 active">
+    <div class="hero">
+      <div class="hero-content">
+      <h1><span>ARAX</span> Management & Security Services</h1>
+      <p>We specialize in delivering trusted <strong>Security Services</strong> and reliable <strong>Outsourcing Solutions</strong> for businesses, institutions, and residential communities.</p>
+      <a href="{% url 'contact_us' %}" class="btn-orange">Contact Now</a>
+    </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="carousel-slide slide2">
+    <div class="hero">
+       <div class="hero-content">
+      <h1><span>ARAX</span> Training & Development</h1>
+      <p>Empowering individuals with high-quality training for <strong>security management</strong> and <strong>professional excellence</strong>.</p>
+      <a href="{% url 'contact_us' %}" class="btn-orange">Join Now</a>
+    </div>
+    </div>
+  </div>
+
+  <!-- Arrow controls -->
+  <button class="carousel-control prev">&#10094;</button>
+  <button class="carousel-control next">&#10095;</button>
 </section>
+
+
+
+
 
 
 <!-- About Section -->
 <section class="about">
   <div class="angled-frame">
-    <img src="{% static 'securityguards.jpg' %}" alt="Security Guards">
+    <img src="{% static 'guard security.png' %}" alt="Security Guards">
   </div>
  <div class="about-text" data-aos="fade-left">
-  <h2><span>Integrated Security </span> & Facility Management You Can Trust</h2>
+  <h2><span>ARAX Integrated Security </span> & Facility Management You Can Trust</h2>
   <p>At Arax Security, we specialize in delivering professional services across Security, Housekeeping, Facility Management, and Skilled Manpower Outsourcing.</p>
   <p>Whether it's securing your assets, maintaining high standards of cleanliness, or managing large facilities — we provide end-to-end solutions backed by trained personnel and a commitment to excellence.</p>
-  <p>Our services are trusted by corporates, gated communities, educational institutions, and government sectors across Telangana.</p>
+  <p><strong>ARAX</strong> services are trusted by corporates, gated communities, educational institutions, and government sectors across Telangana.</p>
   <a href="{% url 'services' %}" class="btn-orange" style="margin-top: 15px; display: inline-block;">Learn More</a>
 </div>
 
 </section>
+<section class="mission-section">
+  <div class="mission-container">
 
+    <!-- ARAX MISSION -->
+    <div class="mission-card">
+      <i class="fas fa-bullseye mission-icon"></i>
+      <h3>ARAX MISSION</h3>
+      <p>To be a leading provider of comprehensive security solutions, prioritizing integrity, professionalism, and innovation, while fostering strong client relationships and contributing to safer communities.</p>
+    </div>
+
+    <!-- OUR MOTO -->
+    <div class="mission-card highlight">
+      <i class="fas fa-shield-alt mission-icon"></i>
+      <h3>OUR MOTO</h3>
+      <p>Professional Security Solutions for a Safer World.</p>
+      <h4>Focusing on Peace of Mind:</h4>
+      <p>Your Peace of Mind, Our Commitment.</p>
+    </div>
+
+    <!-- ARAX VISION -->
+    <div class="mission-card">
+      <i class="fas fa-eye mission-icon"></i>
+      <h3>ARAX VISION</h3>
+      <p>To be a recognized leader in the security industry, known for innovation, adaptability, and a commitment to excellence.</p>
+    </div>
+
+  </div>
+</section>
 <section class="services">
-  <h2>What<span> We </span> Offer ?</h2>
+  <h2>What<span> ARAX </span> Offer ?</h2>
   <div class="service-grid">
     <!-- Row 1 (3 items) -->
     <div class="service-box">
       <i class="fas fa-shield-alt"></i>
-      <h3>Security Solutions</h3>
+      <h3>ARAX Security Solutions</h3>
       <p>Including modern hi-tech equipment and advanced surveillance systems.</p>
     </div>
     <div class="service-box">
       <i class="fas fa-user-shield"></i>
-      <h3>Bouncers & Bodyguards</h3>
+      <h3>ARAX Bouncers & Bodyguards</h3>
       <p>Trained professionals including gunmen and ex-servicemen for protection.</p>
     </div>
     <div class="service-box">
       <i class="fas fa-broom"></i>
-      <h3>Housekeeping Services</h3>
+      <h3>ARAX Housekeeping Services</h3>
       <p>Clean solutions tailored for malls, institutions, hospitals, and more.</p>
     </div>
 
     <!-- Row 2 (4 items) -->
     <div class="service-box">
       <i class="fas fa-tools"></i>
-      <h3>Facility Management</h3>
+      <h3>ARAX Facility Management</h3>
       <p>Complete end-to-end facility services for residential and commercial spaces.</p>
     </div>
     <div class="service-box">
       <i class="fas fa-users-cog"></i>
-      <h3>Manpower Outsourcing</h3>
+      <h3>ARAX Manpower Outsourcing</h3>
       <p>Staffing for industries, corporate offices, hotels, and government bodies.</p>
     </div>
     <div class="service-box">
       <i class="fas fa-building"></i>
-      <h3>Building Maintenance</h3>
+      <h3>ARAX Building Maintenance</h3>
       <p>Ongoing maintenance for high-rise and corporate properties.</p>
     </div>
     <div class="service-box">
       <i class="fas fa-home"></i>
-      <h3>Guest House Management</h3>
+      <h3>ARAX Guest House Management</h3>
       <p>Full-service guest house care including staffing and upkeep.</p>
     </div>
 
     <!-- Row 3 (3 items) -->
     <div class="service-box">
       <i class="fas fa-briefcase"></i>
-      <h3>Corporate Services</h3>
+      <h3>ARAX Corporate Services</h3>
       <p>Professional admin, reception, and operations support for enterprises.</p>
     </div>
     <div class="service-box">
       <i class="fas fa-seedling"></i>
-      <h3>Gardening & Horticulture</h3>
+      <h3>ARAX Gardening & Horticulture</h3>
       <p>Beautification through expert landscaping and plant care solutions.</p>
     </div>
     <div class="service-box">
       <i class="fas fa-user-secret"></i>
-      <h3>PSO Services</h3>
+      <h3>ARAX PSO Services</h3>
       <p>Paramilitary-trained and retired army personnel for personal security.</p>
     </div>
   </div>
 </section>
 <section class="why-choose-structured">
-    <h2>Why <span>Choose</span> Us</h2>
+    <h2>Why <span>Choose</span> ARAX</h2>
     
 
   <div class="why-choose-grid">
@@ -535,7 +762,7 @@
     <!-- Left Top -->
     <div class="why-box left light">
       <i class="fas fa-users"></i>
-      <h4>Trained Security Staff</h4>
+      <h4>ARAX Trained Security Staff</h4>
       <p>Professionals including PSOs, ex-servicemen, and guards.</p>
     </div>
 
@@ -563,7 +790,7 @@
     <!-- Right Bottom Right -->
     <div class="why-box right black">
       <i class="fas fa-shield-alt"></i>
-      <h4>Tailored Services</h4>
+      <h4>ARAX Tailored Services</h4>
       <p>Security, housekeeping, and manpower to fit your site.</p>
     </div>
 
@@ -575,7 +802,7 @@
 </section>
 
 <section class="clients">
-  <h2>Our <span>Esteemed Clients</span></h2>
+  <h2>ARAX <span>Esteemed Clients</span></h2>
 
   <div class="client-logos-wrapper">
     <div class="client-logos scroll">
@@ -597,5 +824,53 @@
     </div>
   </div>
 </section>
+  <script>
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-control.prev');
+  const nextBtn = document.querySelector('.carousel-control.next');
+  let current = 0;
+  let interval;
+
+  function showSlide(nextIndex, direction = 'left') {
+    slides[current].classList.remove('active');
+    slides[current].classList.add(direction === 'left' ? 'out-left' : 'out-right');
+
+    slides[nextIndex].classList.remove('out-left', 'out-right');
+    slides[nextIndex].classList.add('active');
+
+    current = nextIndex;
+  }
+
+  function nextSlide() {
+    const next = (current + 1) % slides.length;
+    showSlide(next, 'left');
+  }
+
+  function prevSlide() {
+    const prev = (current - 1 + slides.length) % slides.length;
+    showSlide(prev, 'right');
+  }
+
+  // Auto-slide every 5 seconds
+  function startAutoSlide() {
+    interval = setInterval(nextSlide, 5000);
+  }
+
+  // Manual controls
+  nextBtn.addEventListener('click', () => {
+    clearInterval(interval);
+    nextSlide();
+    startAutoSlide();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    clearInterval(interval);
+    prevSlide();
+    startAutoSlide();
+  });
+
+  startAutoSlide();
+</script>
+
 
 {% endblock %}
