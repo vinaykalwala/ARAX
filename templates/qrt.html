@@ -364,45 +364,44 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
   }
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 30px 25px;
+    border-radius: 12px;
+    background: white;
+    transition: all 0.4s ease;
+    border-left: 5px solid transparent;
+    position: relative;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
 
-.feature-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  padding: 30px 25px;
-  border-radius: 12px;
-  background: white;
-  transition: all 0.4s ease;
-  border-left: 5px solid transparent;
-  position: relative;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-}
+  .feature-item:hover {
+    transform: translateX(10px);
+    border-left: 5px solid #f9b000;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
 
-.feature-item:hover {
-  transform: translateX(10px);
-  border-left: 5px solid #f9b000;
-  background: white;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
+  .feature-icon {
+    font-size: 36px;
+    color: #f9b000;
+    margin-bottom: 15px;
+  }
 
-.feature-icon {
-  font-size: 36px;
-  color: #f9b000;
-  margin-bottom: 15px;
-}
+  .feature-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: black;
+  }
 
-.feature-item h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: black;
-}
-
-.feature-item p {
-  color: black;
-  line-height: 1.7;
-  font-size: 15px;
-}
+  .feature-item p {
+    color: black;
+    line-height: 1.7;
+    font-size: 15px;
+  }
 
   /* Updated Security Process Section */
   .security-process {
@@ -651,7 +650,7 @@
     .security-hero h1 {
       font-size: 36px;
     }
-    
+        
     .process-step {
       min-width: 150px;
     }
@@ -661,25 +660,26 @@
     .security-hero {
       padding: 100px 20px 120px;
     }
-    
+        
     .security-hero h1 {
       font-size: 30px;
     }
-    
+        
     .section-title h2 {
       font-size: 28px;
     }
-    
+        
     .security-cta h2 {
       font-size: 28px;
     }
     .security-cta {
       padding: 80px 20px;
     }
-     .cta-content {
+    
+    .cta-content {
       padding: 40px 20px;
     }
-     
+        
     .process-step {
       min-width: 100%;
     }
@@ -688,8 +688,8 @@
 
 <!-- Hero Section -->
 <section class="security-hero">
-  <h1>Rapid <span>Response Security</span> When You Need It Most</h1>
-  <p>Our Quick Response Teams are strategically positioned to provide immediate security support for emergencies and critical situations.</p>
+  <h1><span>Arax</span> Quick <span>Response Security</span> When You Need It Most</h1>
+  <p>Quick Response Team (QRT) is a group of high-end individuals or professionals trained to respond rapidly to various fields, including emergency services, and private security emergencies or critical incidents.</p>
   <a href="{% url 'contact_us' %}" class="btn-orange">Request Emergency Response Plan</a>
 </section>
 
@@ -698,9 +698,10 @@
   <section class="security-overview">
     <div class="security-overview-text">
       <h2>ARAX <span>Quick Response</span> Approach</h2>
-      <p>At Arax Security, our Quick Response Teams are specially trained to handle emergencies with speed and precision. We maintain strategically located units ready to deploy at a moment's notice to any location within our service area.</p>
-      <p>Each response team consists of highly trained security professionals equipped with specialized gear for various emergency scenarios. Our personnel undergo rigorous training in crisis management, first aid, conflict de-escalation, and rapid threat assessment.</p>
+      <p>Quick Response Team (QRT), in its simplest form, is a specialized unit trained to respond swiftly and effectively to emergencies, often involving threats or incidents requiring immediate action.</p>
+      <p>Its mission is to neutralize threats, protect lives, and maintain order. The QRT's vision is to be a highly effective, adaptable, and proactive force, ready to respond to a wide range of emergencies, ensuring public safety and minimizing the impact of critical incidents.</p>
       <p>Whether you need immediate response to a security breach, alarm activation, or unexpected threat, our teams can be on-site faster than local authorities in most cases, providing critical first response until additional help arrives.</p>
+
       <a href="{% url 'contact_us' %}" class="btn-orange" style="margin-top: 20px; display: inline-block;">Get Rapid Response Coverage</a>
     </div>
     <div class="security-overview-image">
@@ -712,10 +713,10 @@
 <!-- Security Services Grid -->
 <section class="security-services">
   <div class="section-title">
-    <h2>Quick Response <span>Services</span></h2>
+    <h2><span>Arax</span> Quick Response <span>Services</span></h2>
     <p>Comprehensive emergency response solutions for various security situations</p>
   </div>
-  
+    
   <div class="services-grid">
     <!-- Emergency Alarm Response -->
     <div class="service-card">
@@ -735,7 +736,7 @@
         <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
       </div>
     </div>
-    
+        
     <!-- Mobile Patrol Units -->
     <div class="service-card">
       <div class="service-card-image">
@@ -754,7 +755,7 @@
         <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
       </div>
     </div>
-    
+        
     <!-- Crisis Intervention -->
     <div class="service-card">
       <div class="service-card-image">
@@ -773,7 +774,7 @@
         <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
       </div>
     </div>
-    
+        
     <!-- Medical Emergency Response -->
     <div class="service-card">
       <div class="service-card-image">
@@ -792,7 +793,7 @@
         <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
       </div>
     </div>
-    
+        
     <!-- Executive Emergency Extraction -->
     <div class="service-card">
       <div class="service-card-image">
@@ -811,7 +812,7 @@
         <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
       </div>
     </div>
-    
+        
     <!-- Disaster Response Teams -->
     <div class="service-card">
       <div class="service-card-image">
@@ -836,56 +837,56 @@
 <!-- Updated Security Features Section -->
 <section class="security-features">
   <div class="section-title">
-    <h2>Why Choose Our <span>Quick Response Teams</span></h2>
+    <h2>Why Choose Arax <span>Quick Response Teams</span></h2>
     <p style="color: #ccc;">Our rapid response capabilities set us apart in emergency security situations</p>
   </div>
-  
+    
   <div class="features-container">
     <div class="feature-item">
       <div class="feature-icon">
         <i class="fas fa-clock"></i>
       </div>
-      <h3>Rapid Deployment</h3>
+      <h3> Arax Rapid Deployment</h3>
       <p>Average response time of under 15 minutes in urban areas, with strategically positioned teams.</p>
     </div>
-    
+        
     <div class="feature-item">
       <div class="feature-icon">
         <i class="fas fa-user-shield"></i>
       </div>
-      <h3>Specialized Training</h3>
+      <h3>Arax Specialized Training</h3>
       <p>All team members complete intensive emergency response training beyond standard security certification.</p>
     </div>
-    
+        
     <div class="feature-item">
       <div class="feature-icon">
         <i class="fas fa-ambulance"></i>
       </div>
-      <h3>Medical Preparedness</h3>
+      <h3>Arax Medical Preparedness</h3>
       <p>Every vehicle equipped with first aid kits, AEDs, and trauma supplies.</p>
     </div>
-    
+        
     <div class="feature-item">
       <div class="feature-icon">
         <i class="fas fa-map-marked-alt"></i>
       </div>
-      <h3>Strategic Positioning</h3>
+      <h3>Arax Strategic Positioning</h3>
       <p>Multiple response hubs ensure coverage across the entire service area.</p>
     </div>
-    
+        
     <div class="feature-item">
       <div class="feature-icon">
         <i class="fas fa-wifi"></i>
       </div>
-      <h3>Real-time Tracking</h3>
+      <h3>Arax Real-time Tracking</h3>
       <p>GPS-enabled vehicles with live tracking available to clients during responses.</p>
     </div>
-    
+        
     <div class="feature-item">
       <div class="feature-icon">
         <i class="fas fa-headset"></i>
       </div>
-      <h3>24/7 Dispatch</h3>
+      <h3>Arax 24/7 Dispatch</h3>
       <p>Dedicated emergency dispatch center staffed around the clock.</p>
     </div>
   </div>
@@ -894,35 +895,35 @@
 <!-- Updated Security Process Section -->
 <section class="security-process">
   <div class="section-title">
-    <h2>Our <span>Response Process</span></h2>
+    <h2>Arax <span>Response Process</span></h2>
     <p>How we deliver rapid, effective security response in emergency situations</p>
   </div>
-  
+    
   <div class="process-steps">
     <div class="process-step">
       <div class="step-number">1</div>
       <h3>Emergency Alert</h3>
       <p>Immediate notification through our 24/7 dispatch center or integrated alarm systems.</p>
     </div>
-    
+        
     <div class="process-step">
       <div class="step-number">2</div>
       <h3>Rapid Dispatch</h3>
       <p>Nearest available team is immediately deployed with full situational briefing.</p>
     </div>
-    
+        
     <div class="process-step">
       <div class="step-number">3</div>
       <h3>En Route Assessment</h3>
       <p>Team analyzes available information and prepares appropriate response strategy.</p>
     </div>
-    
+        
     <div class="process-step">
       <div class="step-number">4</div>
       <h3>On-Site Action</h3>
       <p>Team secures the scene, provides immediate assistance, and assesses further needs.</p>
     </div>
-    
+        
     <div class="process-step">
       <div class="step-number">5</div>
       <h3>Post-Incident</h3>
@@ -936,22 +937,22 @@
   <div class="cta-container">
     <div class="cta-content">
       <h2 class="cta-heading">
-        <span>Emergency Response</span> When Seconds Count
+        <span>Arax Emergency Response</span> When Seconds Count
       </h2>
-
+      
       <div class="cta-flex">
         <div class="cta-column">
           <div class="cta-box yellow-bg">
             <h3><i class="fas fa-bolt"></i> Immediate Dispatch</h3>
             <p>Our teams are on the road within minutes of your emergency call.</p>
           </div>
-
+          
           <div class="cta-box transparent-bg">
             <h3><i class="fas fa-shield-alt"></i> 24/7 Availability</h3>
             <p>Round-the-clock emergency response with no downtime or holidays.</p>
           </div>
         </div>
-
+        
         <div class="cta-column text-center">
           <div class="cta-message">
             <p>Don't wait for an emergency to plan your response. Our security experts can develop a customized rapid response plan for your home or business today.</p>
@@ -962,7 +963,7 @@
               <i class="fas fa-envelope"></i> Email Us
             </a>
           </div>
-
+          
           <div class="cta-offer">
             <p>
               <i class="fas fa-star"></i>
