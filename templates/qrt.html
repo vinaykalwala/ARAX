@@ -64,9 +64,40 @@
     animation: fadeInUp 1s ease-out 0.2s both;
   }
 
-  .security-hero h1 span {
-    color: #f9b000;
+  .security-hero  h1 span {
+  color: #f9b000;
+  font-size: 60px;
+  text-shadow: 0 0 12px rgba(249, 176, 0, 0.6);
+  animation: lubdubGlow 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes lubdubGlow {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
   }
+  15% {
+    transform: scale(1.2);
+    text-shadow: 0 0 25px rgba(249, 176, 0, 0.9);
+  }
+  30% {
+    transform: scale(1);
+    text-shadow: 0 0 10px rgba(249, 176, 0, 0.5);
+  }
+  45% {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(249, 176, 0, 0.7);
+  }
+  60% {
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 6px rgba(249, 176, 0, 0.3);
+  }
+}
 
   .security-hero p {
     font-size: 20px;
@@ -688,7 +719,7 @@
 
 <!-- Hero Section -->
 <section class="security-hero">
-  <h1><span>Arax</span> Quick <span>Response Security</span> When You Need It Most</h1>
+  <h1><span>Arax</span>&nbsp; Quick Response Security When You Need It Most</h1>
   <p>Quick Response Team (QRT) is a group of high-end individuals or professionals trained to respond rapidly to various fields, including emergency services, and private security emergencies or critical incidents.</p>
   <a href="{% url 'contact_us' %}" class="btn-orange">Request Emergency Response Plan</a>
 </section>

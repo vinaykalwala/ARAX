@@ -77,8 +77,40 @@
   }
 
   .security-hero h1 span {
-    color: #f9b000;
+  color: #f9b000;
+  font-size: 60px;
+  text-shadow: 0 0 12px rgba(249, 176, 0, 0.6);
+  animation: lubdubGlow 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes lubdubGlow {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
   }
+  15% {
+    transform: scale(1.2);
+    text-shadow: 0 0 25px rgba(249, 176, 0, 0.9);
+  }
+  30% {
+    transform: scale(1);
+    text-shadow: 0 0 10px rgba(249, 176, 0, 0.5);
+  }
+  45% {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(249, 176, 0, 0.7);
+  }
+  60% {
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 6px rgba(249, 176, 0, 0.3);
+  }
+}
+
 
   .security-hero p {
     font-size: 20px;
@@ -696,7 +728,7 @@
 
 <!-- Hero Section -->
 <section class="security-hero">
-  <h1><span>ARAX </span>Premium <span>Security Solutions</span> for Your Safety</h1>
+  <h1><span>ARAX </span>&nbsp; Premium >Security Solutions for Your Safety</h1>
   <p>Comprehensive protection services backed by cutting-edge technology and highly trained professionals.</p>
   <a href="{% url 'contact_us' %}" class="btn-orange">Contact ARAX Team</a>
 </section>
@@ -720,7 +752,7 @@
 <!-- Security Services Grid -->
 <section class="security-services">
   <div class="section-title">
-    <h2>ARAX <span>Security Services</span></h2>
+    <h2>ARAX <span> Security Services</span></h2>
     <p>Comprehensive protection solutions designed for various sectors and needs</p>
   </div>
   

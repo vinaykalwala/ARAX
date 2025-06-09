@@ -59,10 +59,41 @@
     color: #fff;
   }
 
-  .banner h1 span {
-    color: #f9b000;
-    text-shadow: 0 0 15px #f9b000;
+  .banner  h1 span {
+  color: #f9b000;
+  font-size: 60px;
+  text-shadow: 0 0 12px rgba(249, 176, 0, 0.6);
+  animation: lubdubGlow 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes lubdubGlow {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
   }
+  15% {
+    transform: scale(1.2);
+    text-shadow: 0 0 25px rgba(249, 176, 0, 0.9);
+  }
+  30% {
+    transform: scale(1);
+    text-shadow: 0 0 10px rgba(249, 176, 0, 0.5);
+  }
+  45% {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(249, 176, 0, 0.7);
+  }
+  60% {
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 6px rgba(249, 176, 0, 0.3);
+  }
+}
+
 
   @keyframes slideIn {
     0% { opacity: 0; transform: translateY(50px); }
@@ -364,7 +395,7 @@
 
 <!-- Banner Section -->
 <section class="banner" role="banner">
-  <h1>Contact <span>ARAX </span> Management & Security Services</h1>
+  <h1>Contact &nbsp;<span> ARAX </span>&nbsp; Management & Security Services</h1>
 </section>
 
 <!-- Contact Section -->
