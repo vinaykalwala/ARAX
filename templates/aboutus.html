@@ -54,33 +54,34 @@
   }
 
   .hero h1 span {
-    color: #f9b000;
-    font-size: 60px;
-    text-shadow: 0 0 8px rgba(249, 176, 0, 0.6);
-    animation: lubdub 1.5s ease-in-out infinite;
-    display: inline-block; /* required for transform to work */
-  }
+  color: #f9b000;
+  font-size: 60px;
+  text-shadow: 0 0 8px rgba(249, 176, 0, 0.6);
+  animation: lubdub 1.5s ease-in-out infinite;
+  display: inline-block; /* required for transform to work */
+}
 
-  @keyframes lubdub {
-    0% {
-      transform: scale(1);
-    }
-    10% {
-      transform: scale(1.15);
-    }
-    20% {
-      transform: scale(1);
-    }
-    30% {
-      transform: scale(1.08);
-    }
-    40% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(1);
-    }
+@keyframes lubdub {
+  0% {
+    transform: scale(1);
   }
+  10% {
+    transform: scale(1.15);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  40% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
   @keyframes slideIn {
     0% { opacity: 0; transform: translateY(50px); }
@@ -286,12 +287,326 @@
     background-color: #f9b000;
   }
 
-  .org-structure {
-    padding: 60px 20px;
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), url('{% static "home-banner.jpg" %}') no-repeat center center/cover;
-    text-align: center;
-    color: #fff;
+
+
+.tree-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 20px;
+}
+
+.tree-level {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 50px; /* Space between levels */
+  position: relative;
+}
+
+.tree-level:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -25px; /* Half of the margin-bottom */
+  width: 2px;
+  height: 25px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.tree-node {
+  background-color: #8a2be2; /* Default purple */
+  color: white;
+  padding: 15px 25px;
+  margin: 0 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  min-width: 180px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.tree-node h3 {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+/* Specific node styling based on the image */
+.tree-node.managing {
+  background-color: #9370db; /* Managing Director - Light purple */
+}
+
+.tree-node.gm {
+  background-color: #ff6347; /* GM - Reddish orange */
+}
+
+.tree-node.marketing,
+.tree-node.accountant {
+  background-color: #9370db; /* Marketing Manager, Accountant Manager - Light purple */
+}
+
+.tree-node.operation,
+.tree-node.training,
+.tree-node.office,
+.tree-node.hr {
+  background-color: #8a2be2; /* Operation, Training, Office, HR - Darker purple */
+}
+
+/* Define each field-related node separately for individual margin control */
+.tree-node.field-sup-1 {
+  background-color: #3cb371; /* Field Supervisor - Green */
+  margin-right: 604px; /* Adjust this value to shift Field Supervisor (Level 4, left) */
+}
+
+.tree-node.field-sup-2 {
+  background-color: #3cb371; /* Field Supervisor - Green */
+  margin-right: 848px; /* Adjust this value to shift Field Supervisor (Level 5) */
+}
+
+.tree-node.field-officer {
+  background-color: #3cb371; /* Field Officer - Green */
+  margin-right: 842px; /* Adjust this value to shift Field Officer (Level 6) */
+}
+
+.tree-node.recruiting {
+  background-color: #3cb371; /* Recruiting Manager - Green */
+}
+
+
+
+/* Connecting lines */
+
+/* Connect Managing Director to Level 2 (Marketing, GM, Accountant) */
+.tree-level[data-level="1"] .tree-node.managing::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -50px; /* Extends line down to the middle of the next level's connections */
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.tree-level[data-level="2"] {
+  padding-top: 50px; /* Create space for incoming lines */
+}
+
+.tree-level[data-level="2"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  {% comment %} background-color: #666; {% endcomment %}
+  width: calc(45% - 20px); /* Adjust width to span across nodes */
+  margin: 0 auto;
+}
+
+.tree-level[data-level="2"] .tree-node::before {
+  content: '';
+  position: absolute;
+  top: -50px; /* Position above the node */
+  left: 50%;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+}
+
+/* Connect GM to Level 3 (Operation, Training, Office, HR) */
+.tree-level[data-level="2"] .tree-node.gm::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.tree-level[data-level="3"] {
+  padding-top: 50px;
+}
+
+.tree-level[data-level="3"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  {% comment %} background-color: #666; {% endcomment %}
+  width: calc(75% - 20px);
+  margin: 0 auto;
+}
+
+.tree-level[data-level="3"] .tree-node::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+}
+
+
+/* Connect Operation Manager to Field Supervisor (Level 4) */
+.tree-level[data-level="3"] .tree-node.operation::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.tree-level[data-level="4"] .tree-node.field-sup-1::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+}
+
+
+/* Connect Human Resource Manager to Recruiting Manager (Level 4) */
+.tree-level[data-level="3"] .tree-node.hr::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.tree-level[data-level="4"] .tree-node.recruiting::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+}
+
+/* Connect Field Supervisor (Level 4) to Field Supervisor (Level 5) */
+.tree-level[data-level="4"] .tree-node.field-sup-1::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.tree-level[data-level="5"] .tree-node.field-sup-2::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+}
+
+/* Connect Field Supervisor (Level 5) to Field Officer (Level 6) */
+.tree-level[data-level="5"] .tree-node.field-sup-2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.tree-level[data-level="6"] .tree-node.field-officer::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  width: 2px;
+  height: 50px;
+  {% comment %} background-color: #666; {% endcomment %}
+  transform: translateX(-50%);
+}
+
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .tree-level {
+    flex-direction: column;
+    align-items: center;
   }
+
+  .tree-node {
+    margin: 10px 0;
+    min-width: 250px;
+  }
+
+  .tree-level:not(:last-child)::after {
+    left: 50%;
+    bottom: -25px;
+    transform: translateX(-50%);
+  }
+
+  .tree-level[data-level="2"]::before,
+  .tree-level[data-level="3"]::before {
+    display: none; /* Hide horizontal lines on smaller screens */
+  }
+
+  .tree-level[data-level="2"] .tree-node::before,
+  .tree-level[data-level="3"] .tree-node::before {
+    top: -25px;
+    height: 25px;
+  }
+
+  .tree-level[data-level="1"] .tree-node.managing::after,
+  .tree-level[data-level="2"] .tree-node.gm::after,
+  .tree-level[data-level="3"] .tree-node.operation::after,
+  .tree-level[data-level="3"] .tree-node.hr::after,
+  .tree-level[data-level="4"] .tree-node.field-sup-1::after,
+  .tree-level[data-level="5"] .tree-node.field-sup-2::after {
+    bottom: -25px;
+    height: 25px;
+  }
+}
+
+ .org-structure {
+  padding: 60px 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), 
+              url('{% static "home-banner.jpg" %}') no-repeat center center/cover;
+  text-align: center;
+  color: #fff;
+}
 
   .org-structure h2 {
     font-size: 28px;
@@ -300,9 +615,10 @@
 
   .org-structure h2 span {
     color: #f9b000;
-  }
+  } 
 
-  .tree-container {
+
+  {% comment %} .tree-container {
     max-width: 1200px;
     margin: 0 auto;
     height: auto;
@@ -324,43 +640,38 @@
   .tree-level:nth-child(2) { animation-delay: 0.4s; }
   .tree-level:nth-child(3) { animation-delay: 0.6s; }
   .tree-level:nth-child(4) { animation-delay: 0.8s; }
-  .tree-level:nth-child(5) { animation-delay: 1.0s; }
 
   .tree-node {
-    background: #111; 
-    color: #ffffff; 
+    background: #222;
+    color: #fff;
     padding: 20px;
     border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease;
     width: 150px;
     min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    position: relative; 
   }
 
   .tree-node:hover {
     transform: translateY(-5px);
-    background-color: #ffd700; 
-    color: #000000; 
-  }
-
-  .tree-node.gold-card {
-    background-color: #ffd700; 
-    color: #000000; 
-  }
-
-  .tree-node.gold-card:hover {
-    background-color: #ffeb3b; 
   }
 
   .tree-node h3 {
     font-size: 16px;
     font-weight: 600;
   }
+
+  .tree-node.orange-card {
+    background-color: #d89e00;
+  }
+
+  .tree-node.orange-card:hover {
+    background-color: #f9b000;
+  } {% endcomment %}
 
   svg.tree-branches {
     position: absolute;
@@ -372,7 +683,7 @@
   }
 
   svg path.branch {
-    stroke: #ffffff; /* White branches */
+    stroke: #f9b000;
     stroke-width: 3;
     fill: none;
     stroke-dasharray: 500;
@@ -452,20 +763,6 @@
     .why-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-
-    .tree-level {
-      gap: 15px; /* Reduce gap for better spacing */
-    }
-
-    .tree-node {
-      width: 130px; /* Slightly smaller nodes for better fit */
-      min-height: 80px;
-      padding: 15px;
-    }
-
-    .tree-node h3 {
-      font-size: 14px; /* Smaller text for better fit */
-    }
   }
 
   @media (max-width: 768px) {
@@ -498,90 +795,15 @@
       grid-template-columns: 1fr;
     }
 
-    /* Tree structure adjustments for mobile */
     .tree-level {
       flex-direction: column;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 20px; /* Reduce space between levels */
     }
 
     .tree-node {
       width: 100%;
-      max-width: 180px; /* Smaller width for mobile */
-      min-height: 60px;
-      padding: 10px;
-      margin: 5px 0;
-    }
-
-    .tree-node h3 {
-      font-size: 14px;
-    }
-
-    /* Hide SVG branches in mobile view and use pseudo-elements for hierarchy */
-    svg.tree-branches {
-      display: none; /* Hide SVG branches as they don't align well in column layout */
-    }
-
-    /* Add indentation and connecting lines using pseudo-elements */
-    .tree-level[data-level="2"] .tree-node,
-    .tree-level[data-level="3"] .tree-node,
-    .tree-level[data-level="4"] .tree-node,
-    .tree-level[data-level="5"] .tree-node {
-      position: relative;
-      padding-left: 30px; /* Indent child nodes */
-    }
-
-    .tree-level[data-level="2"] .tree-node:before,
-    .tree-level[data-level="3"] .tree-node:before,
-    .tree-level[data-level="4"] .tree-node:before,
-    .tree-level[data-level="5"] .tree-node:before {
-      content: '';
-      position: absolute;
-      left: 15px;
-      top: -20px; /* Connect to the parent above */
-      height: 20px; /* Height of the vertical line */
-      width: 1px;
-      background: #ffffff; /* White line to match branch color */
-    }
-
-    /* Add a small horizontal line to connect to the parent */
-    .tree-level[data-level="2"] .tree-node:after,
-    .tree-level[data-level="3"] .tree-node:after,
-    .tree-level[data-level="4"] .tree-node:after,
-    .tree-level[data-level="5"] .tree-node:after {
-      content: '';
-      position: absolute;
-      left: 15px;
-      top: -20px;
-      width: 10px;
-      height: 1px;
-      background: #ffffff;
-    }
-
-    /* Adjust indentation for deeper levels */
-    .tree-level[data-level="3"] .tree-node {
-      padding-left: 50px; /* More indent for level 3 */
-    }
-
-    .tree-level[data-level="4"] .tree-node {
-      padding-left: 70px; /* More indent for level 4 */
-    }
-
-    .tree-level[data-level="5"] .tree-node {
-      padding-left: 90px; /* More indent for level 5 */
-    }
-
-    /* Remove pseudo-elements for the first node in each level to avoid unnecessary lines */
-    .tree-level[data-level="2"] .tree-node:first-child:before,
-    .tree-level[data-level="2"] .tree-node:first-child:after,
-    .tree-level[data-level="3"] .tree-node:first-child:before,
-    .tree-level[data-level="3"] .tree-node:first-child:after,
-    .tree-level[data-level="4"] .tree-node:first-child:before,
-    .tree-level[data-level="4"] .tree-node:first-child:after,
-    .tree-level[data-level="5"] .tree-node:first-child:before,
-    .tree-level[data-level="5"] .tree-node:first-child:after {
-      display: none;
+      max-width: 200px;
+      margin: 10px 0;
     }
   }
 
@@ -608,40 +830,18 @@
     .service-box {
       padding: 30px 20px;
     }
-
-    .tree-node {
-      max-width: 150px; /* Even smaller for very small screens */
-      min-height: 50px;
-      padding: 8px;
-    }
-
-    .tree-node h3 {
-      font-size: 12px; /* Smaller text for very small screens */
-    }
-
-    .tree-level[data-level="3"] .tree-node {
-      padding-left: 40px; /* Adjust indent for very small screens */
-    }
-
-    .tree-level[data-level="4"] .tree-node {
-      padding-left: 60px;
-    }
-
-    .tree-level[data-level="5"] .tree-node {
-      padding-left: 80px;
-    }
   }
 </style>
 
 <!-- Hero Section -->
 <section class="hero" role="banner">
-  <h1>About <span>   ARAX  </span> Management & Security </h1>
+  <h1>About <span> &nbsp; ARAX &nbsp;</span> Management & Security </h1>
 </section>
 
 <!-- About Us Section -->
 <section class="about" role="region" aria-labelledby="about-heading">
   <div class="angled-frame">
-    <img src="{% static 'guard.png' %}" alt="Arax Security team in action" loading="lazy">
+    <img src="{% static 'abouthim.jpg' %}" alt="Arax Security team in action" loading="lazy">
   </div>
   <div class="about-text">
     <h2 id="about-heading">About <span>ARAX</span></h2>
@@ -704,86 +904,130 @@
     </div>
   </div>
 </section>
+<section class="org-structure" role="region" aria-labelledby="org-structure-heading">
+  <h2 id="org-structure-heading"><span>ARAX</span> Organization Structure</h2>
+  <div class="tree-container">
 
-<!-- Organizational Structure Section -->
+    <div class="tree-level" data-level="1">
+      <div class="tree-node managing" role="treeitem" aria-label="Managing Director">
+        <h3>Managing Director</h3>
+      </div>
+    </div>
+
+    <div class="tree-level" data-level="2">
+      <div class="tree-node marketing" role="treeitem" aria-label="Marketing Manager">
+        <h3>Marketing Manager</h3>
+      </div>
+      <div class="tree-node gm" role="treeitem" aria-label="GM">
+        <h3>GM</h3>
+      </div>
+      <div class="tree-node accountant" role="treeitem" aria-label="Accountant Manager">
+        <h3>Accountant Manager</h3>
+      </div>
+    </div>
+
+    <div class="tree-level" data-level="3">
+      <div class="tree-node operation" role="treeitem" aria-label="Operation Manager">
+        <h3>Operation Manager</h3>
+      </div>
+      <div class="tree-node training" role="treeitem" aria-label="Training Manager">
+        <h3>Training Manager</h3>
+      </div>
+      <div class="tree-node office" role="treeitem" aria-label="Office Administration Officer">
+        <h3>Office Administration Officer</h3>
+      </div>
+      <div class="tree-node hr" role="treeitem" aria-label="Human Resource Manager">
+        <h3>Human Resource Manager</h3>
+      </div>
+    </div>
+
+    <div class="tree-level" data-level="4">
+      <div class="tree-node field-sup-1" role="treeitem" aria-label="Field Supervisor">
+        <h3>Field Supervisor</h3>
+      </div>
+      <div class="tree-node recruiting" role="treeitem" aria-label="Recruiting Manager">
+        <h3>Recruiting Manager</h3>
+      </div>
+    </div>
+
+    <div class="tree-level" data-level="5">
+      <div class="tree-node field-sup-2" role="treeitem" aria-label="Field Supervisor">
+        <h3>Field Supervisor</h3>
+      </div>
+    </div>
+
+    <div class="tree-level" data-level="6">
+      <div class="tree-node field-officer" role="treeitem" aria-label="Field Officer">
+        <h3>Field Officer</h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+{% comment %} <!-- Organizational Structure Section -->
 <section class="org-structure" role="region" aria-labelledby="org-structure-heading">
   <h2 id="org-structure-heading">ARAX Organization <span>Structure</span></h2>
   <div class="tree-container">
-    <!-- Level 1: Managing Director -->
+    <!-- Level 1: Director -->
     <div class="tree-level" data-level="1">
-      <div class="tree-node gold-card" role="treeitem" aria-label="Managing Director">
-        <h3>Managing Director</h3>
+      <div class="tree-node director orange-card" role="treeitem" aria-label="Director">
+        <h3>Director</h3>
       </div>
-      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMin meet">
-        <path d="M600,150 L600,250" class="branch" />
+      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMin meet">
+        <path d="M500,150 L500,250" class="branch" />
       </svg>
     </div>
 
-    <!-- Level 2: GM, Marketing Manager, Accountant Manager -->
+    <!-- Level 2: GM -->
     <div class="tree-level" data-level="2">
-      <div class="tree-node" role="treeitem" aria-label="Marketing Manager">
+      <div class="tree-node gm" role="treeitem" aria-label="General Manager">
+        <h3>General Manager</h3>
+      </div>
+      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMin meet">
+        <path d="M500,350 L250,450" class="branch" />
+        <path d="M500,350 L500,450" class="branch" />
+        <path d="M500,350 L750,450" class="branch" />
+      </svg>
+    </div>
+
+    <!-- Level 3: Managers -->
+    <div class="tree-level" data-level="3">
+      <div class="tree-node hr-manager orange-card" role="treeitem" aria-label="HR Manager">
+        <h3>HR Manager</h3>
+      </div>
+      <div class="tree-node marketing-manager" role="treeitem" aria-label="Marketing Manager">
         <h3>Marketing Manager</h3>
       </div>
-      <div class="tree-node gold-card" role="treeitem" aria-label="General Manager">
-        <h3>GM</h3>
+      <div class="tree-node operation-manager orange-card" role="treeitem" aria-label="Operations Manager">
+        <h3>Operations Manager</h3>
       </div>
-      <div class="tree-node" role="treeitem" aria-label="Accountant Manager">
-        <h3>Accountant Manager</h3>
-      </div>
-      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMin meet">
-        <path d="M600,250 H300 V350" class="branch" />
-        <path d="M600,250 V350" class="branch" />
-        <path d="M600,250 H900 V350" class="branch" />
+      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMin meet">
+        <path d="M250,550 L150,650" class="branch" />
+        <path d="M250,550 L250,650" class="branch" />
+        <path d="M750,550 L650,650" class="branch" />
+        <path d="M750,550 L850,650" class="branch" />
       </svg>
     </div>
 
-    <!-- Level 3: Operation Manager, Training Manager, Office Administration Officer, Human Resource Manager -->
-    <div class="tree-level" data-level="3">
-      <div class="tree-node" role="treeitem" aria-label="Operation Manager">
-        <h3>Operation Manager</h3>
-      </div>
-      <div class="tree-node" role="treeitem" aria-label="Training Manager">
-        <h3>Training Manager</h3>
-      </div>
-      <div class="tree-node" role="treeitem" aria-label="Office Administration Officer">
-        <h3>Office Administration Officer</h3>
-      </div>
-      <div class="tree-node" role="treeitem" aria-label="Human Resource Manager">
-        <h3>Human Resource Manager</h3>
-      </div>
-      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMin meet">
-        <path d="M600,350 H200 V450" class="branch" />
-        <path d="M600,350 H400 V450" class="branch" />
-        <path d="M600,350 H800 V450" class="branch" />
-        <path d="M600,350 H1000 V450" class="branch" />
-      </svg>
-    </div>
-
-    <!-- Level 4: Field Supervisor, Recruiting Manager -->
+    <!-- Level 4: Officers -->
     <div class="tree-level" data-level="4">
-      <div class="tree-node" role="treeitem" aria-label="Field Supervisor">
-        <h3>Field Supervisor</h3>
+      <div class="tree-node recruiting-officer" role="treeitem" aria-label="Recruiting Officer">
+        <h3>Recruiting Officer</h3>
       </div>
-      <div class="tree-node" role="treeitem" aria-label="Recruiting Manager">
-        <h3>Recruiting Manager</h3>
+      <div class="tree-node employee-officer orange-card" role="treeitem" aria-label="Employee Relations Officer">
+        <h3>Employee Relations</h3>
       </div>
-      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMin meet">
-        <path d="M200,450 V550" class="branch" />
-        <path d="M1000,450 V550" class="branch" />
-      </svg>
-    </div>
-
-    <!-- Level 5: Field Officer -->
-    <div class="tree-level" data-level="5">
-      <div class="tree-node" role="treeitem" aria-label="Field Officer">
+      <div class="tree-node field-officer" role="treeitem" aria-label="Field Officer">
         <h3>Field Officer</h3>
       </div>
-      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMin meet">
-        <path d="M200,550 V650" class="branch" />
-      </svg>
+      <div class="tree-node training-officer orange-card" role="treeitem" aria-label="Training Officer">
+        <h3>Training Officer</h3>
+      </div>
     </div>
   </div>
-</section>
+</section> {% endcomment %}
 
 <!-- Services Section -->
 <section class="services" role="region" aria-labelledby="services-heading">
@@ -825,20 +1069,22 @@
       <i class="fas fa-user-shield"></i>
       <h3>Escort / VIP Protection & A to Z facility services</h3>
     </div>
-    <div class="service-box">
-      <i class="fas fa-building"></i>
-      <h3>MNC / Non-MNC & A to Z facility services</h3>
-    </div>
-    <!-- Hospital Industry -->
-    <div class="service-box">
-      <i class="fas fa-hospital"></i>
-      <h3>Hospital Industry & A to Z facility services</h3>
-    </div>
-    <!-- Housekeeping -->
-    <div class="service-box">
-      <i class="fas fa-broom"></i>
-      <h3>House Keeping & A to Z facility services</h3>
-    </div>
+     <div class="service-box">
+    <i class="fas fa-building"></i>
+    <h3>MNC / Non-MNC & A to Z facility services</h3>
+  </div>
+
+  <!-- Hospital Industry -->
+  <div class="service-box">
+    <i class="fas fa-hospital"></i>
+    <h3>Hospital Industry & A to Z facility services</h3>
+  </div>
+
+  <!-- Housekeeping -->
+  <div class="service-box">
+    <i class="fas fa-broom"></i>
+    <h3>House Keeping & A to Z facility services</h3>
+  </div>
   </div>
 </section>
 
