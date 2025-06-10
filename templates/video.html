@@ -1,12 +1,113 @@
 {% extends 'base.html' %}
-
 {% block title %}Videos | Arax Security{% endblock %}
 {% load static %}
 
 {% block content %}
 <style>
- 
+  .gallery-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('{% static "videobanner2.jpg" %}') no-repeat center center/cover;
+    color: white;
+    height: 320px;
+    text-align: center;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    padding: 0 20px;
+  }
+
+  .gallery-hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .gallery-hero h1 span {
+    color: #f9b000;
+    font-size: 60px;
+    text-shadow: 0 0 12px rgba(249, 176, 0, 0.6);
+    animation: lubdubGlow 2s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes lubdubGlow {
+    0% { transform: scale(1); text-shadow: 0 0 8px rgba(249, 176, 0, 0.5); }
+    15% { transform: scale(1.2); text-shadow: 0 0 25px rgba(249, 176, 0, 0.9); }
+    30% { transform: scale(1); text-shadow: 0 0 10px rgba(249, 176, 0, 0.5); }
+    45% { transform: scale(1.1); text-shadow: 0 0 20px rgba(249, 176, 0, 0.7); }
+    60% { transform: scale(1); text-shadow: 0 0 8px rgba(249, 176, 0, 0.5); }
+    100% { transform: scale(1); text-shadow: 0 0 6px rgba(249, 176, 0, 0.3); }
+  }
+
+  .video-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .video-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .video-card video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
 </style>
 
-<div></div>
+<!-- Hero Banner -->
+<section class="gallery-hero">
+  <div>
+    <h1><span>ARAX</span> Training Videos</h1>
+  </div>
+</section>
+
+<!-- Video Gallery -->
+<section class="video-section">
+  <div class="video-grid">
+    <div class="video-card">
+      <video controls src="{% static 'videos/video1.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video2.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video3.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video4.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video5.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video6.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video7.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video8.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video9.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video10.mp4' %}"></video>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
