@@ -23,45 +23,29 @@
     font-weight: 700;
   }
 
-  .gallery-hero  h1 span {
-  color: #f9b000;
-  font-size: 60px;
-  text-shadow: 0 0 12px rgba(249, 176, 0, 0.6);
-  animation: lubdubGlow 2s ease-in-out infinite;
-  display: inline-block;
-}
-
-@keyframes lubdubGlow {
-  0% {
-    transform: scale(1);
-    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
+  .gallery-hero h1 span {
+    color: #f9b000;
   }
-  15% {
-    transform: scale(1.2);
-    text-shadow: 0 0 25px rgba(249, 176, 0, 0.9);
-  }
-  30% {
-    transform: scale(1);
-    text-shadow: 0 0 10px rgba(249, 176, 0, 0.5);
-  }
-  45% {
-    transform: scale(1.1);
-    text-shadow: 0 0 20px rgba(249, 176, 0, 0.7);
-  }
-  60% {
-    transform: scale(1);
-    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
-  }
-  100% {
-    transform: scale(1);
-    text-shadow: 0 0 6px rgba(249, 176, 0, 0.3);
-  }
-}
-
 
   .gallery-hero p {
     font-size: 16px;
     max-width: 700px;
+  }
+
+  /* Static gallery section */
+  .static-gallery-section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .static-gallery-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .static-gallery-section h2 span {
+    color: #f9b000;
   }
 
   .gallery-grid {
@@ -98,6 +82,7 @@
     display: block;
     height: auto;
     transition: transform 0.4s ease;
+    object-fit: cover;
   }
 
   .gallery-item:hover img {
@@ -190,17 +175,277 @@
     cursor: pointer;
     z-index: 1002;
   }
+   .static-cards-section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+
+  .static-cards-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+  }
+
+  .static-cards-section h2 span {
+    color: #f9b000;
+  }
+
+  .static-cards-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #f9b000;
+  }
+
+  .training-cards-section {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+}
+
+.training-cards-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 28px;
+  color: #333;
+}
+
+.training-cards-section h2 span {
+  color: #f9b000;
+}
+
+.training-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.training-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.training-card:hover {
+  transform: translateY(-5px);
+}
+
+.training-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.training-card:hover .card-overlay {
+  transform: translateY(0);
+}
+
+.card-overlay-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.card-overlay-content p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
 </style>
 
 <!-- Hero Banner -->
 <section class="gallery-hero">
   <div>
-    <h1><span>ARAX</span>&nbsp; Gallery</h1>
-<br><br>
+    <h1><span>ARAX</span> Gallery</h1>
+    <br><br>
   </div>
 </section>
+<!-- Static Training Gallery Section -->
+<section class="training-cards-section">
+  <h2>ARAX <span>Training</span> Gallery</h2>
+  <div class="training-cards">
+    <div class="training-card" onclick="openModal('{% static 'fire-safety.jpeg' %}', 'Alarm System Demonstration', 'Hands-on training for proper fire alarm activation and verification procedures')">
+      <img src="{% static 'fire-safety.jpeg' %}" alt="Alarm System Training">
+      <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>Alarm System Demonstration</h3>
+          <p>Hands-on training for proper fire alarm activation and verification procedures</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="training-card" onclick="openModal('{% static 'fire1.jpeg' %}', 'High-Rise Water Deployment', 'Training for rapid water deployment in multi-story apartment complexes')">
+      <img src="{% static 'fire1.jpeg' %}" alt="High-Rise Water Deployment">
+      <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>High-Rise Water Deployment</h3>
+          <p>Training for rapid water deployment in multi-story apartment complexes</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="training-card" onclick="openModal('{% static 'fire2.jpeg' %}', 'Emergency Evacuation Drills', 'Conducting timed evacuation drills with realistic smoke simulations')">
+      <img src="{% static 'fire2.jpeg' %}" alt="Evacuation Drills">
+      <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>Emergency Evacuation Drills</h3>
+          <p>Conducting timed evacuation drills with realistic smoke simulations</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="training-card" onclick="openModal('{% static 'fire3.jpeg' %}', 'Sprinkler System Activation', 'Practical training on automatic sprinkler system triggers and maintenance')">
+      <img src="{% static 'fire3.jpeg' %}" alt="Sprinkler System Training">
+      <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>Sprinkler System Activation</h3>
+          <p>Practical training on automatic sprinkler system triggers and maintenance</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="training-card" onclick="openModal('{% static 'fire4.jpeg' %}', 'Fire Door Protocols', 'Proper use of fire-rated doors to compartmentalize and slow fire spread')">
+      <img src="{% static 'fire4.jpeg' %}" alt="Fire Door Training">
+      <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>Fire Door Protocols</h3>
+          <p>Proper use of fire-rated doors to compartmentalize and slow fire spread</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="training-card" onclick="openModal('{% static 'fire5.jpeg' %}', 'Hydrant Pressure Testing', 'Field training for water pressure maintenance in building hydrant systems')">
+      <img src="{% static 'fire5.jpeg' %}" alt="Hydrant Testing">
+     <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>Hydrant Pressure Testing</h3>
+          <p>Field training for water pressure maintenance in building hydrant systems</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="training-card" onclick="openModal('{% static 'fire6.jpeg' %}', 'Alarm Zone Identification', 'Training to quickly identify specific alarm zones in large complexes')">
+      <img src="{% static 'fire6.jpeg' %}" alt="Alarm Zone Training">
+      <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>Alarm Zone Identification</h3>
+          <p>Training to quickly identify specific alarm zones in large complexes</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="training-card" onclick="openModal('{% static 'fire7.jpeg' %}', 'Water Curtain Deployment', 'Specialized training for activating water curtains in atriums and open spaces')">
+      <img src="{% static 'fire7.jpeg' %}" alt="Water Curtain Training">
+      <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>Water Curtain Deployment</h3>
+          <p>Specialized training for activating water curtains in atriums and open spaces</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="training-card" onclick="openModal('{% static 'fire8.jpeg' %}', 'False Alarm Prevention', 'Techniques to minimize false alarms while maintaining rapid response capability')">
+      <img src="{% static 'fire8.jpeg' %}" alt="False Alarm Training">
+      <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>False Alarm Prevention</h3>
+          <p>Techniques to minimize false alarms while maintaining rapid response capability</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="training-card" onclick="openModal('{% static 'fire9.jpeg' %}', 'Apartment Water Containment', 'Training for containing water damage during fire suppression in residential units')">
+      <img src="{% static 'fire9.jpeg' %}" alt="Water Containment Training">
+      <div class="card-overlay">
+        <div class="card-overlay-content">
+          <h3>Apartment Water Containment</h3>
+          <p>Training for containing water damage during fire suppression in residential units</p>
+        </div>
+      </div>
+    </div>
+    <div class="training-card" onclick="openModal('{% static 'fire10.jpeg' %}', 'Fire Extinguisher Handling', 'Live demonstration on selecting and operating different types of fire extinguishers')">
+  <img src="{% static 'fire10.jpeg' %}" alt="Fire Extinguisher Handling">
+  <div class="card-overlay">
+        <div class="card-overlay-content">
+      <h3>Fire Extinguisher Handling</h3>
+      <p>Live demonstration on selecting and operating different types of fire extinguishers</p>
+    </div>
+  </div>
+</div>
+<div class="training-card" onclick="openModal('{% static 'house-cleaning2.jpeg' %}', 'Residential Housekeeping Training', 'Comprehensive housekeeping training including dusting, surface sanitation, and room preparation')">
+  <img src="{% static 'house-cleaning2.jpeg' %}" alt="Residential Housekeeping">
+  <div class="card-overlay">
+        <div class="card-overlay-content">
+      <h3>Residential Housekeeping Training</h3>
+      <p>Comprehensive housekeeping training including dusting, surface sanitation, and room preparation</p>
+    </div>
+  </div>
+</div>
 
-<!-- Gallery Grid -->
+<div class="training-card" onclick="openModal('{% static 'house-cleaning1.jpeg' %}', 'Glass Surface Cleaning', 'Training in streak-free cleaning techniques for glass doors and windows in residential and commercial spaces')">
+  <img src="{% static 'house-cleaning1.jpeg' %}" alt="Glass Cleaning">
+  <div class="card-overlay">
+        <div class="card-overlay-content">
+      <h3>Glass Surface Cleaning</h3>
+      <p>Training in streak-free cleaning techniques for glass doors and windows in residential and commercial spaces</p>
+    </div>
+  </div>
+</div>
+<div class="training-card" onclick="openModal('{% static 'house-cleaning3.jpeg' %}', 'Residential Housekeeping Training', 'Comprehensive housekeeping training including dusting, surface sanitation, and room preparation')">
+  <img src="{% static 'house-cleaning3.jpeg' %}" alt="Residential Housekeeping">
+ <div class="card-overlay">
+        <div class="card-overlay-content">
+      <h3>Residential Housekeeping Training</h3>
+      <p>Comprehensive housekeeping training including dusting, surface sanitation, and room preparation</p>
+    </div>
+  </div>
+</div>
+<div class="training-card" onclick="openModal('{% static 'security-salute1.jpeg' %}', 'Guard Salute Formation', 'Discipline training with emphasis on synchronized salute posture and protocol execution')">
+  <img src="{% static 'security-salute1.jpeg' %}" alt="Salute Formation">
+  <div class="card-overlay">
+        <div class="card-overlay-content">
+      <h3>Guard Salute Formation</h3>
+      <p>Discipline training with emphasis on synchronized salute posture and protocol execution</p>
+    </div>
+  </div>
+</div>
+<div class="training-card" onclick="openModal('{% static 'security-salute2.jpeg' %}', 'Security Etiquette Training', 'Focused session on respectful saluting, posture alignment, and uniform presentation')">
+  <img src="{% static 'security-salute2.jpeg' %}" alt="Security Salute Training">
+  <div class="card-overlay">
+        <div class="card-overlay-content">
+      <h3>Security Etiquette Training</h3>
+      <p>Focused session on respectful saluting, posture alignment, and uniform presentation</p>
+    </div>
+  </div>
+</div> 
+
+  </div>
+</section>
+<section class="static-gallery-section">
+  <h2> <span>ARAX</span> Gallery</h2>
+<!-- Dynamic Gallery Grid -->
 <div class="gallery-grid">
   {% for img in images %}
     <div class="gallery-item" onclick="openModal('{{ img.image.url }}', '{{ img.title|escapejs }}', '{{ img.description|escapejs }}')">
@@ -224,7 +469,7 @@
     <p id="modalDesc"></p>
   </div>
 </div>
-
+<section>
 <script>
   function openModal(imageSrc, title, desc) {
     document.getElementById("modalImage").src = imageSrc;
