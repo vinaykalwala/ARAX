@@ -10,16 +10,17 @@
     align-items: center;
     background: url('{% static "videobanner2.jpg" %}') no-repeat center center/cover;
     color: white;
-    height: 320px;
+    height: 5000px;
     text-align: center;
     border-bottom-left-radius: 60px;
     border-bottom-right-radius: 60px;
-    padding: 0 20px;
+    padding: 0 5%;
   }
 
   .gallery-hero h1 {
     font-size: 36px;
     font-weight: 700;
+    line-height: 1.2;
   }
 
   .gallery-hero h1 span {
@@ -40,14 +41,14 @@
   }
 
   .video-section {
-    padding: 60px 20px;
+    padding: 60px 5%;
     max-width: 1200px;
     margin: auto;
   }
 
   .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
 
@@ -58,6 +59,11 @@
     overflow: hidden;
     padding: 10px;
     text-align: center;
+    transition: transform 0.3s;
+  }
+
+  .video-card:hover {
+    transform: translateY(-5px);
   }
 
   .video-card video {
@@ -65,7 +71,30 @@
     height: auto;
     border-radius: 8px;
   }
+
+  /* Tablet: 2 columns */
+  @media (max-width: 992px) {
+    .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Mobile: 1 column */
+  @media (max-width: 576px) {
+    .video-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .gallery-hero h1 {
+      font-size: 28px;
+    }
+
+    .gallery-hero h1 span {
+      font-size: 40px;
+    }
+  }
 </style>
+
 
 <!-- Hero Banner -->
 <section class="gallery-hero">
@@ -107,7 +136,12 @@
     <div class="video-card">
       <video controls src="{% static 'videos/video10.mp4' %}"></video>
     </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video9.mp4' %}"></video>
+    </div>
+    <div class="video-card">
+      <video controls src="{% static 'videos/video10.mp4' %}"></video>
+    </div>
   </div>
 </section>
-
 {% endblock %}
