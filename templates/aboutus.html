@@ -600,22 +600,38 @@
   }
 }
 
- .org-structure {
+.org-structure {
+  background: black;
   padding: 60px 20px;
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), 
-              url('{% static "home-banner.jpg" %}') no-repeat center center/cover;
   text-align: center;
   color: #fff;
+  position: relative;
+  z-index: 1;
 }
 
-  .org-structure h2 {
-    font-size: 28px;
-    margin-bottom: 40px;
-  }
+.org-structure h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
 
-  .org-structure h2 span {
-    color: #f9b000;
-  } 
+.org-structure h2 span {
+  color: #fdb813; /* gold or yellow highlight */
+}
+
+.org-structure img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  margin-top: 30px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.org-structure img:hover {
+  transform: scale(1.03);
+}
+
 
 
   {% comment %} .tree-container {
@@ -841,7 +857,7 @@
 <!-- About Us Section -->
 <section class="about" role="region" aria-labelledby="about-heading">
   <div class="angled-frame">
-    <img src="{% static 'abouthim.jpg' %}" alt="Arax Security team in action" loading="lazy">
+    <img src="{% static 'aboutus.jpg' %}" alt="Arax Security team in action" loading="lazy">
   </div>
   <div class="about-text">
     <h2 id="about-heading">About <span>ARAX</span></h2>
@@ -906,7 +922,8 @@
 </section>
 <section class="org-structure" role="region" aria-labelledby="org-structure-heading">
   <h2 id="org-structure-heading"><span>ARAX</span> Organization Structure</h2>
-  <div class="tree-container">
+   <img src="{% static 'images/about.png' %}" alt="Arax" loading="lazy">
+  {% comment %} <div class="tree-container">
 
     <div class="tree-level" data-level="1">
       <div class="tree-node managing" role="treeitem" aria-label="Managing Director">
@@ -962,7 +979,7 @@
       </div>
     </div>
 
-  </div>
+  </div> {% endcomment %}
 </section>
 
 
