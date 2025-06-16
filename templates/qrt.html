@@ -65,7 +65,7 @@
   }
 
   .security-hero  h1 span {
-  color: #f9b000;
+  color: #ff914d;
   font-size: 60px;
   text-shadow: 0 0 12px rgba(249, 176, 0, 0.6);
   animation: lubdubGlow 2s ease-in-out infinite;
@@ -108,7 +108,7 @@
   }
 
   .btn-orange {
-    background-color: #f9b000;
+    background-color: #ff914d;
     color: white;
     border: none;
     padding: 14px 32px;
@@ -153,7 +153,7 @@
     background: white;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-left: 5px solid #f9b000;
+    border-left: 5px solid #ff914d;
     transition: all 0.3s ease;
     animation: fadeInUp 1s ease-out;
   }
@@ -172,7 +172,7 @@
   }
 
   .security-overview-text h2 span {
-    color: #f9b000;
+    color: #ff914d;
   }
 
   .security-overview-text p {
@@ -240,7 +240,7 @@
   }
 
   .section-title h2 span {
-    color: #f9b000;
+    color: #ff914d;
   }
 
   .section-title p {
@@ -318,7 +318,7 @@
 }
 
 .service-card-content h3 {
-  color: #f9b000;
+  color: #ff914d;
   font-size: 22px;
   margin-bottom: 15px;
   position: relative;
@@ -332,7 +332,7 @@
   left: 0;
   width: 40px;
   height: 2px;
-  background: #f9b000;
+  background: #ff914d;
 }
 
 .service-card-content p {
@@ -361,7 +361,7 @@
   content: "\f00c";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
-  color: #f9b000;
+  color: #ff914d;
   position: absolute;
   left: 0;
 }
@@ -375,6 +375,31 @@
   }
 
   .service-card-content h3 {
+    color: #ff914d;
+    font-size: 22px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .service-card-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #ff914d;
+  }
+
+  .service-card-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .service-features {
+    margin-bottom: 20px;
     font-size: 20px;
   }
 
@@ -489,14 +514,14 @@
 
 .feature-item:hover {
   transform: translateX(10px);
-  border-left: 5px solid #f9b000;
+  border-left: 5px solid #ff914d;
   background: white;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .feature-icon {
   font-size: 36px;
-  color: #f9b000;
+  color: #ff914d;
   margin-bottom: 15px;
 }
 
@@ -537,7 +562,7 @@
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  border-top: 5px solid #f9b000;
+  border-top: 5px solid #ff914d;
   animation: fadeInUp 1s ease-out;
 }
 
@@ -555,7 +580,7 @@
 .step-number {
   width: 60px;
   height: 60px;
-  background: #f9b000;
+  background: #ff914d;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -605,6 +630,26 @@
   }
 
   .step-number {
+    width: 60px;
+    height: 60px;
+    background: #ff914d;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+  }
+
+  .process-step:hover .step-number {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 5px rgba(249, 176, 0, 0.3);
+  }
+
+  .process-step h3 {
     width: 50px;
     height: 50px;
     font-size: 20px;
@@ -690,11 +735,18 @@
   animation: fadeInUp 1s ease-out;
 }
 
+  .cta-content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0px 40px;
+    border-radius: 20px;
+    border: 2px solid #ff914d;
+    transition: all 0.3s ease;
+  }
 .cta-content {
   background: rgba(0, 0, 0, 0.7);
   padding: 20px;
   border-radius: 20px;
-  border: 2px solid #f9b000;
+  border: 2px solid #ff914d;
   transition: all 0.3s ease;
 }
 
@@ -711,19 +763,9 @@
   text-align: center;
 }
 
-.cta-heading::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: #f9b000;
-}
 
 .cta-heading span {
-  color: #f9b000;
+  color: #ff914d;
 }
 
 .cta-flex {
@@ -749,7 +791,7 @@
   background: rgba(0, 0, 0, 0.7);
   padding: 20px 40px;
   border-radius: 20px;
-  border: 2px solid #f9b000;
+  border: 2px solid #ff914d;
   transition: all 0.3s ease;
 }
 
@@ -767,7 +809,7 @@
 }
 
 .cta-heading span {
-  color: #f9b000;
+  color: #ff914d;
 }
 
 .cta-flex {
@@ -795,14 +837,14 @@
 }
 
 .yellow-bg {
-  background: #f9b000;
+  background: #ff914d;
   color: #000;
 }
 
 .transparent-bg {
   background: rgba(249, 176, 0, 0.2);
   color: #fff;
-  border: 1px solid #f9b000;
+  border: 1px solid #ff914d;
 }
 
 .cta-box h3 {
@@ -827,7 +869,7 @@
   background: rgba(249, 176, 0, 0.1);
   padding: 15px;
   border-radius: 10px;
-  border-left: 4px solid #f9b000;
+  border-left: 4px solid #ff914d;
   animation: pulse 2s ease infinite;
 }
 
@@ -837,7 +879,7 @@
 }
 
 .cta-offer i {
-  color: #f9b000;
+  color: #ff914d;
   margin-right: 5px;
 }
 
@@ -846,7 +888,7 @@
 }
 
 .btn-orange {
-  background-color: #f9b000;
+  background-color: #ff914d;
   color: white;
   border: none;
   padding: 16px 32px;
@@ -866,16 +908,130 @@
 
 .btn-orange.btn-outline {
   background: transparent;
-  border: 2px solid #f9b000;
+  border: 2px solid #ff914d;
 }
 
 .btn-orange.btn-outline:hover {
-  background: #f9b000;
+  background: #ff914d;
 }
 
 /* ✅ Responsive Media Queries */
 @media (max-width: 992px) {
   .cta-heading {
+    font-size: 36px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+  }
+
+
+
+  .cta-heading span {
+    color: #ff914d;
+  }
+
+  .cta-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .cta-column {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .cta-box {
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .cta-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .yellow-bg {
+    background: #ff914d;
+    color: #000;
+  }
+
+  .transparent-bg {
+    background: rgba(249, 176, 0, 0.2);
+    color: #fff;
+    border: 1px solid #ff914d;
+  }
+
+  .cta-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cta-box h3 i {
+    margin-right: 10px;
+  }
+
+  .cta-message p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+  }
+
+  .cta-offer {
+    background: rgba(249, 176, 0, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #ff914d;
+    animation: pulse 2s ease infinite;
+  }
+
+  .cta-offer p {
+    font-style: italic;
+    margin: 0;
+  }
+
+  .cta-offer i {
+    color: #ff914d;
+    margin-right: 5px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .btn-orange {
+    background-color: #ff914d;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-orange:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(249, 176, 0, 0.4);
+  }
+
+  .btn-orange.btn-outline {
+    background: transparent;
+    border: 2px solid #ff914d;
+  }
+
+  .btn-orange.btn-outline:hover {
+    background: #ff914d;
     font-size: 30px;
   }
 
@@ -966,9 +1122,7 @@
       padding: 40px 20px;
     }
      
-    .process-step {
-      min-width: 100%;
-    }
+   
   }
 </style>
 
@@ -983,7 +1137,7 @@
 <div class="security-overview-wrapper">
   <section class="security-overview">
     <div class="security-overview-text">
-      <h2>ARAX <span>Quick Response</span> Approach</h2>
+      <h2><span>ARAX </span>Quick Response Approach</h2>
       <p>Quick Response Team (QRT), in its simplest form, is a specialized unit trained to respond swiftly and effectively to emergencies, often involving threats or incidents requiring immediate action.</p>
       <p>Its mission is to neutralize threats, protect lives, and maintain order. The QRT's vision is to be a highly effective, adaptable, and proactive force, ready to respond to a wide range of emergencies, ensuring public safety and minimizing the impact of critical incidents.</p>
       <p>Whether you need immediate response to a security breach, alarm activation, or unexpected threat, our teams can be on-site faster than local authorities in most cases, providing critical first response until additional help arrives.</p>
@@ -999,7 +1153,7 @@
 <!-- Security Services Grid -->
 <section class="security-services">
   <div class="section-title">
-    <h2><span>Arax</span> Quick Response <span>Services</span></h2>
+    <h2><span>Arax</span> Quick Response Services</h2>
     <p>Comprehensive emergency response solutions for various security situations</p>
   </div>
     
@@ -1123,7 +1277,7 @@
 <!-- Updated Security Features Section -->
 <section class="security-features">
   <div class="section-title">
-    <h2>Why Choose Arax <span>Quick Response Teams</span></h2>
+    <h2>Why Choose <span>Arax </span>Quick Response Teams</h2>
     <p style="color: #ccc;">Our rapid response capabilities set us apart in emergency security situations</p>
   </div>
     
@@ -1181,7 +1335,7 @@
 <!-- Updated Security Process Section -->
 <section class="security-process">
   <div class="section-title">
-    <h2>Arax <span>Response Process</span></h2>
+    <h2><span>Arax </span>Response Process</h2>
     <p>How we deliver rapid, effective security response in emergency situations</p>
   </div>
     
@@ -1223,7 +1377,7 @@
   <div class="cta-container">
     <div class="cta-content">
       <h2 class="cta-heading">
-        <span>Arax Emergency Response</span> When Seconds Count
+        <span>Arax</span> Emergency Response When Seconds Count
       </h2>
       
       <div class="cta-flex">
@@ -1245,11 +1399,11 @@
             <a href="tel:+91934706344" class="btn-orange">
               <i class="fas fa-phone-alt"></i> Call Now
             </a>
-            <a href="mailto: araxmanagementservices@gmail.com" class="btn-orange btn-outline">
+            <a href="mailto:araxmanagementservices@gmail.com" class="btn-orange btn-outline">
               <i class="fas fa-envelope"></i> Email Us
             </a>
           </div>
-          
+          <br><br>
           <div class="cta-offer">
             <p>
               <i class="fas fa-star"></i>
