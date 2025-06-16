@@ -2,6 +2,7 @@ from django.db import models
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=14)
     email = models.EmailField()
     subject = models.CharField(max_length=150)
     message = models.TextField()
