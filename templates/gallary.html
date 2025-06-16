@@ -34,27 +34,27 @@
 @keyframes lubdubGlow {
   0% {
     transform: scale(1);
-    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
+    text-shadow: 0 0 8px #ff914d;
   }
   15% {
     transform: scale(1.2);
-    text-shadow: 0 0 25px rgba(249, 176, 0, 0.9);
+    text-shadow: 0 0 25px #ff914d;
   }
   30% {
     transform: scale(1);
-    text-shadow: 0 0 10px rgba(249, 176, 0, 0.5);
+    text-shadow: 0 0 10px #ff914d;
   }
   45% {
     transform: scale(1.1);
-    text-shadow: 0 0 20px rgba(249, 176, 0, 0.7);
+    text-shadow: 0 0 20px #ff914d;
   }
   60% {
     transform: scale(1);
-    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
+    text-shadow: 0 0 8px #ff914d;
   }
   100% {
     transform: scale(1);
-    text-shadow: 0 0 6px rgba(249, 176, 0, 0.3);
+    text-shadow: 0 0 6px #ff914d;
   }
 }
 
@@ -76,7 +76,7 @@
   }
 
   .static-gallery-section h2 span {
-    color: #f9b000;
+    color: #ff914d;
   }
 
   .gallery-grid {
@@ -149,7 +149,7 @@
 
   .gallery-overlay-content h3 {
     font-size: 18px;
-    color: #f9b000;
+    color: #ff914d;
     margin-bottom: 5px;
   }
 
@@ -190,7 +190,7 @@
 
   .modal-content h3 {
     margin-bottom: 10px;
-    color: #f9b000;
+    color: #ff914d;
   }
 
   .modal-content p {
@@ -221,7 +221,7 @@
   }
 
   .static-cards-section h2 span {
-    color: #f9b000;
+    color: #ff914d;
   }
 
   .static-cards-section h2::after {
@@ -232,7 +232,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background-color: #f9b000;
+    background-color: #ff914d;
   }
 
   .training-cards-section {
@@ -248,7 +248,7 @@
 }
 
 .training-cards-section h2 span {
-  color: #f9b000;
+  color: #ff914d;
 }
 
 .training-cards {
@@ -315,7 +315,7 @@
 </section>
 <!-- Static Training Gallery Section -->
 <section class="training-cards-section">
-  <h2>ARAX <span>Training</span> Gallery</h2>
+  <h2><span>ARAX</span> Training Gallery</h2>
   <div class="training-cards">
     <div class="training-card" onclick="openModal('{% static 'fire-safety.jpeg' %}', 'Alarm System Demonstration', 'Hands-on training for proper fire alarm activation and verification procedures')">
       <img src="{% static 'fire-safety.jpeg' %}" alt="Alarm System Training">
