@@ -7,7 +7,6 @@
   <title>{% block title %}Arax Management & Security Service{% endblock %}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="{% static 'araxlogo.png' %}" type="image/png">
-
   
   <style>
     body {
@@ -57,7 +56,7 @@
     }
 
     .logo span {
-      color: #f9b000;
+      color:#ff914d;
     }
 
     nav {
@@ -87,7 +86,7 @@
     }
 
     nav ul li a:hover {
-      color: #f9b000;
+      color: #ff914d;
     }
 
     nav ul li .dropdown {
@@ -116,12 +115,12 @@
     }
 
     nav ul li .dropdown a:hover {
-      background-color: #f9b000;
+      background-color:#ff914d;
       color: white;
     }
 
     .appointment-btn {
-      background-color: #f9b000;
+      background-color:#ff914d;
       color: white;
       padding: 8px 14px;
       border: none;
@@ -134,10 +133,9 @@
     }
 
     .appointment-btn:hover {
-      background-color: #d89e00;
+      background-color:#ff914d;
     }
 
-    /* Updated styles for the hamburger menu icon */
     header .menu-toggle {
       display: none !important;
     }
@@ -150,7 +148,8 @@
       display: inline-block;
     }
 
-    @media (max-width: 768px) {
+    /* MOBILE + TABLET (<= 1024px) */
+    @media (max-width: 1024px) {
       header {
         padding: 10px 15px;
         flex-direction: row;
@@ -195,8 +194,8 @@
         width: 100%;
       }
 
-     nav ul li .dropdown {
-        display: block !important; /* Force show in mobile */
+      nav ul li .dropdown {
+        display: block !important;
         position: relative;
         background-color: #f9f9f9;
         padding-left: 10px;
@@ -221,7 +220,7 @@
       }
 
       .mobile-contact a {
-        background-color: #f9b000;
+        background-color: #ff914d;
         color: white;
         padding: 10px 20px;
         border-radius: 30px;
@@ -230,7 +229,7 @@
       }
 
       .mobile-contact a:hover {
-        background-color: #d89e00;
+        background-color: #ff914d;
       }
     }
 
@@ -240,10 +239,11 @@
       text-align: center;
       padding: 20px 10px;
     }
+
     .socials a {
-    text-decoration: none;
-    color: inherit; /* keeps the icon color consistent */
-  }
+      text-decoration: none;
+      color: inherit;
+    }
   </style>
   {% block extra_head %}{% endblock %}
 </head>
@@ -251,64 +251,59 @@
 
   <!-- Top bar -->
   <div class="top-bar">
-   <div>Have any questions? &nbsp; 9618299458</div>
-<div class="socials">
-  <a href="https://wa.me/919618299458" target="_blank" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <i class="fab fa-facebook-f"></i>
-  <i class="fab fa-twitter"></i>
-  <i class="fab fa-linkedin-in"></i>
-</div>
+<div>Have any questions? &nbsp; <a href="tel:+919618299458" style="color: #fff; text-decoration: none;">9618299458</a></div>
+    <div class="socials">
+      <a href="https://wa.me/919618299458" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.linkedin.com/company/arax-security-services-and-management/" target="_blank" aria-label="LinkedIn">
 
+      <i class="fab fa-linkedin-in"></i></a>
+    </div>
   </div>
 
   <header>
-  <div class="header-top">
-    <div class="logo">
-      <img src="{% static 'araxlogo.png' %}" alt="Logo">
-<img src="{% static 'logo1.png' %}" alt="Logo">    </div>
-    <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
-  </div>
+    <div class="header-top">
+      <div class="logo">
+ <a href="{% url 'login' %}">
+    <img src="{% static 'logoarax.png' %}" alt="Logo">
+  </a>        <img src="{% static 'logo1.png' %}" alt="Logo">
+      </div>
+      <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
+    </div>
 
-  <nav>
-    <ul id="navLinks">
-      <li><a href="{% url 'home' %}">HOME</a></li>
-      <li><a href="{% url 'about_us' %}">ABOUT</a></li>
-      <li onclick="toggleDropdown(event)">
-        <a href="{% url 'services' %}">SERVICES <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
-        <div class="dropdown">
-          <a href="{% url 'securityservices' %}">ARAX Security Services</a>
-          <a href="{% url 'housekeeping' %}">ARAX House Keeping Services</a>
-          <a href="{% url 'outsourcing' %}">ARAX A To Z Facility Services</a>
-          <a href="{% url 'ert' %}">ARAX 24/7 Emergency Response Team</a>
-          <a href="{% url 'qrt' %}">ARAX 24/7 QRT Vehicle Facility</a>
+    <nav>
+      <ul id="navLinks">
+        <li><a href="{% url 'home' %}">HOME</a></li>
+        <li><a href="{% url 'about_us' %}">ABOUT</a></li>
+        <li onclick="toggleDropdown(event)">
+          <a href="{% url 'services' %}">SERVICES <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+          <div class="dropdown">
+            <a href="{% url 'securityservices' %}">ARAX Security Services</a>
+            <a href="{% url 'housekeeping' %}">ARAX House Keeping Services</a>
+            <a href="{% url 'outsourcing' %}">ARAX A To Z Facility Services</a>
+            <a href="{% url 'ert' %}">ARAX 24/7 Emergency Response Team</a>
+            <a href="{% url 'qrt' %}">ARAX 24/7 QRT Vehicle Facility</a>
+          </div>
+        </li>
+        <li><a href="{% url 'gallery' %}">GALLERY</a></li>
+        <li class="mobile-contact"><a href="{% url 'contact_us' %}">CONTACT</a></li>
+      </ul>
+    </nav>
 
-        </div>
-      </li>
-      
-      <li><a href="{% url 'gallery' %}">GALLERY</a></li>
-      <!-- <li><a href="{% url 'video' %}">VIDEOS</a></li> -->
+    <a href="{% url 'contact_us' %}" class="appointment-btn desktop-contact">CONTACT</a>
+  </header>
 
-      <li class="mobile-contact"><a href="{% url 'contact_us' %}">CONTACT</a></li>
-    </ul>
-  </nav>
-
-<a href="{% url 'contact_us' %}" class="appointment-btn desktop-contact">CONTACT</a>
-</header>
-
-  <!-- Main Content Area -->
   <main>
     {% block content %}
     {% endblock %}
   </main>
 
-  <!-- Footer -->
   <footer>
-    © 2025 Arax Management & Security Service. All Rights Reserved by <a href="www.vindusenvironment.com" style="color: white;">vindus</a>.
+    © 2025 Arax Management & Security Service. All Rights Reserved by 
+    <a href="https://www.vindusenvironment.com" style="color: white;">vindus</a>.
   </footer>
 
-  <!-- Scripts -->
   <script>
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('show');

@@ -71,7 +71,7 @@
       display: inline-block;
       margin-top: 30px;
       padding: 10px 20px;
-      background-color: #f9b000;
+      background-color: #ff914d;
       color: white;
       text-decoration: none;
       font-weight: 600;
@@ -88,9 +88,9 @@
 
   <div class="top-bar">
     {% if user.is_authenticated %}
-      <p>Welcome, {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
+      <p>Welcome, {{ user.username }}</p>
     {% else %}
-      <a href="{% url 'login' %}">Login</a>
+    
     {% endif %}
   </div>
 
@@ -101,6 +101,7 @@
       <thead>
         <tr>
           <th>Name</th>
+          <th>Phone Number</th>
           <th>Email</th>
           <th>Subject</th>
           <th>Message</th>
@@ -111,6 +112,7 @@
         {% for contact in contacts %}
           <tr>
             <td>{{ contact.name }}</td>
+            <td>{{ contact.phone_number }}</td>
             <td>{{ contact.email }}</td>
             <td>{{ contact.subject }}</td>
             <td>{{ contact.message }}</td>
