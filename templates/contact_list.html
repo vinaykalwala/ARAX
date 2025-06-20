@@ -16,7 +16,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 30px;
       flex-wrap: wrap;
     }
 
@@ -69,7 +68,7 @@
 
     .back-home {
       display: inline-block;
-      margin-top: 30px;
+      margin-top: 20px;
       padding: 10px 20px;
       background-color: #ff914d;
       color: white;
@@ -93,7 +92,8 @@
     
     {% endif %}
   </div>
-
+<a href="{% url 'home' %}" class="back-home">← Back to Home</a>
+    <a href="{% url 'upload_gallery_image' %}" class="back-home">← uplode images</a>
   <h2>Contact Submissions</h2>
 
   <div class="table-container">
@@ -125,7 +125,7 @@
     </table>
   </div>
 
-  <a href="{% url 'home' %}" class="back-home">← Back to Home</a>
+
 
 </body>
 </html>

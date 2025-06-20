@@ -55,3 +55,41 @@ from .models import Contact
 def contact_list(request):
     contacts = Contact.objects.all().order_by('-created_at')
     return render(request, 'contact_list.html', {'contacts': contacts})
+
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from .models import GalleryImage
+from .forms import GalleryImageForm
+
+def upload_gallery_image(request):
+    # Handle DELETE
+    if request.method == 'POST' and 'delete_id' in request.POST:
+        image_to_delete = get_object_or_404(GalleryImage, id=request.POST.get('delete_id'))
+        image_to_delete.delete()
+        messages.success(request, 'Image deleted successfully.')
+        return redirect('upload_gallery_image')
+
+    # Handle EDIT
+    elif request.method == 'POST' and 'edit_id' in request.POST:
+        image_to_edit = get_object_or_404(GalleryImage, id=request.POST.get('edit_id'))
+        image_to_edit.title = request.POST.get('edit_title')
+        image_to_edit.description = request.POST.get('edit_description')
+        if 'edit_image' in request.FILES:
+            image_to_edit.image = request.FILES['edit_image']
+        image_to_edit.save()
+        messages.success(request, 'Image updated successfully.')
+        return redirect('upload_gallery_image')
+
+    # Handle NEW UPLOAD
+    elif request.method == 'POST':
+        form = GalleryImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Image uploaded successfully.')
+            return redirect('upload_gallery_image')
+    else:
+        form = GalleryImageForm()
+
+    images = GalleryImage.objects.all().order_by('-uploaded_at')
+    return render(request, 'upload_gallery.html', {'form': form, 'images': images})
