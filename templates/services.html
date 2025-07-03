@@ -420,6 +420,26 @@
     color: white;
   }
 
+  @media screen and (max-width: 400px) {
+  .facility-container.modern-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .facility-modern-card {
+    padding: 25px 15px;
+  }
+
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .facility-modern-card h3 {
+    font-size: 14px;
+  }
+}
+
   .case-study {
         padding: 30px 0;
         background-color: #f9f9f9;
@@ -645,6 +665,52 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 400px) {
+  .dark-panel-header h2 {
+    font-size: 22px;
+  }
+
+  .dark-panel-header span {
+    font-size: 30px;
+  }
+
+  .dark-panel-header p {
+    font-size: 1rem;
+  }
+
+  .dark-panel-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .dark-panel-item {
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dark-panel-item i {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .dark-panel-item h3 {
+    font-size: 1rem;
+  }
+
+  .dark-panel-item p {
+    font-size: 0.9rem;
+  }
+
+  .dark-panel-item1.image-panel {
+    grid-row: auto;
+  }
+
+  .dark-panel-item1.image-panel img {
+    border-radius: 8px;
+  }
 }
 
 .dark-panel-item1.image-panel img {
@@ -956,7 +1022,7 @@
   </div>
 
   <div class="facility-container modern-layout">
-    <!-- Highlighted -->
+   
     <div class="facility-modern-card">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-broom"></i>
@@ -964,7 +1030,7 @@
       <h3>Housekeeping</h3>
     </div>
 
-    <!-- No hover -->
+   
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-seedling"></i>
@@ -972,7 +1038,7 @@
       <h3>Gardening / Horticulture</h3>
     </div>
 
-    <!-- Highlighted -->
+ 
     <div class="facility-modern-card">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-concierge-bell"></i>
@@ -980,7 +1046,7 @@
       <h3>Front Office Management</h3>
     </div>
 
-    <!-- No hover -->
+    
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-bug"></i>
@@ -988,7 +1054,6 @@
       <h3>Pest Control</h3>
     </div>
 
-    <!-- Highlighted -->
     <div class="facility-modern-card">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-hands-helping"></i>
@@ -996,7 +1061,7 @@
       <h3>Care Takers</h3>
     </div>
 
-    <!-- No hover -->
+  
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-calendar-check"></i>
@@ -1004,7 +1069,6 @@
       <h3>Event Management</h3>
     </div>
 
-    <!-- Highlighted -->
     <div class="facility-modern-card">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-bolt"></i>
@@ -1012,7 +1076,7 @@
       <h3>Electrical</h3>
     </div>
 
-    <!-- No hover -->
+
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-wrench"></i>
@@ -1020,7 +1084,7 @@
       <h3>Plumbing</h3>
     </div>
 
-    <!-- Highlighted -->
+
     <div class="facility-modern-card">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-cogs"></i>
@@ -1028,7 +1092,7 @@
       <h3>Mechanical</h3>
     </div>
 
-    <!-- No hover -->
+
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-hammer"></i>
@@ -1044,7 +1108,6 @@
       <h3>HVAC</h3>
     </div>
 
-    <!-- No hover -->
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-tools"></i>
