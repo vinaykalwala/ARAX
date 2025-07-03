@@ -343,16 +343,15 @@
 
   .facility-container.modern-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
   }
 
   .facility-modern-card {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1.5px solid #ff914d; /* default orange border */
-    backdrop-filter: blur(8px);
+    background: #ffe5d3;
+    border: 1.5px solid #ff914d;
     border-radius: 20px;
     text-align: center;
     padding: 30px 15px;
@@ -363,11 +362,9 @@
 
   .facility-modern-card:not(.no-hover):hover {
     transform: translateY(-8px);
-    border-color: #ff914d;
   }
 
   .icon-wrapper {
-    background: #fff;
     border: 2px solid #ff914d;
     width: 60px;
     height: 60px;
@@ -377,16 +374,21 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    background: #ff914d;
+  }
+
+  .white-bg {
+    background: white;
+  }
+
+  .icon-wrapper i {
+    font-size: 22px;
+    transition: all 0.3s ease;
+    color: #ff914d;
   }
 
   .facility-modern-card:not(.no-hover):hover .icon-wrapper {
     background: #ff914d;
-  }
-
-  .icon-wrapper i {
-    color: #ff914d;
-    font-size: 22px;
-    transition: all 0.3s ease;
   }
 
   .facility-modern-card:not(.no-hover):hover .icon-wrapper i {
@@ -405,11 +407,18 @@
     color: #ff914d;
   }
 
-  /* Style for no-hover cards: light orange icon background */
-  .facility-modern-card.no-hover .icon-wrapper {
-    background: #ffe5d3;
+  /* No-hover style */
+  .facility-modern-card.no-hover {
+    background: white;
   }
 
+  .facility-modern-card.no-hover .icon-wrapper {
+    background: #ff914d;
+  }
+
+  .facility-modern-card.no-hover .icon-wrapper i {
+    color: white;
+  }
 
   .case-study {
         padding: 30px 0;
@@ -868,6 +877,7 @@
     </div>
   </div>
 </section>
+
 <section class="staffing-section">
   <div class="staffing-header">
     <h2><span>Arax</span> Do Staffing Also</h2>
@@ -946,13 +956,15 @@
   </div>
 
   <div class="facility-container modern-layout">
+    <!-- Highlighted -->
     <div class="facility-modern-card">
-      <div class="icon-wrapper">
+      <div class="icon-wrapper white-bg">
         <i class="fas fa-broom"></i>
       </div>
       <h3>Housekeeping</h3>
     </div>
 
+    <!-- No hover -->
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-seedling"></i>
@@ -960,13 +972,15 @@
       <h3>Gardening / Horticulture</h3>
     </div>
 
+    <!-- Highlighted -->
     <div class="facility-modern-card">
-      <div class="icon-wrapper">
+      <div class="icon-wrapper white-bg">
         <i class="fas fa-concierge-bell"></i>
       </div>
       <h3>Front Office Management</h3>
     </div>
 
+    <!-- No hover -->
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-bug"></i>
@@ -974,13 +988,15 @@
       <h3>Pest Control</h3>
     </div>
 
+    <!-- Highlighted -->
     <div class="facility-modern-card">
-      <div class="icon-wrapper">
+      <div class="icon-wrapper white-bg">
         <i class="fas fa-hands-helping"></i>
       </div>
       <h3>Care Takers</h3>
     </div>
 
+    <!-- No hover -->
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-calendar-check"></i>
@@ -988,41 +1004,47 @@
       <h3>Event Management</h3>
     </div>
 
+    <!-- Highlighted -->
     <div class="facility-modern-card">
-      <div class="icon-wrapper">
+      <div class="icon-wrapper white-bg">
         <i class="fas fa-bolt"></i>
       </div>
       <h3>Electrical</h3>
     </div>
 
-    <div class="facility-modern-card">
+    <!-- No hover -->
+    <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-wrench"></i>
       </div>
       <h3>Plumbing</h3>
     </div>
 
-    <div class="facility-modern-card no-hover">
-      <div class="icon-wrapper">
+    <!-- Highlighted -->
+    <div class="facility-modern-card">
+      <div class="icon-wrapper white-bg">
         <i class="fas fa-cogs"></i>
       </div>
       <h3>Mechanical</h3>
     </div>
 
-    <div class="facility-modern-card">
+    <!-- No hover -->
+    <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-hammer"></i>
       </div>
       <h3>Carpentry</h3>
     </div>
 
+    
     <div class="facility-modern-card">
-      <div class="icon-wrapper">
+      <div class="icon-wrapper white-bg">
         <i class="fas fa-snowflake"></i>
       </div>
       <h3>HVAC</h3>
     </div>
 
+    <!-- No hover -->
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-tools"></i>
@@ -1031,8 +1053,6 @@
     </div>
   </div>
 </section>
-
-
 <br>
 <section class="case-study">
   <h2 class="section-title"><span>Arax</span> Comprehensive Solutions</h2>
