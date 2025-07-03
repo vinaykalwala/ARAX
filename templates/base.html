@@ -7,7 +7,7 @@
   <title>{% block title %}Arax Management & Security Service{% endblock %}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="{% static 'araxlogo.png' %}" type="image/png">
-  
+
   <style>
     body {
       margin: 0;
@@ -51,12 +51,28 @@
     }
 
     .logo img {
-      height: 60px;
+      height: 80px;
       margin-right: 10px;
     }
 
-    .logo span {
-      color:#ff914d;
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo-text .title {
+      font-size: 36px;
+      font-weight: 900;
+      font-family: Arial, sans-serif;
+      color: #ff914d;
+    }
+
+    .logo-text .subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: #444;
+      font-family: Arial, sans-serif;
     }
 
     nav {
@@ -115,12 +131,12 @@
     }
 
     nav ul li .dropdown a:hover {
-      background-color:#ff914d;
+      background-color: #ff914d;
       color: white;
     }
 
     .appointment-btn {
-      background-color:#ff914d;
+      background-color: #ff914d;
       color: white;
       padding: 8px 14px;
       border: none;
@@ -133,7 +149,7 @@
     }
 
     .appointment-btn:hover {
-      background-color:#ff914d;
+      background-color: #ff914d;
     }
 
     header .menu-toggle {
@@ -251,23 +267,25 @@
 
   <!-- Top bar -->
   <div class="top-bar">
-<div>Have any questions? &nbsp; <a href="tel:+919618299458" style="color: #fff; text-decoration: none;">9618299458</a></div>
+    <div>Have any questions? &nbsp; <a href="tel:+919618299458" style="color: #fff; text-decoration: none;">9618299458</a></div>
     <div class="socials">
       <a href="https://wa.me/919618299458" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
       </a>
       <a href="https://www.linkedin.com/company/arax-security-services-and-management/" target="_blank" aria-label="LinkedIn">
-
-      <i class="fab fa-linkedin-in"></i></a>
+        <i class="fab fa-linkedin-in"></i>
+      </a>
     </div>
   </div>
 
+  <!-- Header -->
   <header>
     <div class="header-top">
       <div class="logo">
- <a href="{% url 'login' %}">
-    <img src="{% static 'logoarax.png' %}" alt="Logo">
-  </a>        <img src="{% static 'logo1.png' %}" alt="Logo">
+        <a href="{% url 'login' %}">
+          <img src="{% static 'newlogo.jpeg' %}" alt="Logo">
+        </a>
+        
       </div>
       <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
     </div>
@@ -300,7 +318,7 @@
   </main>
 
   <footer>
-    © 2025 Arax Management & Security Service. All Rights Reserved by 
+    © 2025 Arax People Services India Pvt. Ltd.. All Rights Reserved by 
     <a href="https://www.vindusenvironment.com" style="color: white;">vindus</a>.
   </footer>
 

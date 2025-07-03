@@ -165,6 +165,7 @@
 }
 .section2-header h2 span {
     color: #ff914d;
+    font-size: 40px;
     
   }
 .card {
@@ -289,6 +290,7 @@
   }
   .content-container h2 span{
     color: #ff914d;
+    font-size:40px;
   }
   .content-container ul {
     list-style-type: disc;
@@ -336,13 +338,14 @@
     }
     
     .case-study .section-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: black;
         margin-bottom: 50px;
         position: relative;
     }
     .case-study .section-title span{
       color: #ff914d;
+      font-size: 2.8rem;
     }
     
     .case-study .section-title:after {
@@ -463,26 +466,189 @@
             font-size: 1rem;
         }
     }
+   .arax-dark-panel  {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 30px 20px;
+  border-radius: 20px;
+  margin: 40px 10px;
+  border: 8px double #ff914d;
+}
+
+.arax-dark-panel .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.dark-panel-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dark-panel-header h2 {
+  font-size: 28px;
+  color:white;
+  margin-bottom: 10px;
+}
+.dark-panel-header span {
+  font-size: 42px;
+  color:#ff914d;
+  margin-bottom: 10px;
+}
+.dark-panel-header p {
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+.dark-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.dark-panel-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  border: 0.5px solid #fea974;
+}
+
+.dark-panel-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-panel-item i {
+  font-size: 28px;
+  color: #ff914d;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.dark-panel-item h3 {
+  font-size: 1.1rem;
+  margin: 0 0 5px 0;
+  color: #fff;
+}
+
+.dark-panel-item p {
+  font-size: 0.95rem;
+  margin: 0;
+  color: #ccc;
+}
+
+.dark-panel-item.wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .dark-panel-item.wide {
+    grid-column: span 1;
+  }
+}
+.dark-panel-item1.image-panel {
+  grid-row: span 2;
+  padding: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-panel-item1.image-panel img {
+  width: 100%;
+  height:auto;
+  border-radius: 10px;
+}
+.staffing-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.staffing-card {
+  display: flex;
+  align-items: flex-start;
+  background: white;
+  border-radius: 12px;
+  border: 1.5px solid #ff914d;
+  padding: 20px;
+  gap: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.staffing-card:hover {
+  transform: translateY(-6px);
+}
+
+.staffing-card i {
+  font-size: 24px;
+  color: #ff914d;
+  margin-top: 4px;
+}
+
+.staffing-card h3 {
+  font-size: 15px;
+  color: #333;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Highlight randomly */
+.staffing-card.bg-orange-1 { background-color: #fef3e2; }
+.staffing-card.bg-orange-2 { background-color: #fff5eb; }
+.staffing-card.bg-orange-3 { background-color: #fff2e6; }
+/* Entire Staffing Section Container */
+.staffing-section {
+  padding: 10px 20px;
+  background-color: #f9f9f9; /* Light background */
+}
+
+/* Header inside Staffing Section */
+.staffing-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.staffing-header span {
+  font-size: 42px;
+  color: #ff914d;
+  margin-bottom: 10px;
+}
+.staffing-header h2 {
+  font-size: 28px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+
 </style>
 
 <div class="services-hero-container">
   <div class="carousel-slide" id="carouselSlide">
     <div class="carousel-item">
-      <img src="{% static 'securitybanner.jpg' %}" alt="Banner 1">
+      <img src="{% static 'images/homebannersecurity.png' %}" alt="Banner 1">
       <div class="carousel-caption">
         <h1><span>ARAX</span>&nbsp; Security Services</h1>
         <p>Your Safety, ARAX Responsibility</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{% static 'clean.jpg' %}" alt="Banner 2">
+      <img src="{% static 'clean1.png' %}" alt="Banner 2">
       <div class="carousel-caption">
         <h1><span>ARAX</span>&nbsp; House keeping</h1>
         <p>Smart Eyes on Duty Every Second</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{% static 'images/araxsecuritybannerbouncers1.jpg' %}" alt="Banner 3">
+      <img src="{% static 'araxsecuritybannerbouncers1.png' %}" alt="Banner 3">
       <div class="carousel-caption">
         <h1><span>ARAX</span>&nbsp; Trained Security Guards</h1>
         <p>Professionals That Protect</p>
@@ -540,10 +706,12 @@
 <section class="section3">
   <div class="container flex-container">
     <div class="image-container">
-      <img src="{% static 'cleaningarax.png' %}" alt="Welcome to Arax Security Services" />
+      <img src="{% static 'securityatoz1.png' %}" alt="Welcome to Arax Security Services" />
+            <img src="{% static 'housekeepingservices1.png' %}" alt="Welcome to Arax Security Services" />
+
     </div>
     <div class="content-container">
-      <h2>Welcome to <span>Arax </span>Security Services</h2>
+      <h2>Welcome to <span>Arax </span>A To Z Services</h2>
       <ul>
   <li>Security Solutions including Modern Hi-Tech Equipment</li>
   <li>Security Bouncers, Body Guards & Gunman (Ex-servicemen)</li>
@@ -555,12 +723,143 @@
   <li>Corporate Services</li>
   <li>Gardening, landscaping and Horticulture</li>
   <li>PSO Services (Paramilitary and army retired persons)</li>
-  <a href="#" class="contact-us-btn">Contact Us</a>
+  <a href="{% url 'contact_us' %}" class="contact-us-btn">Contact Us</a>
 </ul>
     </div>
   </div>
 </section>
+<section class="arax-dark-panel">
+  <div class="container">
+    <div class="dark-panel-header">
+      <h2><span>Arax </span> People Services India Pvt. Ltd.</h2>
+      <p>We takes bluk order of any categories of staffing supplier</p>
+    </div>
 
+    <div class="dark-panel-grid">
+      <div class="dark-panel-item">
+        <i class="fas fa-shield-alt"></i>
+        <div>
+          <h3>Unarmed Security staffs</h3>
+          <p>(Guards and officers)</p>
+        </div>
+      </div>
+
+      <div class="dark-panel-item">
+        <i class="fas fa-broom"></i>
+        <div>
+          <h3>House keeping staffs</h3>
+        </div>
+      </div>
+
+      <div class="dark-panel-item">
+        <i class="fas fa-user-shield"></i>
+        <div>
+          <h3>Bouncers Body guards</h3>
+        </div>
+      </div>
+
+      <div class="dark-panel-item">
+        <i class="fas fa-building"></i>
+        <div>
+          <h3>Total Property Management Services.(PMS)</h3>
+        </div>
+      </div>
+
+      <div class="dark-panel-item">
+        <i class="fas fa-tools"></i>
+        <div>
+          <h3>Building Management Services (BMS)</h3>
+        </div>
+      </div>
+<div class="dark-panel-item1 image-panel">
+  <img src="{% static 'newlogo1.jpeg' %}" alt="Services Illustration" />
+</div>
+
+      <div class="dark-panel-item wide">
+        <i class="fas fa-briefcase"></i>
+        <div>
+          <h3>Placement and Trainings.</h3>
+          <p>IT non IT , Technicals non Technicals, BPOs, KPOs, Backend executives ,<br>
+            Front office executive,<br>
+            Receptionist,<br>
+            Managers Etc.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="staffing-section">
+  <div class="staffing-header">
+    <h2><span>Arax</span> Do Staffing Also</h2>
+  </div>
+
+  <div class="staffing-container">
+    <div class="staffing-card bg-orange-1">
+      <i class="fas fa-box"></i><h3>Packers</h3>
+    </div>
+    <div class="staffing-card">
+      <i class="fas fa-hands-helping"></i><h3>Helpers</h3>
+    </div>
+    <div class="staffing-card bg-orange-2">
+      <i class="fas fa-hard-hat"></i><h3>Labour's</h3>
+    </div>
+    <div class="staffing-card bg-orange-1">
+      <i class="fas fa-car"></i><h3>Parking guards</h3>
+    </div>
+    <div class="staffing-card">
+      <i class="fas fa-parking"></i><h3>Wallets parking guard</h3>
+    </div>
+    <div class="staffing-card bg-orange-3">
+      <i class="fas fa-id-card"></i><h3>Drivers</h3>
+    </div>
+    <div class="staffing-card">
+      <i class="fas fa-arrows-alt-v"></i><h3>Lift operators</h3>
+    </div>
+    <div class="staffing-card bg-orange-1">
+      <i class="fas fa-video"></i><h3>CCTV monitor supervisor</h3>
+    </div>
+    <div class="staffing-card">
+      <i class="fas fa-dolly"></i><h3>Lifter in ware Houses and factories any sector.</h3>
+    </div>
+    <div class="staffing-card bg-orange-2">
+      <i class="fas fa-users"></i><h3>Events executives, guards and bouncers.</h3>
+    </div>
+    <div class="staffing-card bg-orange-3">
+      <i class="fas fa-seedling"></i><h3>Gardeners and horticulture staffs</h3>
+    </div>
+    <div class="staffing-card">
+      <i class="fas fa-soap"></i><h3>Deep cleaning staffs</h3>
+    </div>
+    <div class="staffing-card bg-orange-1">
+      <i class="fas fa-user-nurse"></i><h3>Hospitals Nurses</h3>
+    </div>
+    <div class="staffing-card">
+      <i class="fas fa-user"></i><h3>Office boys</h3>
+    </div>
+    <div class="staffing-card bg-orange-2">
+      <i class="fas fa-procedures"></i><h3>Ward boys hospitals</h3>
+    </div>
+    <div class="staffing-card">
+      <i class="fas fa-car-side"></i><h3>Drivers permanent</h3>
+    </div>
+    <div class="staffing-card bg-orange-3">
+      <i class="fas fa-user-shield"></i><h3>Special security guards</h3>
+    </div>
+    <div class="staffing-card">
+      <i class="fas fa-briefcase"></i><h3>Property Managers, Facility Managers</h3>
+    </div>
+   <div class="staffing-card bg-orange-1">
+  <i class="fas fa-user-tie"></i>
+  <h3>Receptionists, back Office executives, front office executives, accountants</h3>
+</div>
+<div class="staffing-card bg-orange-3">
+  <i class="fas fa-user-tie"></i>
+  <h3>HRs, ops managers, production manager's, office manager's etc.</h3>
+</div>
+
+  </div>
+</section>
+<br>
 <section class="case-study">
   <h2 class="section-title"><span>Arax</span> Comprehensive Solutions</h2>
   
@@ -588,7 +887,7 @@
 
     <!-- Industrial & Manufacturing Security -->
     <div class="service-card">
-      <img src="{% static 'images/image2.jpg' %}" alt="Manufacturing Security">
+      <img src="{% static 'images/homebannersecurity.png' %}" alt="Manufacturing Security">
       <div class="service-card-content">
         <h3>Industrial & Factory Security</h3>
         <p>End-to-end security for manufacturing units with periphery patrol, material movement tracking, visitor/vendor verification, and trained manpower deployment.</p>
