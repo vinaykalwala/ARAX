@@ -390,11 +390,14 @@
       align-self: center;
     }
   }
+  span {
+    font-size: 40px;
+  }
 </style>
 
 <!-- Banner Section -->
 <section class="banner" role="banner">
-  <h1>Contact &nbsp;<span> ARAX </span>&nbsp; People Services India Pvt Ltd</h1>
+  <h1>Contact &nbsp;<span> ARAX </span>&nbsp; People Services </h1>
 </section>
 
 <!-- Contact Section -->
@@ -402,7 +405,7 @@
   <div class="contact-container">
     <!-- Contact Info -->
     <div class="contact-info">
-      <h2 id="contact-heading">Get in <span>Touch</span> with ARAX Team</h2>
+      <h2 id="contact-heading">Get in Touch with <span>ARAX</span> Team</h2>
       <div class="info-item">
         <i class="fas fa-map-marker-alt"></i>
         <div>
@@ -450,7 +453,7 @@
 
     <!-- Contact Form -->
     <div class="contact-form">
-      <h2>Send Us a <span>Message</span></h2>
+      <h2 style="color: #ff914d;">Send Us a Message</h2>
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
