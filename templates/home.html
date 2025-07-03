@@ -732,8 +732,177 @@
   text-transform: uppercase;
 }
 
+.tech-section {
+  padding: 0 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 
+}
 
+.tech-title {
+  font-size: 32px;
+  margin-bottom: 50px;
+}
+
+.tech-title span {
+  color: #ff914d;
+  font-size: 42px;
+}
+
+.tech-cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.tech-card {
+  border-radius: 20px;
+  padding: 30px 25px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease;
+  border: 2px solid transparent;
+  border: 1px ;
+      border: 2px solid #ff914d;
+
+}
+
+.tech-card:hover {
+  transform: translateY(-8px);
+  border-color: #ff914d;
+  box-shadow: 0 0 15px #ff914d80;
+}
+
+.tech-card h3 {
+  font-size: 20px;
+  color: #ff914d;
+  margin-bottom: 15px;
+}
+
+.tech-card p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.tech-icon {
+  width: 48px;
+  height: 48px;
+  background: #ff914d;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 48px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 12px #ff914d90;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .tech-cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 576px) {
+  .tech-cards-container {
+    grid-template-columns: 1fr;
+  }
+  .tech-title {
+    font-size: 26px;
+  }
+}
+.tech-card:nth-child(2),
+.tech-card:nth-child(4) {
+  background-color: #ff914d;
+  color: white;
+  box-shadow: 0 0 20px #ff914d80;
+}
+
+.tech-card:nth-child(2) h3,
+.tech-card:nth-child(4) h3 {
+  color: white;
+}
+
+.tech-card:nth-child(2) p,
+.tech-card:nth-child(4) p {
+  color: white;
+}
+
+.tech-card:nth-child(2) .tech-icon,
+.tech-card:nth-child(4) .tech-icon {
+  background-color: #fff;
+  color: #ff914d;
+  box-shadow: 0 0 12px white;
+}
+
+ .trackker-wrapper {
+    background-color: #fcfdff;
+    padding: 30px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .trackker-heading {
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+.trackker-heading span {
+    font-size: 38px;
+    color: #ff914d;;
+   
+  }
+  .trackker-description {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .trackker-description strong {
+    color: #ff914d;
+  }
+
+  .trackker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .trackker-item {
+    background-color: #ffffff;
+    border-left: 6px solid #ff914d;
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .trackker-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  }
+
+  .trackker-item i {
+    color: #ff914d;
+    margin-right: 10px;
+  }
+
+  .trackker-point {
+    font-size: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
 </style>
 
 <section class="custom-carousel">
@@ -784,6 +953,9 @@
 </div>
 
 </section>
+
+
+
 <section class="mission-section">
   <div class="mission-container">
 
@@ -812,6 +984,7 @@
 
   </div>
 </section>
+
 <section class="services">
   <h2><span> ARAX </span> A to Z Facility Services</h2>
   <div class="service-grid">
@@ -875,6 +1048,50 @@
   </div>
 </section>
 
+<section class="tech-section">
+  <h2 class="tech-title"><span>ARAX</span> Tech Offerings</h2>
+  <div class="tech-cards-container">
+    <div class="tech-card neon-glow">
+      <div class="tech-icon">01</div>
+      <h3>Face Recognition + GPS</h3>
+      <p>Accurate attendance with real-time vacancy view and fast payroll processing.</p>
+    </div>
+    <div class="tech-card neon-glow">
+      <div class="tech-icon">02</div>
+      <h3>GPS Visit Tracker</h3>
+      <p>Track and verify site visits made by the ARAX team seamlessly.</p>
+    </div>
+    <div class="tech-card neon-glow">
+      <div class="tech-icon">03</div>
+      <h3>Customer Feedback App</h3>
+      <p>Centralized platform for feedback management and action tracking.</p>
+    </div>
+    <div class="tech-card neon-glow">
+      <div class="tech-icon">04</div>
+      <h3>QR+GPS Guard Patrol</h3>
+      <p>Real-time tracking of patrols with instant incident reporting.</p>
+    </div>
+  </div>
+</section>
+
+<div class="trackker-wrapper">
+  <div class="trackker-heading"><span>ARAX</span> Monitoring Technology</div>
+  <p class="trackker-description">
+    Our inhouse technology – <strong>TRACKKER</strong>, will help the following ongoing industry issues be resolved:
+  </p>
+  <div class="trackker-grid">
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Real time attendance tracking</div></div>
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>On-time incident reporting</div></div>
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Remote monitoring of site</div></div>
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Periodical Patrolling</div></div>
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Periodical cleaning</div></div>
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Sleep alarm trigger</div></div>
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Shift Schedules</div></div>
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Operations staff visit alert</div></div>
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Operations night check live data capture</div></div>
+    <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Report Access to clients</div></div>
+  </div>
+</div>
 <section class="scanner-section">
   <div class="scanner-container">
 
@@ -900,23 +1117,22 @@
 
 
 <section class="why-choose-structured">
-    <h2>Why <span>ARAX</span> </h2>
-    
+  <h2>Why <span>ARAX</span>?</h2>
 
   <div class="why-choose-grid">
-    
+
     <!-- Left Top -->
     <div class="why-box left light">
-      <i class="fas fa-users"></i>
-      <h4>ARAX Trained Security Staff</h4>
-      <p>Professionals including PSOs, ex-servicemen, and guards.</p>
+      <i class="fas fa-th-large"></i>
+      <h4>Integrated Solutions</h4>
+      <p>Complete, end-to-end service offerings under one roof.</p>
     </div>
 
     <!-- Left Bottom -->
     <div class="why-box left lighter">
-      <i class="fas fa-file-alt"></i>
-      <h4>Complete Documentation</h4>
-      <p>Legal compliance, contracts & reporting — all handled.</p>
+      <i class="fas fa-check-circle"></i>
+      <h4>Quality Assurance</h4>
+      <p>Strict quality control and performance checks.</p>
     </div>
 
     <!-- Center Image -->
@@ -924,24 +1140,23 @@
       <img src="{% static 'homeimg.png' %}" alt="Arax Team">
     </div>
 
-   
-
     <!-- Right Bottom Left -->
     <div class="why-box right teal">
-      <i class="fas fa-calendar-check"></i>
-      <h4>24/7 Reliability</h4>
-      <p>Round-the-clock operations with emergency support.</p>
+      <i class="fas fa-balance-scale"></i>
+      <h4>Compliance Assurance</h4>
+      <p>Fully compliant with legal, safety and industry regulations.</p>
     </div>
 
     <!-- Right Bottom Right -->
     <div class="why-box right black">
-      <i class="fas fa-shield-alt"></i>
-      <h4>ARAX Tailored Services</h4>
-      <p>Security, housekeeping, and manpower to fit your site.</p>
+      <i class="fas fa-headset"></i>
+      <h4>24/7 Support</h4>
+      <p>Always available for emergencies and client needs.</p>
     </div>
 
   </div>
 </section>
+
 
 
   
