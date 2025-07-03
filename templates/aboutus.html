@@ -147,6 +147,17 @@
     margin-bottom: 10px;
     line-height: 1.6;
   }
+  .about-text ul {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.about-text li {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
 
   @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
@@ -225,7 +236,7 @@ span{
 
   /* Why Choose Us Section */
   .why-choose {
-    padding: 60px 20px;
+    padding: 10px 20px;
     background: #fff;
     text-align: center;
     color: #222;
@@ -291,6 +302,301 @@ span{
     background-color: #ff914d;
   }
 
+/* ------ Business Verticals ------ */
+.business-verticals {
+  text-align: center;
+  padding: 10px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.business-verticals::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,145,77,0.03)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+  
+  z-index: 0;
+}
+
+.section-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.business-verticals h2 {
+      font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.business-verticals h2 span {
+  color: #ff914d;
+  position: relative;
+}
+
+
+
+.section-subtitle {
+  color: #666;
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto 25px;
+  font-weight: 400;
+}
+
+
+
+
+.verticals-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.bv-card {
+  width: 320px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp .6s forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+.bv-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #ff914d, #ff6b45);
+}
+
+.bv-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.card-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ff914d;
+  transition: all 0.3s ease;
+}
+
+.card-corner:nth-child(1) {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.card-corner:nth-child(2) {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.card-corner:nth-child(3) {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+}
+
+.card-corner:nth-child(4) {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+.bv-card:hover .card-corner {
+  width: 25px;
+  height: 25px;
+}
+
+/* Image block */
+.bv-img {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.bv-img::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #ff914d;
+  border-radius: 2px;
+}
+
+.bv-img img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+  filter: grayscale(20%);
+}
+
+.bv-card:hover .bv-img img {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+/* Ribbon */
+.bv-ribbon {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  margin: 15px 0;
+}
+
+.ribbon-inner {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,145,77,0.2), rgba(255,145,77,0.5), rgba(255,145,77,0.2));
+  clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%, 10% 50%);
+}
+
+/* Number & title */
+.bv-number {
+  font: 700 16px/1 "Poppins", Arial;
+  color: #ff914d;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.bv-title {
+  font: 600 22px/1.3 "Poppins", Arial;
+  color: #333;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.bv-title::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #ff914d;
+  transition: width 0.3s ease;
+}
+
+.bv-card:hover .bv-title::after {
+  width: 100%;
+}
+
+.bv-description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 15px 0 20px;
+  padding: 0 10px;
+}
+
+.bv-learn-more {
+  display: inline-block;
+  color: #ff914d;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 3px;
+  transition: all 0.3s ease;
+}
+
+.bv-learn-more::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff914d;
+  transition: width 0.3s ease;
+}
+
+.bv-learn-more:hover {
+  letter-spacing: 0.5px;
+}
+
+.bv-learn-more:hover::after {
+  width: 100%;
+}
+
+/* ---------- KEYFRAMES ---------- */
+@keyframes slideUp {
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ---------- STAGGERED DELAYS ---------- */
+.bv-card:nth-child(1) { --delay: .0s; }
+.bv-card:nth-child(2) { --delay: .15s; }
+.bv-card:nth-child(3) { --delay: .30s; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .business-verticals {
+    padding: 60px 20px;
+  }
+  
+  .business-verticals h2 {
+    font-size: 28px;
+  }
+  
+  .verticals-wrapper {
+    gap: 30px;
+  }
+  
+  .bv-card {
+    width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-verticals {
+    padding: 50px 15px;
+  }
+  
+  .business-verticals h2 {
+    font-size: 24px;
+  }
+  
+  .section-subtitle {
+    font-size: 14px;
+  }
+}
 
 
 .tree-container {
@@ -852,6 +1158,8 @@ span{
       padding: 30px 20px;
     }
   }
+
+  
 </style>
 
 <!-- Hero Section -->
@@ -867,8 +1175,14 @@ span{
   <div class="about-text">
     <h2 id="about-heading">About <span>ARAX</span></h2>
     <p>Arax People Services India Pvt Ltd is a leading provider of private security solutions, headquartered in Madhapur, Hyderabad. Founded with the mission to protect lives and assets with utmost professionalism and integrity, we offer a comprehensive range of security services tailored to meet the unique needs of residential communities, corporate offices, commercial establishments, construction sites, and industrial operations.</p>
-    <p><strong>ARAX</strong> strength lies in our highly trained personnel, including security guards, field supervisors, and operations managers, who are selected after rigorous background verification and trained in access control, emergency response, surveillance monitoring, and customer service.</p>
-    <p>At Arax People Services, we combine modern security technologies with human intelligence to deliver real-time protection and peace of mind. Whether it's ensuring 24x7 security presence or managing complex event security logistics, we handle every assignment with precision and care.</p>
+      <p><strong>Established - 2025:</strong> We understand our customers and their businesses well and we are committed to perform. We help assess the risks they face now and, in the future, so that we provide top class tailored solutions that stop financial, human, and brand losses.</p>
+  
+  <p><strong>Key Strengths</strong></p>
+  <ul>
+    <li><strong>Innovative Solutions:</strong> We specialize in providing cutting-edge services designed to meet the unique needs of each client.</li>
+    <li><strong>Client-centric Approach:</strong> Our deep understanding of client businesses enables us to offer world-class solutions that minimize financial, human, and brand-related risks.</li>
+    {% comment %} <p><strong>ARAX</strong> strength lies in our highly trained personnel, including security guards, field supervisors, and operations managers, who are selected after rigorous background verification and trained in access control, emergency response, surveillance monitoring, and customer service.</p>
+    <p>At Arax People Services, we combine modern security technologies with human intelligence to deliver real-time protection and peace of mind. Whether it's ensuring 24x7 security presence or managing complex event security logistics, we handle every assignment with precision and care.</p> {% endcomment %}
   </div>
 </section>
 
@@ -895,6 +1209,70 @@ span{
       <i class="fas fa-users"></i>
       <h3>Customer Focus</h3>
       <p>Tailoring solutions for every client's unique requirements.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Business Verticals Section -->
+<section class="business-verticals">
+  <div class="section-header">
+    <h2><span>ARAX</span> Business Verticals</h2>
+    <p class="section-subtitle">Comprehensive solutions tailored to your business needs</p>
+
+  <div class="verticals-wrapper">
+    <!-- Card 01 -->
+    <div class="bv-card">
+      <div class="card-corner"></div>
+      <div class="card-corner"></div>
+      <div class="card-corner"></div>
+      <div class="card-corner"></div>
+      <div class="bv-number">01</div>
+      <h3 class="bv-title">Security Services</h3>
+      <div class="bv-ribbon">
+        <div class="ribbon-inner"></div>
+      </div>
+      <div class="bv-img">
+        <img src="{% static 'images/about-security.png' %}" alt="Security Services">
+      </div>
+      <p class="bv-description">Comprehensive protection solutions for your business and assets</p>
+     
+    </div>
+
+    <!-- Card 02 -->
+    <div class="bv-card">
+      <div class="card-corner"></div>
+      <div class="card-corner"></div>
+      <div class="card-corner"></div>
+      <div class="card-corner"></div>
+      <div class="bv-number">02</div>
+      <h3 class="bv-title">Facility Management</h3>
+      <div class="bv-ribbon">
+        <div class="ribbon-inner"></div>
+      </div>
+      <div class="bv-img">
+        <img src="{% static 'images/about-business.jpg' %}" alt="Facility Management">
+      </div>
+      <p class="bv-description">Streamlined operations and maintenance for optimal facility performance</p>
+      
+    </div>
+
+    <!-- Card 03 -->
+    <div class="bv-card">
+      <div class="card-corner"></div>
+      <div class="card-corner"></div>
+      <div class="card-corner"></div>
+      <div class="card-corner"></div>
+      <div class="bv-number">03</div>
+      <h3 class="bv-title">Staffing Solutions</h3>
+      <div class="bv-ribbon">
+        <div class="ribbon-inner"></div>
+      </div>
+      <div class="bv-img">
+        <img src="{% static 'images/about-security2.png' %}" alt="Staffing Solutions">
+      </div>
+      <p class="bv-description">Tailored workforce solutions to meet your organizational needs</p>
+     
     </div>
   </div>
 </section>
@@ -941,6 +1319,7 @@ span{
     </div>
   </div>
 </section>
+
 
 <section class="org-structure" role="region" aria-labelledby="org-structure-heading">
   <h2 id="org-structure-heading"><span>ARAX</span> Organization Structure</h2>
