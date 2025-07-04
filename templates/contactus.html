@@ -117,7 +117,7 @@
   }
 
   .contact-info{
-    background: #333;
+    background:#dceeff;
   }
   .contact-info, .contact-form {
     /* background: #fff; */
@@ -147,7 +147,7 @@
   .contact-info h2 {
     font-size: 28px;
     margin-bottom: 20px;
-    color: #fff;
+    color: #333;
   }
 
   .contact-info h2 span {
@@ -162,7 +162,7 @@
 
   .contact-info .info-item i {
     font-size: 20px;
-    color: #ff914d;
+    color:#608fc3;
     margin-right: 15px;
     margin-top: 4px;
   }
@@ -173,20 +173,20 @@
 
   .contact-info .info-item h3 {
     font-size: 18px;
-    color: #fff;
+    color: #333;
     margin-bottom: 5px;
   }
 
   .contact-info .info-item p, .contact-info .info-item a {
     font-size: 16px;
-    color: #cbc4c4;
+    color: #333;
     line-height: 1.6;
     margin: 0;
     text-decoration: none;
   }
 
   .contact-info .info-item a:hover {
-    color: #ff914d;
+    color: #246aba;
   }
 
   .social-media {
@@ -200,14 +200,14 @@
   }
 
   .social-media a {
-    color: #ff914d;
+    color:#608fc3;
     font-size: 20px;
     margin-right: 15px;
     transition: color 0.3s ease;
   }
 
   .social-media a:hover {
-    color: #ff914d;
+    color:#053e7e;
   }
 
   /* Contact Form Styling */
@@ -218,7 +218,7 @@
   }
 
   .contact-form h2 span {
-    color: #ff914d;
+    color: #608fc3;
   }
 
   .contact-form form {
@@ -251,7 +251,7 @@
 
   .contact-form input:focus,
   .contact-form textarea:focus {
-    border-color: #ff914d;
+    border-color: #608fc3;
     outline: none;
   }
 
@@ -261,7 +261,7 @@
   }
 
   .contact-form button {
-    background-color: #ff914d;
+    background-color:#608fc3;
     color: white;
     padding: 12px 30px;
     border: none;
@@ -273,7 +273,7 @@
   }
 
   .contact-form button:hover {
-    background-color: #ff914d;
+    background-color: #0c59b1;
   }
 
   .contact-form .message {
@@ -295,7 +295,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, #ff914d, transparent);
+    background: radial-gradient(circle,#dceeff, transparent);
     animation: glow 4s infinite ease-in-out;
   }
 
@@ -397,7 +397,7 @@
 
 <!-- Banner Section -->
 <section class="banner" role="banner">
-  <h1>Contact &nbsp;<span> ARAX </span>&nbsp; People Services </h1>
+  <h1>Contact &nbsp; <span style="color: #fff;">A<span>RA</span>X</span>&nbsp; People Services </h1>
 </section>
 
 <!-- Contact Section -->
@@ -405,7 +405,7 @@
   <div class="contact-container">
     <!-- Contact Info -->
     <div class="contact-info">
-      <h2 id="contact-heading">Get in Touch with <span>ARAX</span> Team</h2>
+      <h2 id="contact-heading">Get in Touch with <span style="color: #222;">A<span>RA</span>X</span> Team</h2>
       <div class="info-item">
         <i class="fas fa-map-marker-alt"></i>
         <div>
@@ -445,7 +445,7 @@
         </div>
       </div>
       <div class="social-media">
-        <h3 style="color: #fff;">Follow Our Social Media</h3>
+        <h3 style="color: #608fc3;">Follow Our Social Media</h3>
         <a href="https://wa.me/919618299458" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         <a href="https://www.linkedin.com/company/arax-security-services-and-management/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       </div>
@@ -453,7 +453,7 @@
 
     <!-- Contact Form -->
     <div class="contact-form">
-      <h2 style="color: #ff914d;">Send Us a Message</h2>
+      <h2 style="color:#608fc3;">Send Us a Message</h2>
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

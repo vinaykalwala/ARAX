@@ -22,7 +22,7 @@
     .top-bar p,
     .top-bar a {
       margin: 5px 0;
-      color: #333;
+      color:#608fc3;
       font-weight: 600;
       text-decoration: none;
     }
@@ -56,9 +56,15 @@
       text-align: left;
       white-space: nowrap;
     }
+td:nth-child(4), /* Subject column */
+td:nth-child(5)  /* Message column */ {
+  white-space: normal;
+  word-break: break-word;
+  max-width: 250px; /* Optional: restrict width for better layout */
+}
 
     th {
-      background-color: #333;
+      background-color:#608fc3;
       color: white;
     }
 
@@ -70,7 +76,7 @@
       display: inline-block;
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #ff914d;
+      background-color:#608fc3;
       color: white;
       text-decoration: none;
       font-weight: 600;
@@ -79,7 +85,7 @@
     }
 
     .back-home:hover {
-      background-color: #d89e00;
+      background-color:#3e79bd;
     }
   </style>
 </head>
