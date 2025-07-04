@@ -110,10 +110,11 @@
     margin-bottom: 1.5rem;
     line-height: 1.6;
     animation: fadeInUp 1s ease-out 0.4s both;
+    color: white;
   }
 
   .btn-orange {
-    background-color: #ff914d;
+    background-color: #608fc3;
     color: white;
     border: none;
     padding: 0.8rem 1.8rem;
@@ -128,7 +129,7 @@
   }
 
   .btn-orange:hover {
-    background-color: rgb(250, 124, 46);
+    background-color: #4a73a3;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.25);
   }
@@ -158,7 +159,7 @@
     background: white;
     border-radius: 0.9rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-left: 5px solid #ff914d;
+    border-left: 5px solid #608fc3;
     transition: all 0.3s ease;
     animation: fadeInUp 1s ease-out;
   }
@@ -243,6 +244,7 @@
     margin-bottom: 0.9rem;
     position: relative;
     display: inline-block;
+    color: black;
   }
 
   .section-title h2 span {
@@ -316,21 +318,23 @@
   }
 
   .service-card-content h3 {
-    color: #ff914d;
+    color: #608fc3;
     font-size: clamp(1.2rem, 3vw, 1.4rem);
     margin-bottom: 0.9rem;
     position: relative;
     padding-bottom: 0.6rem;
   }
 
-  .service-card-content h3::after {
+  .service-card-content h3::after
+
+ {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 2.5rem;
     height: 2px;
-    background: #ff914d;
+    background: #608fc3;
   }
 
   .service-card-content p {
@@ -356,7 +360,7 @@
     content: "\f00c";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    color: #ff914d;
+    color: #608fc3;
     position: absolute;
     left: 0;
   }
@@ -364,7 +368,7 @@
   /* Features Section */
   .housekeeping-features {
     padding: 5.5rem 1rem;
-    background: linear-gradient(to right, #222222, #111111);
+    background: linear-gradient(to right, #608fc3, #dceeff);
     color: white;
     position: relative;
   }
@@ -393,6 +397,10 @@
     z-index: 1;
   }
 
+  .housekeeping-features p {
+    color: #333;
+  }
+
   .features-container {
     margin: 0 auto;
     display: grid;
@@ -416,14 +424,14 @@
 
   .feature-item:hover {
     transform: translateX(10px);
-    border-left: 5px solid #ff914d;
+    border-left: 5px solid #608fc3;
     background: white;
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
   }
 
   .feature-icon {
     font-size: 2.25rem;
-    color: #ff914d;
+    color: #608fc3;
     margin-bottom: 0.9rem;
   }
 
@@ -461,7 +469,7 @@
     border-radius: 0.75rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
-    border-top: 5px solid #ff914d;
+    border-top: 5px solid #608fc3;
     animation: fadeInUp 1s ease-out;
   }
 
@@ -478,7 +486,7 @@
   .step-number {
     width: 3.75rem;
     height: 3.75rem;
-    background: #ff914d;
+    background: #608fc3;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -492,7 +500,7 @@
 
   .process-step:hover .step-number {
     transform: scale(1.1);
-    box-shadow: 0 0 0 5px rgba(249, 176, 0, 0.3);
+    box-shadow: 0 0 0 5px rgba(96, 143, 195, 0.3);
   }
 
   .process-step h3 {
@@ -510,7 +518,7 @@
   /* CTA Section */
   .housekeeping-cta {
     padding: 4.5rem 1rem;
-    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "images/housekeeping-cta-bg.jpg" %}') no-repeat center center/cover;
+    background: linear-gradient(to right, #608fc3, #dceeff), url('{% static "images/housekeeping-cta-bg.jpg" %}') no-repeat center center/cover;
     color: white;
     text-align: center;
     position: relative;
@@ -537,10 +545,10 @@
   }
 
   .cta-content {
-    background: rgba(0, 0, 0, 0.7);
+    background: #dceeff;
     padding: 1.25rem;
     border-radius: 1.25rem;
-    border: 2px solid #ff914d;
+    border: 2px solid #608fc3;
     transition: all 0.3s ease;
   }
 
@@ -549,12 +557,17 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
 
+  .cta-content p {
+    color: #333;
+  }
+
   .cta-heading {
     font-size: clamp(1.4rem, 4vw, 1.6rem);
     margin-bottom: 1.25rem;
     position: relative;
     padding-bottom: 0.9rem;
     text-align: center;
+    color: black !important;
   }
 
   .cta-heading span {
@@ -587,14 +600,14 @@
   }
 
   .yellow-bg {
-    background: #ff914d;
-    color: #000;
+    background: #608fc3;
+    color: #fff;
   }
 
   .transparent-bg {
-    background: rgba(249, 176, 0, 0.2);
-    color: #fff;
-    border: 1px solid #ff914d;
+    background: rgba(220, 238, 255, 0.2);
+    color: black;
+    border: 1px solid #608fc3;
   }
 
   .cta-box h3 {
@@ -613,13 +626,14 @@
     font-size: clamp(0.95rem, 3vw, 1.1rem);
     line-height: 1.7;
     margin-bottom: 1.5rem;
+    color: #333;
   }
 
   .cta-offer {
-    background: rgba(249, 176, 0, 0.1);
+    background: rgba(220, 238, 255, 0.1);
     padding: 0.9rem;
     border-radius: 0.6rem;
-    border-left: 4px solid #ff914d;
+    border-left: 4px solid #608fc3;
     animation: pulse 2s ease infinite;
   }
 
@@ -627,10 +641,11 @@
     font-style: italic;
     margin: 0;
     font-size: clamp(0.85rem, 3vw, 0.95rem);
+    color: #333;
   }
 
   .cta-offer i {
-    color: #ff914d;
+    color: #608fc3;
     margin-right: 0.3rem;
   }
 
@@ -649,12 +664,12 @@
 
   .btn-orange.btn-outline {
     background: transparent;
-    border: 2px solid #ff914d;
-    color: #ff914d;
+    border: 2px solid #608fc3;
+    color: #608fc3;
   }
 
   .btn-orange.btn-outline:hover {
-    background: #ff914d;
+    background: #4a73a3;
     color: white;
   }
 
@@ -705,15 +720,14 @@
       max-width: 81.25rem;
     }
   }
-  span{
-        font-size: 40px;
-
+  span {
+    font-size: 40px;
   }
 </style>
 
 <!-- Hero Section -->
 <section class="housekeeping-hero">
-  <h1><span>ARAX </span> &nbsp; Professional Housekeeping  Services</h1>
+  <h1><span>ARAX </span> Professional Housekeeping Services</h1>
   <p>DYNAMIC SECURITY & FACILITY MANAGEMENT is committed to deliver world class quality services in the areas of Housekeeping, Security Service and Out Sourcing.</p>
   <a href="{% url 'contact_us' %}" class="btn-orange">Request a Quote</a>
 </section>
@@ -722,7 +736,7 @@
 <div class="housekeeping-overview-wrapper">
   <section class="housekeeping-overview">
     <div class="housekeeping-overview-text">
-      <h2><span>ARAX </span>Housekeeping  Philosophy</h2>
+      <h2><span>ARAX </span>Housekeeping Philosophy</h2>
       <p>At Arax People Services, we believe true cleanliness comes from a combination of highly trained personnel, advanced cleaning technology, and proactive maintenance strategies. Our approach goes beyond traditional cleaning to create comprehensive hygiene ecosystems.</p>
       <p>Each of our housekeeping professionals undergoes rigorous training and continuous evaluation to ensure they meet our exacting standards. We combine this human element with state-of-the-art cleaning equipment and eco-friendly products.</p>
       <p>Whether you need commercial cleaning, industrial maintenance, or residential housekeeping, we develop customized solutions that address your specific needs and schedule.</p>
@@ -737,7 +751,7 @@
 <!-- Services Grid -->
 <section class="housekeeping-services">
   <div class="section-title">
-    <h2> <span>ARAX </span>Housekeeping Services </h2>
+    <h2><span>ARAX </span>Housekeeping Services</h2>
     <p>Comprehensive cleaning solutions designed for various sectors and needs</p>
   </div>
 
@@ -837,15 +851,15 @@
       </div>
     </div>
 
-   
-
     <!-- Restroom Hygiene Management -->
     <div class="service-card">
       <div class="service-card-image">
         <img src="{% static 'clean1.png' %}" alt="Restroom Hygiene Management">
       </div>
       <div class="service-card-content">
-        <h3>Restroom Hygiene Management</h3>
+        <h3>Rest预约
+
+Restroom Hygiene Management</h3>
         <p>Maintain fresh and sanitary restrooms with scheduled cleaning routines.</p>
         <ul class="service-features">
           <li>Scheduled restroom cleaning and disinfection</li>
@@ -857,17 +871,14 @@
         <a href="{% url 'contact_us' %}" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">Learn More</a>
       </div>
     </div>
-
-  
   </div>
 </section>
-
 
 <!-- Features Section -->
 <section class="housekeeping-features">
   <div class="section-title">
-    <h2>Why Choose <span>ARAX</span> Housekeeping </h2>
-    <p style="color: #ccc;">Our commitment to excellence sets us apart in the cleaning industry</p>
+    <h2>Why Choose <span>ARAX</span> Housekeeping</h2>
+    <p style="color: #333;">Our commitment to excellence sets us apart in the cleaning industry</p>
   </div>
   
   <div class="features-container">
@@ -924,7 +935,7 @@
 <!-- Process Section -->
 <section class="housekeeping-process">
   <div class="section-title">
-    <h2><span>ARAX </span>Cleaning Process </h2>
+    <h2><span>ARAX </span>Cleaning Process</h2>
     <p>How we deliver comprehensive cleaning services tailored to your needs</p>
   </div>
   
@@ -985,16 +996,15 @@
         <div class="cta-column text-center">
           <div class="cta-message">
             <p>Don't compromise on cleanliness. Our housekeeping experts are standing by to assess your needs and recommend the perfect cleaning solution for your premises.</p>
-           <a href="tel:+919618299458" class="btn-orange">
-  <i class="fas fa-phone-alt"></i> Call Now
-</a>
-<a href="mailto:araxmanagementservices@gmail.com" class="btn-orange btn-outline">
-  <i class="fas fa-envelope"></i> Email Us
-</a>
-
+            <a href="tel:+919618299458" class="btn-orange">
+              <i class="fas fa-phone-alt"></i> Call Now
+            </a>
+            <a href="mailto:araxmanagementservices@gmail.com" class="btn-orange btn-outline">
+              <i class="fas fa-envelope"></i> Email Us
+            </a>
           </div>
-<br>
-<br>
+          <br>
+          <br>
           <div class="cta-offer">
             <p>
               <i class="fas fa-star"></i>

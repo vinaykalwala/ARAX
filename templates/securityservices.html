@@ -35,8 +35,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
-            url('{% static "saluteguard.jpeg" %}') no-repeat center center/cover;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
+                url('{% static "saluteguard.jpeg" %}') no-repeat center center/cover;
     color: white;
     padding: 40px 20px 160px;
     margin-bottom: 60px;
@@ -44,18 +44,6 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     overflow: hidden;
     animation: fadeInUp 1s ease-out;
   }
-
-  {% comment %} .security-hero::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: white;
-    transform: skewY(-3deg);
-    z-index: 1;
-  } {% endcomment %}
 
   .security-hero::after {
     content: '';
@@ -78,40 +66,39 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
   }
 
   .security-hero h1 span {
-  color: #ff914d;
-  font-size: 60px;
-  text-shadow: 0 0 12px rgba(249, 176, 0, 0.6);
-  animation: lubdubGlow 2s ease-in-out infinite;
-  display: inline-block;
-}
+    color: #ff914d;
+    font-size: 60px;
+    text-shadow: 0 0 12px rgba(255, 145, 77, 0.6);
+    animation: lubdubGlow 2s ease-in-out infinite;
+    display: inline-block;
+  }
 
-@keyframes lubdubGlow {
-  0% {
-    transform: scale(1);
-    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
+  @keyframes lubdubGlow {
+    0% {
+      transform: scale(1);
+      text-shadow: 0 0 8px rgba(255, 145, 77, 0.5);
+    }
+    15% {
+      transform: scale(1.2);
+      text-shadow: 0 0 25px rgba(255, 145, 77, 0.9);
+    }
+    30% {
+      transform: scale(1);
+      text-shadow: 0 0 10px rgba(255, 145, 77, 0.5);
+    }
+    45% {
+      transform: scale(1.1);
+      text-shadow: 0 0 20px rgba(255, 145, 77, 0.7);
+    }
+    60% {
+      transform: scale(1);
+      text-shadow: 0 0 8px rgba(255, 145, 77, 0.5);
+    }
+    100% {
+      transform: scale(1);
+      text-shadow: 0 0 6px rgba(255, 145, 77, 0.3);
+    }
   }
-  15% {
-    transform: scale(1.2);
-    text-shadow: 0 0 25px rgba(249, 176, 0, 0.9);
-  }
-  30% {
-    transform: scale(1);
-    text-shadow: 0 0 10px rgba(249, 176, 0, 0.5);
-  }
-  45% {
-    transform: scale(1.1);
-    text-shadow: 0 0 20px rgba(249, 176, 0, 0.7);
-  }
-  60% {
-    transform: scale(1);
-    text-shadow: 0 0 8px rgba(249, 176, 0, 0.5);
-  }
-  100% {
-    transform: scale(1);
-    text-shadow: 0 0 6px rgba(249, 176, 0, 0.3);
-  }
-}
-
 
   .security-hero p {
     font-size: 20px;
@@ -119,10 +106,11 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     margin-bottom: 30px;
     line-height: 1.6;
     animation: fadeInUp 1s ease-out 0.4s both;
+    color: white;
   }
 
   .btn-orange {
-    background-color: #ff914d;
+    background-color: #608fc3;
     color: white;
     border: none;
     padding: 14px 32px;
@@ -135,12 +123,12 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
   }
 
   .btn-orange:hover {
-    background-color:rgb(250, 124, 46);
+    background-color: #4a73a3;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.25);
   }
 
-  /* Updated Security Overview Section with before/after */
+  /* Security Overview Section */
   .security-overview-wrapper {
     position: relative;
     padding: 0px 0;
@@ -160,7 +148,6 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     z-index: 2;
   }
 
-
   .security-overview-text {
     flex: 1;
     min-width: 300px;
@@ -168,7 +155,7 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     background: white;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-left: 5px solid #ff914d;
+    border-left: 5px solid #608fc3;
     transition: all 0.3s ease;
     animation: fadeInUp 1s ease-out;
   }
@@ -185,7 +172,6 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     position: relative;
     padding-bottom: 15px;
   }
-
 
   .security-overview-text h2 span {
     color: #ff914d;
@@ -224,7 +210,7 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     transform: scale(1.05);
   }
 
-  /* Security Services Grid with before/after */
+  /* Security Services Grid */
   .security-services {
     padding: 85px 20px;
     background: #f8f8f8;
@@ -243,18 +229,6 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     z-index: 1;
   }
 
-  {% comment %} .security-services::after {
-    content: '';
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: #222;
-    transform: skewY(3deg);
-    z-index: 1;
-  } {% endcomment %}
-
   .section-title {
     text-align: center;
     margin-bottom: 60px;
@@ -266,8 +240,8 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     margin-bottom: 15px;
     position: relative;
     display: inline-block;
+    color: black !important;
   }
-
 
   .section-title h2 span {
     color: #ff914d;
@@ -328,8 +302,6 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     transition: all 0.3s ease;
   }
 
-  
-
   .service-card-image img {
     width: 100%;
     height: 100%;
@@ -346,7 +318,7 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
   }
 
   .service-card-content h3 {
-    color: #ff914d;
+    color: #608fc3;
     font-size: 22px;
     margin-bottom: 15px;
     position: relative;
@@ -360,7 +332,7 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     left: 0;
     width: 40px;
     height: 2px;
-    background: #ff914d;
+    background: #608fc3;
   }
 
   .service-card-content p {
@@ -384,15 +356,15 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     content: "\f00c";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    color: #ff914d;
+    color: #608fc3;
     position: absolute;
     left: 0;
   }
 
-  /* Updated Security Features Section */
+  /* Security Features Section */
   .security-features {
     padding: 90px 20px;
-    background: linear-gradient(to right, #222222, #111111);
+    background: linear-gradient(to right, #608fc3, #dceeff);
     color: white;
     position: relative;
   }
@@ -421,6 +393,10 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     z-index: 1;
   }
 
+  .security-features p {
+    color: #333;
+  }
+
   .features-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -429,370 +405,308 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     gap: 40px;
   }
 
-.feature-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  padding: 30px 25px;
-  border-radius: 12px;
-  background: white;
-  transition: all 0.4s ease;
-  border-left: 5px solid transparent;
-  position: relative;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-}
-
-.feature-item:hover {
-  transform: translateX(10px);
-  border-left: 5px solid #ff914d;
-  background: white;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-
-.feature-icon {
-  font-size: 36px;
-  color: #ff914d;
-  margin-bottom: 15px;
-}
-
-.feature-item h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: black;
-}
-
-.feature-item p {
-  color: black;
-  line-height: 1.7;
-  font-size: 15px;
-}
-
-
- /* Security Process Section */
-.security-process {
-  padding: 20px;
-  max-width: 1600px;
-  margin: 0 auto;
-}
-
-.process-steps {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  text-align: center;
-  gap: 30px;
-  margin-top: 50px;
-}
-
-.process-step {
-  flex: 1 1 220px;
-  max-width: 250px;
-  text-align: center;
-  position: relative;
-  padding-bottom: 40px;
-  box-sizing: border-box;
-}
-
-.process-step:not(:last-child):after {
-  content: "";
-  position: absolute;
-  top: 40px;
-  right: -30px;
-  width: 60px;
-  height: 2px;
-  background: #ff914d;
-}
-
-/* Step Circle */
-.step-number {
-  width: 80px;
-  height: 80px;
-  background: #ff914d;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  font-weight: bold;
-  margin: 0 auto 20px;
-}
-
-/* Step Titles and Descriptions */
-.process-step h3 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #222;
-}
-
-.process-step p {
-  color: #666;
-  line-height: 1.6;
-  font-size: 16px;
-  padding: 0 10px;
-}
-
-/* Responsive Layout */
-@media (max-width: 992px) {
-  .process-step:not(:last-child):after {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .process-steps {
+  .feature-item {
+    display: flex;
     flex-direction: column;
-    gap: 40px;
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
+    padding: 30px 25px;
+    border-radius: 12px;
+    background: white;
+    transition: all 0.4s ease;
+    border-left: 5px solid transparent;
+    position: relative;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  .feature-item:hover {
+    transform: translateX(10px);
+    border-left: 5px solid #608fc3;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .feature-icon {
+    font-size: 36px;
+    color: #608fc3;
+    margin-bottom: 15px;
+  }
+
+  .feature-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  .feature-item p {
+    color: black;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* Security Process Section */
+  .security-process {
+    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
+    margin-top: 50px;
   }
 
   .process-step {
-    max-width: 100%;
+    flex: 1 1 220px;
+    max-width: 250px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+  }
+
+  .process-step:not(:last-child):after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    right: -30px;
+    width: 60px;
+    height: 2px;
+    background: #608fc3;
   }
 
   .step-number {
-    width: 70px;
-    height: 70px;
-    font-size: 24px;
+    width: 80px;
+    height: 80px;
+    background: #608fc3;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+  }
+
+  .process-step:hover .step-number {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 5px rgba(96, 143, 195, 0.3);
   }
 
   .process-step h3 {
-    font-size: 18px;
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #222;
   }
 
   .process-step p {
-    font-size: 15px;
-  }
-}
-
-  /* Enhanced CTA Section */
- /* Base CTA Styles */
-.security-cta {
-  padding: 70px 20px;
-  background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "security-cta-bg.jpg" %}') no-repeat center center/cover;
-  color: white;
-  text-align: center;
-  position: relative;
-}
-
-.security-cta::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: white;
-  transform: skewY(-3deg);
-  z-index: 1;
-}
-
-.cta-container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 20px;
-  position: relative;
-  z-index: 2;
-  animation: fadeInUp 1s ease-out;
-}
-
-.cta-content {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px 40px;
-  border-radius: 20px;
-  border: 2px solid #ff914d;
-  transition: all 0.3s ease;
-}
-
-.cta-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.cta-heading {
-  font-size: 28px;
-  margin-bottom: 20px;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 15px;
-}
-
-.cta-heading span {
-  color: #ff914d;
-    font-size: 40px;
-}
-
-.cta-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.cta-column {
-  flex: 1;
-  min-width: 300px;
-}
-
-.cta-box {
-  padding: 30px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
-
-.cta-box:hover {
-  transform: translateY(-5px);
-}
-
-.yellow-bg {
-  background: #ff914d;
-  color: #000;
-}
-
-.transparent-bg {
-  background: rgba(249, 176, 0, 0.2);
-  color: #fff;
-  border: 1px solid #ff914d;
-}
-
-.cta-box h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cta-box h3 i {
-  margin-right: 10px;
-}
-
-.cta-message p {
-  font-size: 18px;
-  line-height: 1.7;
-  margin-bottom: 25px;
-}
-
-.cta-offer {
-  background: rgba(249, 176, 0, 0.1);
-  padding: 15px;
-  border-radius: 10px;
-  border-left: 4px solid #ff914d;
-  animation: pulse 2s ease infinite;
-}
-
-.cta-offer p {
-  font-style: italic;
-  margin: 0;
-}
-
-.cta-offer i {
-  color: #ff914d;
-  margin-right: 5px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.btn-orange {
-  background-color: #ff914d;
-  color: white;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 18px;
-  margin: 10px;
-  display: inline-block;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.btn-orange:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(249, 176, 0, 0.4);
-}
-
-.btn-orange.btn-outline {
-  background: transparent;
-  border: 2px solid #ff914d;
-}
-
-.btn-orange.btn-outline:hover {
-  background: #ff914d;
-}
-
-/* ✅ Responsive Media Queries */
-@media (max-width: 992px) {
-  .cta-heading {
-    font-size: 30px;
-  }
-
-  .cta-message p {
+    color: #666;
+    line-height: 1.6;
     font-size: 16px;
+    padding: 0 10px;
   }
 
-  .btn-orange {
-    font-size: 16px;
-    padding: 14px 28px;
+  /* CTA Section */
+  .security-cta {
+    padding: 70px 20px;
+    background: linear-gradient(to right, #608fc3, #dceeff), url('{% static "security-cta-bg.jpg" %}') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    position: relative;
   }
-}
 
-@media (max-width: 768px) {
-  .cta-content {
+  .security-cta::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .cta-container {
+    max-width: 1300px;
+    margin: 0 auto;
     padding: 20px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .cta-content {
+    background: #dceeff;
+    padding: 20px 40px;
+    border-radius: 20px;
+    border: 2px solid #608fc3;
+    transition: all 0.3s ease;
+  }
+
+  .cta-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .cta-content p {
+    color: #333;
+  }
+
+  .cta-heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+    color: black !important;
+  }
+
+
+  .cta-heading span {
+    color: #ff914d;
+    font-size: 40px;
   }
 
   .cta-flex {
-    flex-direction: column;
-    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
   }
 
   .cta-column {
-    width: 100%;
-    min-width: unset;
-  }
-
-  .cta-box h3 {
-    font-size: 20px;
-  }
-
-  .cta-message p {
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .cta-heading {
-    font-size: 26px;
-  }
-
-  .btn-orange {
-    font-size: 15px;
-    padding: 12px 24px;
+    flex: 1;
+    min-width: 300px;
   }
 
   .cta-box {
-    padding: 20px;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .cta-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .yellow-bg {
+    background: #608fc3;
+    color: #000;
+  }
+
+  .yellow-bg h3 {
+    color: white;
+  }
+
+  .transparent-bg {
+    background: rgba(220, 238, 255, 0.2);
+    color: #fff;
+    border: 1px solid #608fc3;
+  }
+
+  .transparent-bg h3 {
+    color: black;
   }
 
   .cta-box h3 {
-    font-size: 18px;
+    font-size: 22px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-}
 
-  /* Responsive Styles */
+  .cta-box h3 i {
+    margin-right: 10px;
+  }
+
+  .cta-message p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: #333;
+  }
+
+  .cta-offer {
+    background: rgba(220, 238, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #608fc3;
+    animation: pulse 2s ease infinite;
+  }
+
+  .cta-offer p {
+    font-style: italic;
+    margin: 0;
+    color: #333;
+  }
+
+  .cta-offer i {
+    color: #608fc3;
+    margin-right: 5px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .btn-orange {
+    background-color: #608fc3;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-orange:hover {
+    background-color: #4a73a3;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(74, 115, 163, 0.4);
+  }
+
+  .btn-orange.btn-outline {
+    background: transparent;
+    border: 2px solid #608fc3;
+    color: #608fc3;
+  }
+
+  .btn-orange.btn-outline:hover {
+    background: #4a73a3;
+    color: white;
+  }
+
+  /* Responsive Media Queries */
   @media (max-width: 992px) {
-    .security-hero h1 {
-      font-size: 36px;
+    .cta-heading {
+      font-size: 30px;
     }
-    
-    .process-step {
-      min-width: 150px;
+
+    .cta-message p {
+      font-size: 16px;
+    }
+
+    .btn-orange {
+      font-size: 16px;
+      padding: 14px 28px;
+    }
+
+    .process-step:not(:last-child):after {
+      display: none;
     }
   }
 
@@ -800,34 +714,93 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     .security-hero {
       padding: 100px 20px 120px;
     }
-    
+
     .security-hero h1 {
       font-size: 30px;
     }
-    
+
     .section-title h2 {
       font-size: 28px;
     }
-    
+
     .security-cta h2 {
       font-size: 28px;
     }
+
     .security-cta {
       padding: 80px 20px;
     }
-     .cta-content {
-      padding: 40px 20px;
+
+    .cta-content {
+      padding: 20px;
     }
-     
+
+    .cta-flex {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .cta-column {
+      width: 100%;
+      min-width: unset;
+    }
+
+    .cta-box h3 {
+      font-size: 20px;
+    }
+
+    .cta-message p {
+      font-size: 15px;
+    }
+
+    .process-steps {
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+    }
+
     .process-step {
-      min-width: 100%;
+      max-width: 100%;
+    }
+
+    .step-number {
+      width: 70px;
+      height: 70px;
+      font-size: 24px;
+    }
+
+    .process-step h3 {
+      font-size: 18px;
+    }
+
+    .process-step p {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cta-heading {
+      font-size: 26px;
+    }
+
+    .btn-orange {
+      font-size: 15px;
+      padding: 12px 24px;
+    }
+
+    .cta-box {
+      padding: 20px;
+    }
+
+    .cta-box h3 {
+      font-size: 18px;
     }
   }
 </style>
 
 <!-- Hero Section -->
 <section class="security-hero">
-  <h1><span>ARAX </span>&nbsp; Premium Security Solutions for Your Safety</h1>
+  <h1><span>ARAX </span> Premium Security Solutions for Your Safety</h1>
   <p>Comprehensive protection services backed by cutting-edge technology and highly trained professionals.</p>
   <a href="{% url 'contact_us' %}" class="btn-orange">Contact ARAX Team</a>
 </section>
@@ -951,7 +924,7 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
       </div>
     </div>
     
-    <!-- NEW: Cybersecurity Services -->
+    <!-- Cybersecurity Services -->
     <div class="service-card">
       <div class="service-card-image">
         <img src="{% static 'araxcyber.png' %}" alt="Cybersecurity Services">
@@ -972,11 +945,11 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
   </div>
 </section>
 
-<!-- Updated Security Features Section -->
+<!-- Security Features Section -->
 <section class="security-features">
   <div class="section-title">
     <h2>Why Choose <span>ARAX</span> Security Services</h2>
-    <p style="color: #ff914d"><strong>ARAX</strong> commitment to excellence sets us apart in the security industry</p>
+    <p style="color: #333;">Our commitment to excellence sets us apart in the security industry</p>
   </div>
   
   <div class="features-container">
@@ -984,7 +957,7 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
       <div class="feature-icon">
         <i class="fas fa-user-shield"></i>
       </div>
-      <h3> <strong>ARAX </strong> Vetted Professionals</h3>
+      <h3><span>ARAX </span> Vetted Professionals</h3>
       <p>Every team member undergoes comprehensive background checks, drug testing, and psychological evaluation.</p>
     </div>
     
@@ -1030,7 +1003,7 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
   </div>
 </section>
 
-<!-- Updated Security Process Section -->
+<!-- Security Process Section -->
 <section class="security-process">
   <div class="section-title">
     <h2><span>ARAX </span>Security Process</h2>
@@ -1070,7 +1043,7 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
   </div>
 </section>
 
-<!-- Enhanced CTA Section -->
+<!-- CTA Section -->
 <section class="security-cta">
   <div class="cta-container">
     <div class="cta-content">
@@ -1095,12 +1068,11 @@ background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
           <div class="cta-message">
             <p>Don't wait until it's too late. ARAX security experts are standing by to assess your needs and recommend the perfect solution for your home or business.</p>
             <a href="tel:+919618299458" class="btn-orange">
-  <i class="fas fa-phone-alt"></i> Call Now
-</a>
-<a href="mailto:araxmanagementservices@gmail.com" class="btn-orange btn-outline">
-  <i class="fas fa-envelope"></i> Email Us
-</a>
-
+              <i class="fas fa-phone-alt"></i> Call Now
+            </a>
+            <a href="mailto:araxmanagementservices@gmail.com" class="btn-orange btn-outline">
+              <i class="fas fa-envelope"></i> Email Us
+            </a>
           </div>
 
           <div class="cta-offer">
