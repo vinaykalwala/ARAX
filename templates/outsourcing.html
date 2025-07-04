@@ -10,7 +10,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-     background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "cleaningworker.png" %}');
+background: linear-gradient(to right, rgba(96, 143, 195, 0.2), rgba(96, 143, 195, 0.6)), url('{% static "cleaningworker.png" %}');
     color: white;
     padding: 120px 20px 140px;
     margin-bottom: 0;
@@ -85,7 +85,7 @@
   }
 
   .btn-orange {
-    background-color: #ff914d;
+    background-color:#608fc3;
     color: white;
     border: none;
     padding: 14px 32px;
@@ -100,7 +100,7 @@
   }
 
   .btn-orange:hover {
-    background-color: rgb(250, 124, 46);
+    background-color:#0b4d97;
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(249, 176, 0, 0.4);
   }
@@ -211,8 +211,8 @@
 }
 
 .tag-box {
-  background: #333;
-  color: #fff;
+  background:#dceeff;
+  color: #000040;
   padding: 12px 20px;
   border-radius: 25px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -224,7 +224,7 @@
 }
 
 .tag-box:hover {
-  background-color: #ff914d;
+  background-color:#608fc3;
   color: white;
   transform: translateY(-3px);
 }
@@ -240,7 +240,7 @@
 
   .services-section {
   padding: 10px 20px;
-  background: linear-gradient(135deg, #f9f9f9 0%, #f9f9f9 100%);
+  background: linear-gradient(135deg, #dceeff 0%, #dceeff 100%);
   position: relative;
   overflow: hidden;
   color: #222;
@@ -252,7 +252,7 @@
   position: absolute;
   width: 100%;
   height: 100px;
-  background: #f9f9f9;
+  background: #dceeff;
   z-index: 1;
 }
 
@@ -309,7 +309,7 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   text-align: center;
   transition: all 0.4s ease;
-  border-top: 4px solid #ff914d;
+  border-top: 4px solid #608fc3;
   position: relative;
   overflow: hidden;
 }
@@ -335,7 +335,7 @@
 
 .service-icon {
   font-size: 36px;
-  color: #ff914d;
+  color: #608fc3;
   margin-bottom: 15px;
   transition: transform 0.4s ease;
   z-index: 2;
@@ -374,13 +374,13 @@
 }
 
 .service-card ul li i {
-  color: #ff914d;
+  color: #608fc3;
   font-size: 14px;
 }
 
   .benefits-section {
     padding: 100px 20px;
-    background: linear-gradient(135deg,rgb(26, 33, 35) 0%, #000000 100%);
+    background:#608fc3;
     color: white;
     position: relative;
     overflow: hidden;
@@ -405,7 +405,7 @@
     left: 0;
     width: 100%;
     height: 100px;
-    background:   #ff914d;
+    background:#dceeff;
     transform: skewY(3deg);
     z-index: 1;
   }
@@ -425,18 +425,17 @@
   }
 
   .benefit-item {
-    background: rgba(255,255,255,0.1);
+    background:#fff;
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 30px;
     border: 1px solid rgba(255,255,255,0.1);
     transition: all 0.3s;
-    border: 2px solid  #ff914d;
+    border: 2px solid #608fc3;
   }
 
   .benefit-item:hover {
     transform: translateY(-5px);
-    background: rgba(255,255,255,0.15);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
 
@@ -452,24 +451,24 @@
   }
 
   .benefit-icon i {
-    color: #ff914d;
+    color:#608fc3;
     font-size: 24px;
   }
 
   .benefit-item h3 {
     font-size: 20px;
     margin-bottom: 15px;
-    color: white;
+    color: #333;
   }
 
   .benefit-item p {
-    color: rgba(255,255,255,0.8);
+    color: rgba(36, 33, 33, 0.8);
     line-height: 1.6;
   }
 
 .cta-section {
   padding: 100px 20px;
-  background: #ff914d; /* center background color */
+  background:#dceeff; /* center background color */
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -482,7 +481,7 @@
   position: absolute;
   width: 100%;
   height: 100px;
-  background: #ff914d; /* match with section background */
+  background:#dceeff; /* match with section background */
   z-index: -1;
 }
 
@@ -521,7 +520,7 @@
 }
 
 .btn-dark {
-  background-color: black;
+  background-color:#608fc3;
   color: white;
   border: none;
   padding: 14px 32px;
@@ -534,7 +533,7 @@
 }
 
 .btn-dark:hover {
-  color: rgb(250, 124, 46);
+  color:#000040;
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(249, 176, 0, 0.4);
   background-color: white;
@@ -712,7 +711,7 @@
   <div class="benefits-container">
     <div class="section-header">
       <h2>Why Choose <span>ARAX</span> Services</h2>
-      <p>We provide more than just manpower - we deliver peace of mind</p>
+      <p style="color: #dceeff;">We provide more than just manpower - we deliver peace of mind</p>
     </div>
     
     <div class="benefits-grid">
