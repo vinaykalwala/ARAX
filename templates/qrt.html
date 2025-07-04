@@ -58,7 +58,7 @@
 
   /* Base Styles */
   .btn-orange {
-    background-color: #ff914d;
+    background-color: rgb(51, 91, 137);
     color: white;
     border: none;
     padding: 14px 32px;
@@ -71,18 +71,18 @@
   }
 
   .btn-orange:hover {
-    background-color: rgb(250, 124, 46);
+    background-color: rgb(106, 163, 229);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.25);
   }
 
   .btn-orange.btn-outline {
     background: transparent;
-    border: 2px solid #ff914d;
+    border: 2px solid white;
   }
 
   .btn-orange.btn-outline:hover {
-    background: #ff914d;
+    background: rgb(117, 175, 240);
   }
 
   .section-title {
@@ -115,7 +115,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "araxqrtbanner3.png" %}') no-repeat center center/cover;
+    background: linear-gradient(to right, #f2f8ff99, #f2f8ff66), url('{% static "araxqrtbanner3.png" %}') no-repeat center center/cover;
     color: white;
     padding: 40px 20px 160px;
     margin-bottom: 60px;
@@ -186,7 +186,7 @@
     background: white;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-left: 5px solid #ff914d;
+    border-left: 5px solid #608fc3;
     transition: all 0.3s ease;
     animation: fadeInUp 1s ease-out;
   }
@@ -328,7 +328,7 @@
   }
 
   .service-card-content h3 {
-    color: #ff914d;
+    color:  #608fc3;
     font-size: 22px;
     margin-bottom: 15px;
     position: relative;
@@ -342,7 +342,7 @@
     left: 0;
     width: 40px;
     height: 2px;
-    background: #ff914d;
+    background:  #608fc3;
   }
 
   .service-card-content p {
@@ -370,7 +370,7 @@
     content: "\f00c";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    color: #ff914d;
+    color:  #608fc3;
     position: absolute;
     left: 0;
   }
@@ -378,7 +378,7 @@
   /* Security Features Section */
   .security-features {
     padding: 90px 20px;
-    background: linear-gradient(to right, #222222, #111111);
+    background:  linear-gradient(to right, #608fc3, #608fc3);
     color: white;
     position: relative;
     overflow: hidden;
@@ -433,14 +433,14 @@
 
   .feature-item:hover {
     transform: translateX(10px);
-    border-left: 5px solid #ff914d;
+    border-left: 5px solid  #608fc3;;
     background: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
 
   .feature-icon {
     font-size: 36px;
-    color: #ff914d;
+    color:  #608fc3;
     margin-bottom: 15px;
   }
 
@@ -482,7 +482,7 @@
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
-    border-top: 5px solid #ff914d;
+    border-top: 5px solid  #608fc3;;
     animation: fadeInUp 1s ease-out;
   }
 
@@ -500,7 +500,7 @@
   .step-number {
     width: 60px;
     height: 60px;
-    background: #ff914d;
+    background:  #608fc3;;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -514,7 +514,7 @@
 
   .process-step:hover .step-number {
     transform: scale(1.1);
-    box-shadow: 0 0 0 5px rgba(249, 176, 0, 0.3);
+    box-shadow: 0 0 0 5px rgb(117, 175, 240);;
   }
 
   .process-step h3 {
@@ -532,7 +532,7 @@
   /* CTA Section */
   .security-cta {
     padding: 70px 20px;
-    background: linear-gradient(to right, #000000e0, #000000a6), url('{% static "images/security-cta-bg.jpg" %}') no-repeat center center/cover;
+    background: linear-gradient(to right, #608fc3, #608fc3), url('{% static "images/security-cta-bg.jpg" %}') no-repeat center center/cover;
     color: white;
     text-align: center;
     position: relative;
@@ -559,12 +559,13 @@
     animation: fadeInUp 1s ease-out;
   }
 
-  .cta-content {
-    background: rgba(0, 0, 0, 0.7);
+    .cta-content {
+   background-color: rgb(126, 169, 210); /* #2c2c2c */;
     padding: 20px 40px;
     border-radius: 20px;
-    border: 2px solid #ff914d;
+    border: 2px solid #608fc3;
     transition: all 0.3s ease;
+    border: 2px solid white;
   }
 
   .cta-content:hover {
@@ -611,14 +612,14 @@
   }
 
   .yellow-bg {
-    background: #ff914d;
-    color: #000;
+     background: #608fc3;
+    border: 1px solid white;
+    color: #fff;
   }
 
   .transparent-bg {
-    background: rgba(249, 176, 0, 0.2);
-    color: #fff;
-    border: 1px solid #ff914d;
+     color: #fff;
+    border: 1px solid white;
   }
 
   .cta-box h3 {
@@ -639,11 +640,11 @@
     margin-bottom: 25px;
   }
 
-  .cta-offer {
-    background: rgba(249, 176, 0, 0.1);
+    .cta-offer {
+    background: #608fc3;
     padding: 15px;
     border-radius: 10px;
-    border-left: 4px solid #ff914d;
+    border-left: 4px solid #dceeff;
     animation: pulse 2s ease infinite;
   }
 
