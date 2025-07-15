@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{% block title %}Arax Management & Security Service{% endblock %}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" href="{% static 'araxlogo.png' %}" type="image/png">
+  <link rel="icon" href="{% static 'newlogo.jpeg' %}" type="image/png">
 
   <style>
     body {
@@ -15,7 +15,7 @@
     }
 
     .top-bar {
-      background-color:#608fc3;
+      background-color: #32322c;
       color: #fff;
       padding: 8px 20px;
       font-size: 14px;
@@ -51,7 +51,7 @@
     }
 
     .logo img {
-      height: 80px;
+      height: 50px;
       margin-right: 10px;
     }
 
@@ -102,7 +102,7 @@
     }
 
     nav ul li a:hover {
-      color:#608fc3;
+      color:#D4A649;
     }
 
     nav ul li .dropdown {
@@ -131,26 +131,41 @@
     }
 
     nav ul li .dropdown a:hover {
-      background-color:#608fc3;
+      background-color:#D4A649;
       color: white;
     }
 
     .appointment-btn {
-      background-color:#608fc3;
-      color: white;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      text-decoration: none;
-      font-size: 14px;
-    }
+  background: linear-gradient(90deg, #D4A649, #D4A649);
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 0 10px rgba(212, 166, 73, 0.5);
+  animation: glowPulse 2s infinite ease-in-out;
+  transition: all 0.3s ease;
+}
 
-    .appointment-btn:hover {
-      background-color:#1174e5;
-    }
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(212, 166, 73, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(246, 195, 80, 0.9), 0 0 40px rgba(246, 195, 80, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(212, 166, 73, 0.5);
+  }
+}
+
+.appointment-btn:hover {
+  background: linear-gradient(90deg, #f6c350, #e89f2b);
+}
+
 
     header .menu-toggle {
       display: none !important;
@@ -235,22 +250,38 @@
         margin-top: 10px;
       }
 
-      .mobile-contact a {
-        background-color: #608fc3;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 30px;
-        font-weight: bold;
-        display: inline-block;
-      }
+   .mobile-contact a {
+  background: linear-gradient(90deg, #D4A649, #D4A649);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(212, 166, 73, 0.5);
+  animation: glowPulse 2s infinite ease-in-out;
+  transition: all 0.3s ease;
+}
 
-      .mobile-contact a:hover {
-        background-color: #0e69d2;
-      }
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(212, 166, 73, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(246, 195, 80, 0.9), 0 0 40px rgba(246, 195, 80, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(212, 166, 73, 0.5);
+  }
+}
+
+.mobile-contact a:hover {
+  background: linear-gradient(90deg, #f6c350, #e89f2b);
+}
+
     }
-
     footer {
-      background-color:#608fc3;
+      background-color: #32322c;
       color: #fff;
       text-align: center;
       padding: 20px 10px;
@@ -267,7 +298,11 @@
 
   <!-- Top bar -->
   <div class="top-bar">
-    <div>Have any questions? &nbsp; <a href="tel:+919618299458" style="color: #fff; text-decoration: none;">9618299458</a></div>
+<div>
+  Have any questions? &nbsp; 
+  <a href="tel:+919618299458" style="color: #fff; text-decoration: none;">9618299458</a> &nbsp; | &nbsp;
+  <a href="tel:+919885101931" style="color: #fff; text-decoration: none;">9885101931</a>
+</div>
     <div class="socials">
       <a href="https://wa.me/919618299458" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -283,7 +318,7 @@
     <div class="header-top">
       <div class="logo">
         <a href="{% url 'login' %}">
-          <img src="{% static 'newlogo.jpeg' %}" alt="Logo">
+          <img src="{% static 'araxnewlogo.png' %}" alt="Logo">
         </a>
         
       </div>
@@ -295,16 +330,16 @@
         <li><a href="{% url 'home' %}">HOME</a></li>
         <li><a href="{% url 'about_us' %}">ABOUT</a></li>
         <li onclick="toggleDropdown(event)">
-          <a href="{% url 'services' %}">SERVICES <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
-          <div class="dropdown">
+          <a href="{% url 'services' %}">SERVICES </a>
+          <!-- <div class="dropdown">
             <a href="{% url 'securityservices' %}">ARAX Security Services</a>
             <a href="{% url 'housekeeping' %}">ARAX House Keeping Services</a>
             <a href="{% url 'outsourcing' %}">ARAX A To Z Facility Services</a>
             <a href="{% url 'ert' %}">ARAX 24/7 Emergency Response Team</a>
             <a href="{% url 'qrt' %}">ARAX 24/7 QRT Vehicle Facility</a>
-          </div>
+          </div> -->
         </li>
-        <li><a href="{% url 'gallery' %}">GALLERY</a></li>
+        <!-- <li><a href="{% url 'gallery' %}">GALLERY</a></li> -->
         <li class="mobile-contact"><a href="{% url 'contact_us' %}">CONTACT</a></li>
       </ul>
     </nav>
@@ -319,7 +354,7 @@
 
   <footer>
     © 2025 Arax People Services India Pvt. Ltd.. All Rights Reserved by 
-    <a href="https://www.vindusenvironment.com" style="color: white;">vindus</a>.
+    <a href="https://www.vindusenvironment.com" style="color:#fff;text-decoration: none;">vindus</a>.
   </footer>
 
   <script>

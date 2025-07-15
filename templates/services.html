@@ -6,339 +6,39 @@
 {% load static %}
 
 <style>
-.services-hero-container {
-  width: 100%;
-  height: 600px;
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-slide {
-  display: flex;
-  height: 100%;
-  transition: transform 1.5s ease-in-out;
-}
-
-.carousel-item {
-  position: relative;
-  flex: 0 0 100%;
-  height: 100%;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 600px;
-  object-fit: cover;
-  filter: brightness(60%);
-}
-
-.carousel-caption {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  color: white;
-  animation: fadeInUp 1s ease-in-out;
-}
-
-.carousel-caption h1 {
-  font-size: 36px;
-  margin: 0;
-  animation: slideIn 1s ease-in-out;
-}
-
-.carousel-caption h1 span {
-  color: #ff914d;
-  font-size: 60px;
-  text-shadow: 0 0 12px #ff914d;
-  animation: lubdubGlow 2s ease-in-out infinite;
-  display: inline-block;
-}
-
-@keyframes lubdubGlow {
-  0% {
-    transform: scale(1);
-    text-shadow: 0 0 8px #ff914d;
-  }
-  15% {
-    transform: scale(1.2);
-    text-shadow: 0 0 25px #ff914d;
-  }
-  30% {
-    transform: scale(1);
-    text-shadow: 0 0 10px #ff914d;
-  }
-  45% {
-    transform: scale(1.1);
-    text-shadow: 0 0 20px #ff914d;
-  }
-  60% {
-    transform: scale(1);
-    text-shadow: 0 0 8px #ff914d;
-  }
-  100% {
-    transform: scale(1);
-    text-shadow: 0 0 6px #ff914d;
-  }
-}
-
-
-.carousel-caption p {
-  font-size: 16px;
-  margin-top: 10px;
-  animation: slideIn 1.2s ease-in-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1000;
-}
-.arrow-left {
-  left: 15px;
-}
-.arrow-right {
-  right: 15px;
-}
-
-/* Carousel dots */
-.carousel-dots {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: 1000;
-}
-.carousel-dots span {
-  height: 12px;
-  width: 12px;
-  margin: 0 5px;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.3s;
-  cursor: pointer;
-}
-.carousel-dots .active {
-  background-color: white;
-}
-
-.section2-cards {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.section2-header h2{
-  font-size: 28px;
-}
-.section2-header h2 span {
-    color: #ff914d;
-    font-size: 40px;
-    
-  }
-.card {
-  flex: 1 1 220px;
-  max-width:fit-content;
-  border: 2px solid #608fc3;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-  transition: transform 0.3s ease;
-  background-color: #fff;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgb(0 0 0 / 0.15);
-}
-
-.icon-img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 15px;
-  object-fit: contain;
-  
-  /* Add decorative border */
-  border: 2px solid #608fc3;
-  border-radius: 50%; /* circular border */
-  padding: 8px; /* space between icon and border */
-  box-sizing: content-box;
-}
-.card h3 {
-  margin: 10px 0;
-  font-size: 1.5rem;
-  color:black;
-}
-.card h3 span{
-  color: #608fc3;
-}
-
-.card p {
-  color: black;
-  font-size: 1rem;
-  line-height: 1.4;
-}
-
-.services-details-section {
-    padding: 40px 20px;
-    background: #fff;
-    color: black;
-    font-family: 'Arial', sans-serif;
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .services-columns {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-  .service-column {
-    flex: 1 1 300px;
-    min-width: 280px;
-  }
-  .highlight-title {
-    color: #ff914d;
-    margin-bottom: 12px;
-    font-weight: 700;
-  }
-  .subheading {
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: black;
-  }
-  ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 30px;
-  }
-  ul.sub-list {
-    list-style-type: circle;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-  }
-  ul li {
-    margin-bottom: 8px;
-    line-height: 1.5;
-  }
-  
-    .section3 {
-    padding:  20px;
-    background: #fff;
-  }
-  .container.flex-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .image-container {
-    flex: 1 1 45%;
-    min-width: 280px;
-  }
-  .image-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-  }
-  .content-container {
-    flex: 1 1 50%;
-    min-width: 280px;
-  }
-  .content-container h2 {
-    margin-bottom: 20px;
-    color: black;
-    font-size: 28px;
-  }
-  .content-container h2 span{
-    color: #ff914d;
-    font-size:40px;
-  }
-  .content-container ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    color: black;
-  }
-  .content-container ul li {
-    margin-bottom: 12px;
-    font-size: 1.1rem;
-    line-height: 1.5;
+  body {
+    background-color:  #32322c;
+    font-family: 'Segoe UI', sans-serif;
   }
 
-   .contact-us-btn {
-    display: block;
-    width: 100%;
+  .services-heading {
+    background-color:  #32322c;
     text-align: center;
-    padding: 12px 0;
-    background-color: #608fc3;
-    color: #fff;
+    padding-top: 10px;
+  }
+
+  .services-heading h2 {
+    font-size: 36px;
+    color: #D4A649;
     font-weight: bold;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-    margin-left: -15px;
+    animation: fadeInDown 1s ease-in-out;
   }
 
-  .know-more-btn:hover {
-    background-color: #dceeff;
-  }
-
-
-  @media (max-width: 768px) {
-    .container.flex-container {
-      flex-direction: column;
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
     }
-    .image-container, .content-container {
-      flex: 1 1 100%;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
   .facility-section {
-    padding: 40px 20px;
-  }
-
-  .staffing-header h2 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 40px;
+    padding: 20px;
+    background-color:  #32322c;
+    padding-bottom: 40px;
   }
 
   .facility-container.modern-layout {
@@ -350,14 +50,32 @@
   }
 
   .facility-modern-card {
-    background: #dceeff;
-    border: 1.5px solid #608fc3;
+    background: #363636;
+    border: 2px solid #D4A649;
     border-radius: 20px;
     text-align: center;
     padding: 30px 15px;
     transition: all 0.3s ease;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .facility-modern-card:nth-child(odd) {
+    animation-delay: 0.2s;
+  }
+
+  .facility-modern-card:nth-child(even) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .facility-modern-card:not(.no-hover):hover {
@@ -365,7 +83,7 @@
   }
 
   .icon-wrapper {
-    border: 2px solid #608fc3;
+    border: 2px solid #D4A649;
     width: 60px;
     height: 60px;
     margin: 0 auto 15px;
@@ -373,8 +91,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #D4A649;
     transition: all 0.3s ease;
-    background: #608fc3;
   }
 
   .white-bg {
@@ -384,642 +102,90 @@
   .icon-wrapper i {
     font-size: 22px;
     transition: all 0.3s ease;
-    color: #608fc3;
   }
 
   .facility-modern-card:not(.no-hover):hover .icon-wrapper {
-    background: #608fc3;
+    background: white;
   }
 
   .facility-modern-card:not(.no-hover):hover .icon-wrapper i {
-    color: white;
+    color: #D4A649;
   }
 
   .facility-modern-card h3 {
     font-size: 15px;
     font-weight: 600;
-    color: #333;
+    color: #fff;
     margin: 0;
     transition: color 0.3s ease;
   }
 
   .facility-modern-card:not(.no-hover):hover h3 {
-    color: #608fc3;
+    color: #42423a;
   }
 
-  /* No-hover style */
-  .facility-modern-card.no-hover {
-    background: white;
-  }
-
-  .facility-modern-card.no-hover .icon-wrapper {
-    background: #608fc3;
-  }
-
+  /* -- Specific overrides -- */
   .facility-modern-card.no-hover .icon-wrapper i {
-    color: white;
+    color: #42423a; /* dark grey */
   }
 
-  @media screen and (max-width: 400px) {
-  .facility-container.modern-layout {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .facility-modern-card[style*="background-color: #D4A649"] h3 {
+    color: #42423a !important;
   }
 
-  .facility-modern-card {
-    padding: 25px 15px;
-  }
-
-  .icon-wrapper {
-    width: 50px;
-    height: 50px;
-  }
-
-  .facility-modern-card h3 {
-    font-size: 14px;
-  }
-}
-
-  .case-study {
-        padding: 30px 0;
-        background-color: #f9f9f9;
-        text-align: center;
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .facility-container.modern-layout {
+      grid-template-columns: repeat(2, 1fr);
     }
-    
-    .case-study .section-title {
-        font-size: 2rem;
-        color: black;
-        margin-bottom: 50px;
-        position: relative;
-    }
-    .case-study .section-title span{
-      color: #ff914d;
-      font-size: 2.8rem;
-    }
-      
-    .services-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-        padding: 0 20px;
-    }
-    
-    .service-card {
-        width: 320px; /* Increased width */
-        height: 400px; /* Increased height */
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        transition: all 0.5s ease;
-    }
-    
-    .service-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-    
-    .service-card-content {
-        position: absolute;
-        top: 0;
-        left: -100%; /* Start from left */
-        width: 100%;
-        height: 100%;
-        background-color: #608fc3; /* Slightly reduced opacity */
-        color: #fff;
-        padding: 30px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: left 0.5s ease; /* Changed to left transition */
-    }
-    
-    .service-card:hover .service-card-content {
-        left: 0; /* Slide in from left */
-    }
-    
-    .service-card:hover img {
-        transform: scale(1.05);
-    }
-    
-    .service-card h3 {
-        font-size: 1.6rem;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-    }
-    
-    .service-card p {
-        font-size: 1.1rem;
-        margin-bottom: 25px;
-        line-height: 1.6;
-    }
-    
-    .read-more {
-        display: inline-block;
-        padding: 12px 30px;
-        background-color: #fff;
-        color: #ff914d;
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        font-size: 1rem;
-    }
-    
-    .read-more:hover {
-        background-color: #333;
-        color: #fff;
-        transform: translateY(-3px);
-    }
-    
-    @media (max-width: 1200px) {
-        .services-grid {
-            gap: 25px;
-        }
-        
-        .service-card {
-            width: 45%;
-            max-width: 350px;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .service-card {
-            width: 100%;
-            max-width: 400px;
-            height: 350px;
-        }
-        
-        .service-card-content {
-            padding: 20px;
-        }
-        
-        .service-card h3 {
-            font-size: 1.4rem;
-        }
-        
-        .service-card p {
-            font-size: 1rem;
-        }
-    }
-   .arax-dark-panel  {
-  background-color:#dceeff; /* #2c2c2c */
-  color: #fff;
-  padding: 30px 20px;
-  border-radius: 20px;
-  margin: 40px 10px;
-  border: 8px double #608fc3;
-}
-
-.arax-dark-panel .container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.dark-panel-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.dark-panel-header h2 {
-  font-size: 28px;
-  color:#333;
-  margin-bottom: 10px;
-}
-.dark-panel-header span {
-  font-size: 42px;
-  color:#ff914d;
-  margin-bottom: 10px;
-}
-.dark-panel-header p {
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.dark-panel-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
-
-.dark-panel-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  background-color: #608fc3;
-  border-radius: 10px;
-  padding: 20px;
-  transition: all 0.3s ease;
-  border: 0.5px solid #608fc3;
-}
-
-
-
-.dark-panel-item i {
-  font-size: 28px;
-  color: white;
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-
-.dark-panel-item h3 {
-  font-size: 1.1rem;
-  margin: 0 0 5px 0;
-  color: #fff;
-}
-
-.dark-panel-item p {
-  font-size: 0.95rem;
-  margin: 0;
-  color: #333;
-}
-
-.dark-panel-item.wide {
-  grid-column: span 2;
-}
-
-@media (max-width: 768px) {
-  .dark-panel-item.wide {
-    grid-column: span 1;
-  }
-}
-.dark-panel-item1.image-panel {
-  grid-row: span 2;
-  padding: 0;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media screen and (max-width: 400px) {
-  .dark-panel-header h2 {
-    font-size: 22px;
   }
 
-  .dark-panel-header span {
-    font-size: 30px;
+  @media screen and (max-width: 480px) {
+    .facility-container.modern-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .facility-modern-card {
+      padding: 25px 15px;
+    }
+
+    .icon-wrapper {
+      width: 50px;
+      height: 50px;
+    }
+
+    .facility-modern-card h3 {
+      font-size: 14px;
+    }
+
+    .services-heading h2 {
+      font-size: 28px;
+    }
   }
-
-  .dark-panel-header p {
-    font-size: 1rem;
-  }
-
-  .dark-panel-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .dark-panel-item {
-    padding: 16px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .dark-panel-item i {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .dark-panel-item h3 {
-    font-size: 1rem;
-  }
-
-  .dark-panel-item p {
-    font-size: 0.9rem;
-  }
-
-  .dark-panel-item1.image-panel {
-    grid-row: auto;
-  }
-
-  .dark-panel-item1.image-panel img {
-    border-radius: 8px;
-  }
-}
-
-.dark-panel-item1.image-panel img {
-  width: 100%;
-  height:auto;
-  border-radius: 10px;
-}
-.staffing-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.staffing-card {
-  display: flex;
-  align-items: flex-start;
-  background: white;
-  border-radius: 12px;
-  border: 1.5px solid #608fc3;
-  padding: 20px;
-  gap: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
-
-.staffing-card:hover {
-  transform: translateY(-6px);
-}
-
-.staffing-card i {
-  font-size: 24px;
-  color: #608fc3;
-  margin-top: 4px;
-}
-
-.staffing-card h3 {
-  font-size: 15px;
-  color: #333;
-  font-weight: 600;
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* Highlight randomly */
-.staffing-card.bg-orange-1 { background-color: #dceeff; }
-.staffing-card.bg-orange-2 { background-color:rgb(220, 245, 255); }
-.staffing-card.bg-orange-3 { background-color: #dceeff; }
-/* Entire Staffing Section Container */
-.staffing-section {
-  padding: 10px 20px;
-  background-color: #f9f9f9; /* Light background */
-}
-
-/* Header inside Staffing Section */
-.staffing-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.staffing-header span {
-  font-size: 42px;
-  color: #ff914d;
-  margin-bottom: 10px;
-}
-.staffing-header h2 {
-  font-size: 28px;
-  color: black;
-  margin-bottom: 10px;
-}
-
-
 </style>
 
-<div class="services-hero-container">
-  <div class="carousel-slide" id="carouselSlide">
-    <div class="carousel-item">
-      <img src="{% static 'salute.jpeg' %}" alt="Banner 1">
-      <div class="carousel-caption">
-        <h1><span style="color: #fff;">A<span>RA</span>X</span>&nbsp; Security Services</h1>
-        <p>Your Safety, ARAX Responsibility</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'clean4.png' %}" alt="Banner 2">
-      <div class="carousel-caption">
-        <h1><span style="color: #fff;">A<span>RA</span>X</span>&nbsp; House keeping</h1>
-        <p>Smart Eyes on Duty Every Second</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'bouncerboys.png' %}" alt="Banner 3">
-      <div class="carousel-caption">
-        <h1><span style="color: #fff;">A<span>RA</span>X</span>&nbsp; Trained Security Guards</h1>
-        <p>Professionals That Protect</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'bannerbouncers.png' %}" alt="Banner 4">
-      <div class="carousel-caption">
-        <h1><span style="color: #fff;">A<span>RA</span>X</span>&nbsp; Tech-Driven Security</h1>
-        <p>Advanced Tools for Modern Risks</p>
-      </div>
-    </div>
-  </div>
-
-  <button class="arrow arrow-left" onclick="prevSlide()">&#10094;</button>
-  <button class="arrow arrow-right" onclick="nextSlide()">&#10095;</button>
-
-  <!-- Carousel dots -->
-  <div class="carousel-dots" id="carouselDots"></div>
-</div>
-
-
-<section class="section2">
-  <div class="section2-header" style="text-align: center; margin-bottom: 30px;">
-    <h2><span style="color: #222;">A<span>RA</span>X</span> Services</h2>
-    <p style="max-width: 600px; margin: 0 auto; color: black; font-size: 1.1rem;">
-      We offer a wide range of professional services tailored to meet your needs, ensuring quality, safety, and efficiency in everything we do.
-    </p>
-  </div>
-
-  <div class="section2-cards">
-    <div class="card">
-      <img src="{% static 'images/araxhousekeeping.png' %}" alt="Housekeeping Icon" class="icon-img" />
-      <h3>Housekeeping Service</h3>
-      <p>Reliable and thorough cleaning services to keep your environment spotless.</p>
-    </div>
-    <div class="card">
-      <img src="{% static 'images/araxsecurity.png' %}" alt="Security Icon" class="icon-img" />
-      <h3><span>Security</span></h3>
-      <p>Professional security personnel ensuring your safety 24/7.</p>
-    </div>
-    <div class="card">
-      <img src="{% static 'images/araxoutsourcing.png' %}" alt="Outsourcing Icon" class="icon-img" />
-      <h3> All Kind Of Recruiting & Outsourcing </h3>
-      <p>Efficient outsourcing solutions tailored to your business needs.</p>
-    </div>
-
-    <div class="card">
-    <img src="{% static 'images/araxbouncering.png' %}" alt="Outsourcing Icon" class="icon-img" />
-    <h3><span>Bouncering , Bodyguards & PSO Services</span></h3>
-    <p>Our expert bouncers provide vigilant and professional security at events, nightclubs, and private venues.</p>
-  </div>
-</section>
-
-<section class="section3">
-  <div class="container flex-container">
-    <div class="image-container">
-      <img src="{% static 'security3.png' %}" alt="Welcome to Arax Security Services" />
-            <img src="{% static 'cleaningfinal.jpeg' %}" alt="Welcome to Arax Security Services" />
-
-    </div>
-    <div class="content-container">
-      <h2>Welcome to <span style="color: #222;">A<span>RA</span>X</span> A To Z Services</h2>
-      <ul>
-  <li>Security Solutions including Modern Hi-Tech Equipment</li>
-  <li>Security Bouncers, Body Guards & Gunman (Ex-servicemen)</li>
-  <li>Clean Solutions (Housekeeping)</li>
-  <li>End-to-End Facility Management Services for gated communities.</li>
-  <li>Outsourcing of Manpower for industries, corporate offices, Hotels.</li>
-  <li>Building Maintenance</li>
-  <li>Guest House Facility Management Services</li>
-  <li>Corporate Services</li>
-  <li>Gardening, landscaping and Horticulture</li>
-  <li>PSO Services (Paramilitary and army retired persons)</li>
-  <a href="{% url 'contact_us' %}" class="contact-us-btn">Contact Us</a>
-</ul>
-    </div>
-  </div>
-</section>
-<section class="arax-dark-panel">
-  <div class="container">
-    <div class="dark-panel-header">
-      <h2><span style="color: #222;">A<span>RA</span>X</span> People Services India Pvt. Ltd.</h2>
-      <p>We takes bluk order of any categories of staffing supplier</p>
-    </div>
-
-    <div class="dark-panel-grid">
-      <div class="dark-panel-item">
-        <i class="fas fa-shield-alt"></i>
-        <div>
-          <h3>Unarmed Security staffs</h3>
-          <p>(Guards and officers)</p>
-        </div>
-      </div>
-
-      <div class="dark-panel-item">
-        <i class="fas fa-broom"></i>
-        <div>
-          <h3>House keeping staffs</h3>
-        </div>
-      </div>
-
-      <div class="dark-panel-item">
-        <i class="fas fa-user-shield"></i>
-        <div>
-          <h3>Bouncers Body guards</h3>
-        </div>
-      </div>
-
-      <div class="dark-panel-item">
-        <i class="fas fa-building"></i>
-        <div>
-          <h3>Total Property Management Services.(PMS)</h3>
-        </div>
-      </div>
-
-      <div class="dark-panel-item">
-        <i class="fas fa-tools"></i>
-        <div>
-          <h3>Building Management Services (BMS)</h3>
-        </div>
-      </div>
-<div class="dark-panel-item1 image-panel">
-  <img src="{% static 'newlogo1.jpeg' %}" alt="Services Illustration" />
-</div>
-
-      <div class="dark-panel-item wide">
-        <i class="fas fa-briefcase"></i>
-        <div>
-          <h3>Placement and Trainings.</h3>
-          <p>IT non IT , Technicals non Technicals, BPOs, KPOs, Backend executives ,<br>
-            Front office executive,<br>
-            Receptionist,<br>
-            Managers Etc.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="staffing-section">
-  <div class="staffing-header">
-    <h2><span style="color: #222;">A<span>RA</span>X</span> Do Staffing Also</h2>
-  </div>
-
-  <div class="staffing-container">
-    <div class="staffing-card bg-orange-1">
-      <i class="fas fa-box"></i><h3>Packers</h3>
-    </div>
-    <div class="staffing-card">
-      <i class="fas fa-hands-helping"></i><h3>Helpers</h3>
-    </div>
-    <div class="staffing-card bg-orange-2">
-      <i class="fas fa-hard-hat"></i><h3>Labour's</h3>
-    </div>
-    <div class="staffing-card bg-orange-1">
-      <i class="fas fa-car"></i><h3>Parking guards</h3>
-    </div>
-    <div class="staffing-card">
-      <i class="fas fa-parking"></i><h3>Wallets parking guard</h3>
-    </div>
-    <div class="staffing-card bg-orange-3">
-      <i class="fas fa-id-card"></i><h3>Drivers</h3>
-    </div>
-    <div class="staffing-card">
-      <i class="fas fa-arrows-alt-v"></i><h3>Lift operators</h3>
-    </div>
-    <div class="staffing-card bg-orange-1">
-      <i class="fas fa-video"></i><h3>CCTV monitor supervisor</h3>
-    </div>
-    <div class="staffing-card">
-      <i class="fas fa-dolly"></i><h3>Lifter in ware Houses and factories any sector.</h3>
-    </div>
-    <div class="staffing-card bg-orange-2">
-      <i class="fas fa-users"></i><h3>Events executives, guards and bouncers.</h3>
-    </div>
-    <div class="staffing-card bg-orange-3">
-      <i class="fas fa-seedling"></i><h3>Gardeners and horticulture staffs</h3>
-    </div>
-    <div class="staffing-card">
-      <i class="fas fa-soap"></i><h3>Deep cleaning staffs</h3>
-    </div>
-    <div class="staffing-card bg-orange-1">
-      <i class="fas fa-user-nurse"></i><h3>Hospitals Nurses</h3>
-    </div>
-    <div class="staffing-card">
-      <i class="fas fa-user"></i><h3>Office boys</h3>
-    </div>
-    <div class="staffing-card bg-orange-2">
-      <i class="fas fa-procedures"></i><h3>Ward boys hospitals</h3>
-    </div>
-    <div class="staffing-card">
-      <i class="fas fa-car-side"></i><h3>Drivers permanent</h3>
-    </div>
-    <div class="staffing-card bg-orange-3">
-      <i class="fas fa-user-shield"></i><h3>Special security guards</h3>
-    </div>
-    <div class="staffing-card">
-      <i class="fas fa-briefcase"></i><h3>Property Managers, Facility Managers</h3>
-    </div>
-   <div class="staffing-card bg-orange-1">
-  <i class="fas fa-user-tie"></i>
-  <h3>Receptionists, back Office executives, front office executives, accountants</h3>
-</div>
-<div class="staffing-card bg-orange-3">
-  <i class="fas fa-user-tie"></i>
-  <h3>HRs, ops managers, production manager's, office manager's etc.</h3>
-</div>
-
-  </div>
+<section class="services-heading">
+  <h2>Our Services</h2>
 </section>
 
 <section class="facility-section">
-  <div class="staffing-header">
-    <h2><span style="color: #222;">A<span>RA</span>X</span> Facility Management Services</h2>
-  </div>
-
   <div class="facility-container modern-layout">
-   
-    <div class="facility-modern-card">
+
+    <!-- You can duplicate this pattern below for each service -->
+    <div class="facility-modern-card no-hover">
+      <div class="icon-wrapper">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h3>Security</h3>
+    </div>
+
+    <div class="facility-modern-card" style="background-color: #D4A649;">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-broom"></i>
       </div>
       <h3>Housekeeping</h3>
     </div>
 
-   
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-seedling"></i>
@@ -1027,15 +193,13 @@
       <h3>Gardening / Horticulture</h3>
     </div>
 
- 
-    <div class="facility-modern-card">
+    <div class="facility-modern-card" style="background-color: #D4A649;">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-concierge-bell"></i>
       </div>
       <h3>Front Office Management</h3>
     </div>
 
-    
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-bug"></i>
@@ -1043,14 +207,13 @@
       <h3>Pest Control</h3>
     </div>
 
-    <div class="facility-modern-card">
+    <div class="facility-modern-card" style="background-color: #D4A649;">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-hands-helping"></i>
       </div>
       <h3>Care Takers</h3>
     </div>
 
-  
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
         <i class="fas fa-calendar-check"></i>
@@ -1058,13 +221,12 @@
       <h3>Event Management</h3>
     </div>
 
-    <div class="facility-modern-card">
+    <div class="facility-modern-card" style="background-color: #D4A649;">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-bolt"></i>
       </div>
       <h3>Electrical</h3>
     </div>
-
 
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
@@ -1073,14 +235,12 @@
       <h3>Plumbing</h3>
     </div>
 
-
-    <div class="facility-modern-card">
+    <div class="facility-modern-card" style="background-color: #D4A649;">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-cogs"></i>
       </div>
       <h3>Mechanical</h3>
     </div>
-
 
     <div class="facility-modern-card no-hover">
       <div class="icon-wrapper">
@@ -1089,8 +249,7 @@
       <h3>Carpentry</h3>
     </div>
 
-    
-    <div class="facility-modern-card">
+    <div class="facility-modern-card" style="background-color: #D4A649;">
       <div class="icon-wrapper white-bg">
         <i class="fas fa-snowflake"></i>
       </div>
@@ -1103,119 +262,22 @@
       </div>
       <h3>AMC Management</h3>
     </div>
-  </div>
-</section>
-<br>
-<section class="case-study">
-  <h2 class="section-title"><span style="color: #222;">A<span>RA</span>X</span> Comprehensive Solutions</h2>
-  
-  <div class="services-grid">
 
-    <!-- Healthcare Security Solutions -->
-    <div class="service-card">
-      <img src="{% static 'firemanagement.png' %}" alt="Healthcare Security Solutions">
-      <div class="service-card-content">
-        <h3>Fire Fighting Management</h3>
-        <p>We provide expert fire fighting management solutions, including system installation, equipment handling, fire alarm integration, and trained personnel for fire safety drills.</p>
-        
+    <div class="facility-modern-card" style="background-color: #D4A649;">
+      <div class="icon-wrapper white-bg">
+        <i class="fas fa-building"></i>
       </div>
+      <h3>Total Property Management Services (PMS)</h3>
     </div>
 
-    <!-- Manned Guarding -->
-    <div class="service-card">
-      <img src="{% static 'bannerbouncers.png' %}" alt="Manned Guarding">
-      <div class="service-card-content">
-        <h3>Professional Manned Guarding</h3>
-        <p>ARAX deploys certified guards, bouncers, bodyguards, and gunmen including ex-servicemen, ensuring round-the-clock safety for malls, industries, institutions, and events.</p>
-        
+    <div class="facility-modern-card no-hover">
+      <div class="icon-wrapper">
+        <i class="fas fa-tools"></i>
       </div>
-    </div>
-
-    <!-- Industrial & Manufacturing Security -->
-    <div class="service-card">
-      <img src="{% static 'salute.jpeg' %}" alt="Manufacturing Security">
-      <div class="service-card-content">
-        <h3>Industrial & Factory Security</h3>
-        <p>End-to-end security for manufacturing units with periphery patrol, material movement tracking, visitor/vendor verification, and trained manpower deployment.</p>
-        
-      </div>
+      <h3>Building Management Services (BMS)</h3>
     </div>
 
   </div>
 </section>
-
-
-
-<script>
-let currentSlide = 0;
-const slide = document.getElementById('carouselSlide');
-const totalSlides = document.querySelectorAll('.carousel-item').length;
-const dotsContainer = document.getElementById('carouselDots');
-
-// Generate dots
-for (let i = 0; i < totalSlides; i++) {
-  const dot = document.createElement('span');
-  dot.addEventListener('click', () => goToSlide(i));
-  dotsContainer.appendChild(dot);
-}
-
-function updateSlide() {
-  const itemWidth = document.querySelector('.services-hero-container').offsetWidth;
-  slide.style.transform = `translateX(-${currentSlide * itemWidth}px)`;
-  updateDots();
-  animateCaptions();
-}
-
-
-
-function updateDots() {
-  const dots = dotsContainer.querySelectorAll('span');
-  dots.forEach((dot, index) => {
-    dot.classList.toggle('active', index === currentSlide);
-  });
-}
-
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % totalSlides;
-  updateSlide();
-}
-
-function prevSlide() {
-  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-  updateSlide();
-}
-
-function goToSlide(index) {
-  currentSlide = index;
-  updateSlide();
-}
-
-// Auto-slide every 10 seconds
-setInterval(nextSlide, 10000);
-
-// Initialize first dot
-updateSlide();
-
-function animateCaptions() {
-  const captions = slide.querySelectorAll('.carousel-item')[currentSlide].querySelectorAll('.carousel-caption, .carousel-caption h3, .carousel-caption p');
-  
-  captions.forEach(caption => {
-    caption.style.animation = 'none';
-    void caption.offsetWidth;  // trigger reflow
-
-    if (caption.tagName === 'DIV') {
-      caption.style.animation = 'fadeInUp 1s ease-in-out';
-    } else if (caption.tagName === 'H3') {
-      caption.style.animation = 'slideIn 1s ease-in-out';
-    } else if (caption.tagName === 'P') {
-      caption.style.animation = 'slideIn 1.2s ease-in-out';
-    }
-  });
-}
-
-</script>
-
-
 
 {% endblock %}
-

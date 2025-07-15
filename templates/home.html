@@ -9,752 +9,244 @@
 
 
 <style>
- 
-.custom-carousel {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 110vh; /* Full viewport height */
+  body {
+    background-color:  #32322c;
+    font-family: 'Segoe UI', sans-serif;
+  }
+.custom-section {
+  background: #32322c;
+  padding: 40px 20px;
+  color: white;
+  padding-top: 75px;
 }
 
-.carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  z-index: 0;
-}
-
-.carousel-slide.active {
-  opacity: 1;
-  z-index: 2;
-}
-
-/* Optional slide out classes if you're animating transitions */
-.carousel-slide.out-left,
-.carousel-slide.out-right {
-  opacity: 0;
-  z-index: 1;
-}
-
-/* Arrow Controls */
-.carousel-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-background: rgba(96, 143, 195, 0.4);
-  color: #fff;
-  font-size: 30px;
-  border: none;
-  cursor: pointer;
-  padding: 10px 15px;
-  z-index: 3;
-}
-
-.carousel-control.prev {
-  left: 10px;
-}
-
-.carousel-control.next {
-  right: 10px;
-}
-
-.hero {
+.custom-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  height: 100%;
-  padding: 100px 20px;
-  z-index: 4;
-  position: relative;
-}
-
-/* This is the missing part: center the content block */
-.hero-content {
-  background-color: rgba(1, 18, 76, 0.5); /* transparent black */
-  padding: 20px 30px 40px;
-  border-radius: 10px;
-  max-width: 900px;
-  margin: 0 auto;           /* ✅ CENTER IT */
-  text-align: center;       /* ✅ TEXT CENTERED */
-}
-
-.hero h1 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-.hero h1 span {
-  color: #ff914d;
-  font-size: 60px;
-  text-shadow: 0 0 12px #ff914d;
-  animation: lubdubGlow 2s ease-in-out infinite;
-  display: inline-block;
-}
-
-@keyframes lubdubGlow {
-  0% {
-    transform: scale(1);
-    text-shadow: 0 0 8px #ff914d;
-  }
-  15% {
-    transform: scale(1.2);
-    text-shadow: 0 0 25px #ff914d;
-  }
-  30% {
-    transform: scale(1);
-    text-shadow: 0 0 10px #ff914d;
-  }
-  45% {
-    transform: scale(1.1);
-    text-shadow: 0 0 20px #ff914d;
-  }
-  60% {
-    transform: scale(1);
-    text-shadow: 0 0 8px #ff914d;
-  }
-  100% {
-    transform: scale(1);
-    text-shadow: 0 0 6px #ff914d;
-  }
-}
-
-
-.hero p {
-  font-size: 16px;
-  margin-bottom: 25px;
-}
-
-/* Slides */
-.slide1 {
-  background-image: url('{% static "securitybanner2.jpeg" %}');
-}
-
-.slide2 {
-  background-image: url('{% static "securitybanner3.jpeg" %}');
-}
-
-/* Section background and spacing */
-.mission-section {
-  padding: 0 20px;
-  padding-top: 10px;
-  padding-bottom: 60px;
-}
-
-/* Flex container */
-.mission-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  justify-content: space-between;
   max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Card styling */
-.mission-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  padding: 30px 25px;
-  flex: 1 1 300px;
-  max-width: 350px;
-  text-align: center;
-  transition: transform 0.3s ease;
-    border: 2px solid #608fc3;
-
-}
-
-.mission-card:hover {
-  transform: translateY(-6px);
- 
-}
-
-/* Highlighted card */
-.mission-card.highlight {
-  background:#dceeff;
-  border: 2px solid #608fc3;
-}
-
-/* Icons */
-.mission-icon {
-  font-size: 40px;
-  color: #608fc3;
-  margin-bottom: 15px;
-}
-
-/* Headings */
-.mission-card h3 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #608fc3;
-  text-transform: uppercase;
-}
-.mission-card span {
-  font-size: 24px;
-  margin-bottom: 15px;
-  color: #ff914d;
-  text-transform: uppercase;
-}
-.mission-card h4 {
-  margin-top: 15px;
-  font-size: 16px;
-  color: #333;
-  font-weight: bold;
-}
-
-/* Paragraph */
-.mission-card p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #555;
-}
-
-  .btn-orange {
-    background-color:#608fc3;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .btn-orange:hover {
-    background-color: #166bcd;
-  }
-
-  .about {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 60px 20px;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-    text-align: left;
-  }
-
-  .angled-frame {
-    position: relative;
-    width: 100%;
-    max-width: 450px;
-    clip-path: polygon(0 5%, 100% 0, 100% 90%, 0% 100%);
-    overflow: hidden;
-    border: 5px solid #608fc3;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  }
-
-  .angled-frame img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    transform: scale(1.05);
-  }
-
-  .about-text {
-    max-width: 500px;
-  }
-
-  .about-text h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-  }
-
-  .about-text h2 span {
-    color: #ff914d;
-    font-size: 40px;
-  }
-
-  .about-text p {
-    margin-bottom: 10px;
-  }
-
-  
-  .why-choose-structured h2 {
-    font-size: 28px;
-    margin-bottom: 40px;
-    text-align: center;
-  }
-
-  .why-choose-structured h2 span {
-    color: #ff914d;
-    font-size:36px;
-
-  }
-
-  .services {
-    background: url('{% static "securitybanner3.jpeg" %}') no-repeat center center/cover;
-    padding: 30px 20px;
-    text-align: center;
-    position: relative;
-  }
-
-  .services::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    z-index: 0;
-  }
-
-  .services h2 {
-    font-size: 28px;
-    margin-bottom: 40px;
-    color: white;
-    position: relative;
-    z-index: 1;
-  }
-
-  .services h2 span {
-    color: #ff914d;
-    font-size: 40px;
-  }
-.scanner-content h2 span {
-    color: #ff914d;
-    font-size: 40px;
-  }
-
-  .service-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Layout rows as 3-4-3 using 12-column grid */
-  .service-box:nth-child(1),
-  .service-box:nth-child(2),
-  .service-box:nth-child(3) {
-    grid-column: span 4;
-  }
-
-  .service-box:nth-child(4),
-  .service-box:nth-child(5),
-  .service-box:nth-child(6),
-  .service-box:nth-child(7) {
-    grid-column: span 3;
-  }
-
-  .service-box:nth-child(8),
-  .service-box:nth-child(9),
-  .service-box:nth-child(10) {
-    grid-column: span 4;
-  }
-
-  .service-box {
-    background: rgba(52, 98, 168, 0.25);
-    color: white;
-    padding: 30px 20px;
-    border-radius: 12px;
-    text-align: center;
-    backdrop-filter: blur(1px);
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255,255,255,0.2);
-  }
-
-  .service-box i {
-    font-size: 28px;
-    margin-bottom: 15px;
-    color: #608fc3;
-    transition: color 0.3s ease;
-  }
-
-  .service-box:hover {
-    background:#608fc3;
-    color: #fff;
-    transform: translateY(-5px);
-  }
-
-  .service-box:hover i {
-    color: #fff;
-  }
-
-  .service-box h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .service-box p {
-    font-size: 14px;
-  }
-
-   @media (max-width: 992px) {
-    .service-grid {
-      grid-template-columns: repeat(12, 1fr);
-    }
-    .service-box {
-      grid-column: span 6 !important;
-    }
-  }
-
-  /* Mobile view: 1 per row */
-  @media (max-width: 768px) {
-    .service-grid {
-      grid-template-columns: repeat(12, 1fr)r;
-      padding: 0;
-      gap: 5px;
-    }
-    .service-box {
-      grid-column: span 6 !important;
-    }
-  }
-  @media (max-width: 768px) {
-    .hero h1 {
-      font-size: 28px;
-    }
-
-    .about {
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .about-text {
-      text-align: center;
-    }
-
-   
-  }
-
-
-
- .orange-card {
-  background-color:#608fc3;
-  color: #fff;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.orange-card i {
-  color: #fff;
-  transition: color 0.3s ease;
-}
-
-.orange-card:hover {
-  background-color: #000; /* Change to black */
-  color: #fff; /* Keep text white */
-}
-
-.orange-card:hover i {
-  color: #608fc3; /* Ensure icon stays white */
-}
-
-.clients {
-  padding: 25px 0;
-  background-color: #fff;
-  text-align: center;
-  overflow: hidden;
-}
-
-.clients h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.clients h2 span {
-  color: #ff914d;
-  font-size: 36px;
-}
-
-/* Limit width here */
-.client-logos-wrapper {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  max-width: 900px; /* 👈 Set the max width */
-  margin: auto;     /* 👈 Center it */
-}
-
-.client-logos {
-  display: flex;
-  gap: 20px;
-  animation: scroll 20s linear infinite;
-}
-
-.client-logo {
-  flex: 0 0 auto;
-  padding: 10px;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-  background: #f9f9f9;
-}
-
-.client-logo img {
-  height: 80px;
-  width: auto;
-  object-fit: contain;
-}
-
-.client-logo:hover {
-  transform: scale(1.08);
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-@media (max-width: 768px) {
-  .client-logos-wrapper {
-    max-width: 100%;
-  }
-
-  .client-logos {
-    animation: scroll 10s linear infinite;
-  }
-
-  .client-logo img {
-    height: 60px; /* slightly smaller for mobile */
-  }
-}
-
- .why-choose-structured {
-  background: #fff;
-  padding: 0 20px;
-  padding-top: 30px;
-  padding-bottom: 20px;
-}
-
-.why-choose-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
-  gap: 0;
-  max-width:fit-content;
   margin: auto;
-  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+/* Animations */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.why-box {
-  padding: 30px 20px;
-  text-align: center;
-  color: white;
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply animations */
+.left-image {
+  flex: 1;
+  min-width: 300px;
+  border: 4px solid #D4A649;
+  animation: fadeInLeft 1s ease-in-out both;
+}
+
+.right-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  animation: fadeInRight 1s ease-in-out both;
 }
 
-.why-box i {
-  font-size: 24px;
-  margin-bottom: 15px;
-  color:#608fc3;
+
+
+.left-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
-.why-box h4 {
+
+
+.text-area {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.text-area h1 {
+  font-size: 32px;
+  color: #D4A649;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-weight: bolder;
 }
 
-.why-box p {
+.text-area p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.btn-orange {
+  background: linear-gradient(90deg, #D4A649, #ba9448);
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
   font-size: 14px;
-  margin: 0;
+  box-shadow: 0 0 10px rgba(212, 166, 73, 0.5);
+  animation: glowPulse 2s infinite ease-in-out;
+  transition: all 0.3s ease;
 }
 
-.why-box.light {
-  background-color: #dceeff;
-  color: #333;
-}
-.why-box.lighter {
-  background-color:#608fc3;
-  color: #fff;
-}
-.why-box.lighter i{
-  color: #fff;
-}
-.why-box.teal {
-  background-color:#608fc3;
-  color: white;
-}
-.why-box.teal i{
-  background-color:#608fc3;
-  color: white;
-}
-.why-box.black {
-  background-color:#dceeff;
-  color:#333;
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(212, 166, 73, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(246, 195, 80, 0.9), 0 0 40px rgba(246, 195, 80, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(212, 166, 73, 0.5);
+  }
 }
 
-.why-image {
-  grid-column: 2 / span 2;
-  grid-row: 1 / span 2;
+.btn-orange:hover {
+  background: linear-gradient(90deg, #f6c350, #e89f2b);
+}
+
+.diamond-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 17px;
+}
+
+.diamond {
+  width: 150px;
+  height: 150px;
+  transform: rotate(45deg);
   overflow: hidden;
 }
 
-.why-image img {
+.diamond img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: rotate(-45deg);
+  border-radius: 10px;
 }
 
-.why-heading-box {
-  background-color: #f9f9f9;
-  padding: 40px 20px;
-  text-align: left;
-}
-
-.why-heading-box h2 {
-  font-size: 28px;
-  color: #000;
-  margin-bottom: 10px;
-}
-
-.why-heading-box strong {
-  color: #ff914d;
-}
-
-.why-heading-box p {
-  font-size: 14px;
-  color: #444;
-  margin: 0;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .why-choose-grid {
-    display: block;
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .custom-container {
+    flex-direction: column;
+    text-align: center;
   }
-  .why-image {
-    display: none;
-  }
-  .why-box, .why-heading-box {
-    margin-bottom: 20px;
-  }
-}
-.scanner-section {
-  background:#dceeff;
-  padding: 80px 20px;
-}
 
-.scanner-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.scanner-image {
-  flex: 1 1 400px;
-  max-width: 380px;
-  position: relative;
-}
-
-.qr-wrapper {
-  position: relative;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid #608fc3;
-  border-radius: 16px;
-  backdrop-filter: blur(6px);
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  animation: floatQR 3s ease-in-out infinite;
-}
-
-.qr-wrapper img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
-
-.scan-badge {
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #608fc3;
-  color: #fff;
-  padding: 6px 16px;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 14px;
-  box-shadow: 0 4px 12px rgba(69, 92, 176, 0.4);
-}
-
-@keyframes floatQR {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
+  .diamond-row {
+    justify-content: center;
   }
 }
 
-.scanner-content {
-  flex: 1 1 400px;
-  max-width: 600px;
+ 
+
+  @media screen and (max-width: 1024px) {
+  .responsive-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    gap: 30px;
+  }
+
+  .left-image img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+
+  .right-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .right-content h2 {
+    font-size: 24px;
+  }
+
+  .right-content p {
+    font-size: 16px;
+  }
+
+  .btn-orange {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+
+  .diamond-row {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .diamond {
+    width: 90px;
+    height: 90px;
+  }
 }
 
-.scanner-content h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  color: #333;
-  font-weight: 700;
-  line-height: 1.3;
+@media screen and (max-width: 480px) {
+  .right-content h2 {
+    font-size: 20px;
+  }
+
+  .right-content p {
+    font-size: 14px;
+  }
+
+  .btn-orange {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+
+  .diamond {
+    width: 70px;
+    height: 70px;
+  }
+
+  .diamond-row {
+    gap: 10px;
+  }
 }
 
-.scanner-content h2 .highlight {
-  color: #ff914d;
-  font-size: 46px;
-  background: linear-gradient(to right, #ff914d, #ffbd7b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.scanner-content p {
-  font-size: 16px;
-  line-height: 1.7;
-  margin-bottom: 25px;
-  color: #444;
-}
-
-.scanner-content .btn-orange {
-  padding: 12px 28px;
-  font-size: 16px;
-  border-radius: 30px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
 
 .tech-section {
   padding: 0 20px;
   text-align: center;
-  margin-bottom: 20px;
   padding-top: 40px;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
 
 }
 
 .tech-title {
   font-size: 32px;
   margin-bottom: 50px;
+  color: #D4A649;
+    font-weight: bolder;
+
 }
 
-.tech-title span {
-  color: #ff914d;
-  font-size: 42px;
-}
 
 .tech-cards-container {
   display: grid;
@@ -774,32 +266,33 @@ background: rgba(96, 143, 195, 0.4);
   transition: transform 0.4s ease;
   border: 2px solid transparent;
   border: 1px ;
-      border: 2px solid #608fc3;
+      border: 2px solid #D4A649;
 
 }
 
 .tech-card:hover {
   transform: translateY(-8px);
-  border-color:#608fc3;
-  box-shadow: 0 0 15px #4042c180;
+  border-color:#ba9448;
+  box-shadow: 0 0 15px #dccd4780;
 }
 
 .tech-card h3 {
   font-size: 20px;
-  color: #608fc3;
+  color: #D4A649;
   margin-bottom: 15px;
+
 }
 
 .tech-card p {
   font-size: 14px;
-  color: #333;
+  color: #fff;
   line-height: 1.6;
 }
 
 .tech-icon {
   width: 48px;
   height: 48px;
-  background: #608fc3;
+  background: linear-gradient(90deg, #D4A649, #ba9343);
   color: #fff;
   font-weight: bold;
   font-size: 18px;
@@ -807,7 +300,7 @@ background: rgba(96, 143, 195, 0.4);
   text-align: center;
   line-height: 48px;
   margin-bottom: 20px;
-  box-shadow: 0 0 12px #4248af90;
+  box-shadow: 0 0 12px #c0cb4690;
 }
 
 /* Responsive */
@@ -826,9 +319,9 @@ background: rgba(96, 143, 195, 0.4);
 }
 .tech-card:nth-child(2),
 .tech-card:nth-child(4) {
-  background-color: #608fc3;
+  background: linear-gradient(90deg, #D4A649, #D4A649);
   color: white;
-  box-shadow: 0 0 20px #4a50c980;
+  box-shadow: 0 0 20px #d7ce4d80;
 }
 
 .tech-card:nth-child(2) h3,
@@ -841,373 +334,453 @@ background: rgba(96, 143, 195, 0.4);
   color: white;
 }
 
-.tech-card:nth-child(2) .tech-icon,
-.tech-card:nth-child(4) .tech-icon {
-  background-color: #fff;
-  color: #608fc3;
-  box-shadow: 0 0 12px white;
+
+/* Card 1 and 3: dark background */
+.tech-card:nth-child(1),
+.tech-card:nth-child(3) {
+  background-color: #363636;
 }
 
- .trackker-wrapper {
-    background-color:#dceeff;
-    padding:30px;
-    margin: 40px auto;
-    font-family: 'Segoe UI', sans-serif;
-  }
+.tech-card:nth-child(2) .tech-icon,
+.tech-card:nth-child(4) .tech-icon {
+  background: none !important;
+  background-color: #fff !important;
+  color: #D4A649 !important;
+  box-shadow: 0 0 12px rgba(212, 166, 73, 0.4); /* subtle gold glow */
+}
+/* === TRACKKER SECTION STYLING === */
+.trackker-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 30px;
+  border-radius: 20px;
+  color: white;
+  gap: 40px;
+}
 
-  .trackker-heading {
-    font-size: 28px;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-.trackker-heading span {
-    font-size: 38px;
-    color: #ff914d;;
-   
-  }
-  .trackker-description {
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 30px;
-  }
+.trackker-content {
+  flex: 1;
+  min-width: 320px;
+}
 
-  .trackker-description strong {
-    color:#608fc3;
+.trackker-heading {
+  font-size: 32px;
+  font-weight: bold;
+  color: #D4A649;
+  margin-bottom: 10px;
+}
+
+.trackker-description {
+  font-size: 18px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.trackker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 30px;
+}
+
+.trackker-point {
+  font-size: 16px;
+  line-height: 1.5;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.trackker-point i {
+  color: #D4A649;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* === IMAGE SECTION === */
+.trackker-images {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.trackker-images img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  border: 4px solid #D4A649;
+  object-fit: cover;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.4s ease;
+}
+
+.trackker-images img:hover {
+  transform: scale(1.03);
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 820px) {
+  .trackker-wrapper {
+    flex-direction: column;
+    text-align: center;
   }
 
   .trackker-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
   }
 
-  .trackker-item {
-    background-color: #ffffff;
-    border-left: 6px solid #608fc3;
-    border-radius: 10px;
-    padding: 16px 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+  .trackker-images {
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
   }
 
-  .trackker-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  .trackker-images img {
+    max-width: 45%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .trackker-images {
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .trackker-item i {
-    color: #608fc3;
-    margin-right: 10px;
+  .trackker-images img {
+    max-width: 100%;
+  }
+
+  .trackker-heading {
+    font-size: 24px;
+  }
+
+  .trackker-description {
+    font-size: 16px;
   }
 
   .trackker-point {
-    font-size: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
+    font-size: 14px;
   }
-   .arax-strengths {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 1.5rem;
-      font-family: 'Poppins', sans-serif;
-      color: #333;
-      padding-bottom: 50px;
-      padding-top: 20px;
-    }
+}
+.why-arax-row-section {
+  padding-bottom: 60px;
+  margin: 0;
+  color: #fff;
+   padding-top: 10px;
+}
 
-    .section-title {
-      font-size: 30px;
-      text-align: center;
-      margin-bottom: 3rem;
-      color: #333;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-.section-title span {
-      font-size: 38px;
-      
-      color:#ff914d;
-     
-    }
+.why-title {
+  text-align: center;
+  font-size: 36px;
+  color: #D4A649;
+  font-weight: bolder;
+  margin-bottom: 40px;
+}
 
-    .strengths-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
+.why-arax-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
 
-    .strength-card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-      padding: 1.8rem 1.5rem;
-      transition: 0.3s;
-      border-top: 5px solid #608fc3;
-    }
+.why-box {
+  flex: 1;
+  padding: 40px 25px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  min-width: 250px;
+}
 
-    .strength-card:hover {
-      transform: translateY(-5px);
-    }
+.why-box i {
+  font-size: 28px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
 
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
-    }
+.why-box h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
-    .card-header i {
-      font-size: 1.5rem;
-      color:#608fc3;
-    }
+.why-box p {
+  font-size: 15px;
+  line-height: 1.6;
+}
 
-    .card-header h3 {
-      font-size: 1.3rem;
-      margin: 0;
-    }
+/* Background styles */
+.why-box.gold {
+  background: linear-gradient(90deg, #D4A649, #ba9343);
+  color: #ffff;
+}
 
-    .point-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.why-box.dark {
+  background: #363636;
+  color: #fff;
+  border: 2px solid #D4A649;
+}
 
-    .point-list li {
-      background:#dceeff;
-      color: #333;
-      padding: 0.6rem 0.8rem;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      font-size: 0.95rem;
-      transition: 0.3s;
-    }
+.why-box.dark i,
+.why-box.dark h4,
+.why-box.dark p {
+  color: #fff;
+}
 
-    .point-list li span {
-      color: #608fc3;
-      margin-right: 8px;
-      font-weight: bold;
-    }
+/* Responsive */
+@media (max-width: 992px) {
+  .why-box {
+    flex: 50%;
+  }
+}
 
-    .bottom-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
+@media (max-width: 600px) {
+  .why-box {
+    flex: 100%;
+  }
+}
 
-    .highlight-card {
-      background: #fff;
-      border-left: 6px solid #608fc3;
-      padding: 1.5rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
+ .strengths-section {
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    .highlight-card h4 {
-      font-size: 1.2rem;
-      color:#608fc3;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+.strengths-heading {
+  text-align: center;
+  font-size: 36px;
+  color: #D4A649;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
 
-    .highlight-card ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
+.strengths-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .highlight-card ul li {
-      font-size: 0.95rem;
-      padding: 0.4rem 0;
-      border-bottom: 1px solid #ffe1cc;
-      background: #ffffff !important; /* Overriding background for last two cards */
-    }
+.strengths-left {
+  flex: 1;
+  min-width: 300px;
+}
 
-    .highlight-card ul li:last-child {
-      border-bottom: none;
-    }
+.strength-block {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 6px solid #D4A649;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.strength-flex {
+  display: flex;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+}
 
-    .highlight-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+.left-col,
+.right-col {
+  width: 50%;
+  padding: 15px 20px;
+  box-sizing: border-box;
+}
 
-    .highlight-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
+.left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid #D4A649;
+}
 
-    /* Responsive Tweak */
-    @media (max-width: 600px) {
-      .section-title {
-        font-size: 1.8rem;
-      }
+.right-col {
+  list-style: disc;
+  padding-left: 40px; /* adjust bullet spacing */
+  padding-right: 20px;
+}
 
-      .strength-card {
-        padding: 1.2rem;
-      }
+.right-col li {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
 
-      .highlight-card {
-        padding: 1.2rem;
-      }
 
-      .highlight-image {
-        padding: 1rem;
-      }
-    }
+.title-text {
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 10px;
+  background-color: #D4A649;
+  padding: 9px 10px;
+  border-radius: 5px;
+}
+
+.strength-icon-centered {
+  font-size: 40px;
+  color: #D4A649;
+  margin: 15px 0;
+  padding:0 20px;
+}
+
+
+
+.strength-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  background: #D4A649;
+  color: #fff;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.strength-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+
+
+.strengths-right {
+  flex: 0 0 42%; /* Shrink the column width */
+  max-width: 460px; /* Optional max width to control layout */
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+  .strengths-wrapper {
+    flex-direction: column;
+  }
+
+  .strength-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .strengths-heading {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .strength-flex {
+    flex-direction: column;
+  }
+
+  .left-col, .right-col {
+    width: 100%;
+    border-right: none;
+    padding: 12px 16px;
+  }
+
+  .right-col {
+    padding-left: 20px;
+  }
+}
+
+
+.card {
+  background-color: #D4A649;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.card-header h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-icon-inline {
+  font-size: 50px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.card ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.card ul li {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .strengths-wrapper {
+    flex-direction: column;
+  }
+
+  .strength-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .strengths-heading {
+    font-size: 28px;
+  }
+
+  .card-header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
 </style>
 
-<section class="custom-carousel">
-  <!-- Slide 1 -->
-  <div class="carousel-slide slide1 active">
-    <div class="hero">
-      <div class="hero-content">
-      <h1><span style="color: #fff;">A<span>RA</span>X</span>&nbsp; People Services India Pvt. Ltd.</h1>
-      <p>We specialize in delivering trusted <strong>Security Services</strong> and reliable <strong>Outsourcing Solutions</strong> for businesses, institutions, and residential communities.</p>
-      <a href="{% url 'contact_us' %}" class="btn-orange">Contact Now</a>
-    </div>
-    </div>
-  </div>
-
-  <!-- Slide 2 -->
-  <div class="carousel-slide slide2">
-    <div class="hero">
-       <div class="hero-content">
-      <h1><span style="color: #fff;">A<span>RA</span>X</span>&nbsp; Training , Development & Placements </h1>
-<p>
-  Empowering individuals through expert-led <strong>training</strong>, skill-based <strong>development</strong>, and dedicated <strong>placement support</strong> across various domains. Our programs cater to <strong>corporate</strong> and <strong>non-corporate</strong>, <strong>IT</strong> and <strong>non-IT</strong>, as well as <strong>industrial</strong> and <strong>non-industrial</strong> sectors — ensuring every candidate is ready to meet today’s professional demands.
-</p>      <a href="{% url 'contact_us' %}" class="btn-orange">Join Now</a>
-    </div>
-    </div>
-  </div>
-
-  <!-- Arrow controls -->
-  <button class="carousel-control prev">&#10094;</button>
-  <button class="carousel-control next">&#10095;</button>
-</section>
-
-
-
-
-
-
-<!-- About Section -->
-<section class="about">
-  <div class="angled-frame">
-    <img src="{% static 'guard9.png' %}" alt="Security Guards">
-  </div>
- <div class="about-text" data-aos="fade-left">
-  <h2><span style="color: #222;">A<span>RA</span>X</span> Integrated security & facility management you can trust</h2>
-  <p>At Arax People Services, we specialize in delivering professional services across Security, Housekeeping, Facility Management, and Skilled Manpower Outsourcing.</p>
-  <p>Whether it's securing your assets, maintaining high standards of cleanliness, or managing large facilities — we provide end-to-end solutions backed by trained personnel and a commitment to excellence.</p>
-  <p><strong>ARAX</strong> People Services are trusted by corporates, gated communities, educational institutions, and government sectors across Telangana.</p>
-  <a href="{% url 'services' %}" class="btn-orange" style="margin-top: 15px; display: inline-block;">Learn More</a>
-</div>
-
-</section>
-
-
-
-<section class="mission-section">
-  <div class="mission-container">
-
-    <!-- ARAX MISSION -->
-    <div class="mission-card">
-      <i class="fas fa-bullseye mission-icon"></i>
-      <h3><span style="color: #222;">A<span>RA</span>X</span> MISSION</h3>
-      <p>To be a leading provider of comprehensive security solutions, prioritizing integrity, professionalism, and innovation, while fostering strong client relationships and contributing to safer communities.</p>
+<section class="custom-section">
+  <div class="custom-container">
+    
+    <!-- Left image -->
+    <div class="left-image">
+      <img src="{% static 'araxnewlogo.png' %}" alt="Large Visual">
     </div>
 
-    <!-- OUR MOTO -->
-    <div class="mission-card highlight">
-      <i class="fas fa-shield-alt mission-icon"></i>
-      <h3><span style="color: #222;">A<span>RA</span>X</span> MOTO</h3>
-      <p>Professional Security Solutions for a Safer World.</p>
-      <h4>Focusing on Peace of Mind:</h4>
-      <p>Your Peace of Mind, Arax Commitment.</p>
-    </div>
+    <!-- Right content -->
+    <div class="right-content">
+      <div class="text-area">
+        <h1>ARAX People Services India Pvt. Ltd.</h1>
+        <p>We Pledge To Perform ....</p>
+        <a href="{% url 'services' %}" class="btn-orange">Explore Our Services</a>
+      </div>
 
-    <!-- ARAX VISION -->
-    <div class="mission-card">
-      <i class="fas fa-eye mission-icon"></i>
-      <h3><span style="color: #222;">A<span>RA</span>X</span> VISION</h3>
-      <p>To be a recognized leader in the security industry, known for innovation, adaptability, and a commitment to excellence.</p>
-    </div>
-
-  </div>
-</section>
-
-<section class="services">
-  <h2><span style="color: #fff;">A<span>RA</span>X</span> A to Z Facility Services</h2>
-  <div class="service-grid">
-    <!-- Row 1 (3 items) -->
-    <div class="service-box">
-      <i class="fas fa-shield-alt"></i>
-      <h3><span>ARAX</span> Security & Staffing Services</h3>
-      <p>Including modern hi-tech equipment and advanced surveillance systems.</p>
+      <!-- 3 diamond images -->
+      <div class="diamond-row">
+        <div class="diamond"><img src="{% static 'img1.jpg' %}" alt="1" /></div>
+        <div class="diamond"><img src="{% static 'img2.webp' %}" alt="2" /></div>
+        <div class="diamond"><img src="{% static 'img3.jpeg' %}" alt="3" /></div>
+      </div>
     </div>
     
-    <div class="service-box">
-      <i class="fas fa-broom"></i>
-      <h3><span>ARAX</span> Housekeeping  Staffing Services</h3>
-      <p>Clean solutions tailored for malls, institutions, hospitals, and more.</p>
-    </div>
-     <div class="service-box">
-  <i class="fas fa-broom"></i>
-  <h3><span>ARAX</span> Hospitality Services</h3>
-  <p>Specialized housekeeping and maintenance services for hotels, hospitals, offices, and commercial spaces.</p>
-</div>
-
- <div class="service-box">
-      <i class="fas fa-user-shield"></i>
-      <h3><span>ARAX</span> PSO Bodyguards & Bouncers</h3>
-      <p>Trained professionals including gunmen and ex-servicemen for protection.</p>
-    </div>
-    <!-- Row 2 (4 items) -->
-    <div class="service-box">
-      <i class="fas fa-tools"></i>
-      <h3>ARAX Property Management Services</h3>
-      <p>Complete end-to-end facility services for residential and commercial spaces.</p>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-users-cog"></i>
-      <h3>ARAX Outsourcing</h3>
-      <p>Staffing for industries, corporate offices, hotels, and government bodies.</p>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-building"></i>
-      <h3>ARAX Corporate & Non-Corporate Staffing Services </h3>
-      <p>Ongoing maintenance for high-rise and corporate properties.</p>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-home"></i>
-      <h3>ARAX Guest House Management</h3>
-      <p>Full-service guest house care including staffing and upkeep.</p>
-    </div>
-
-    <!-- Row 3 (3 items) -->
-   
-    <div class="service-box">
-      <i class="fas fa-seedling" style="color: green;"></i>
-      <h3>ARAX Pest Control, Gardening & Horticulture Services</h3>
-      <p>Beautification through expert landscaping and plant care solutions.</p>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-user-secret"></i>
-      <h3>ARAX Industrial, Non-Industrial Pharmaceutical Security & Staffing Services </h3>
-      <p>Paramilitary-trained and retired army personnel for personal security.</p>
-    </div>
   </div>
 </section>
 
@@ -1215,7 +788,7 @@ background: rgba(96, 143, 195, 0.4);
 
 
 <section class="tech-section">
-  <h2 class="tech-title"><span style="color: #222;">A<span>RA</span>X</span> Tech Offerings</h2>
+  <h2 class="tech-title">Tech Offerings</h2>
   <div class="tech-cards-container">
     <div class="tech-card neon-glow">
       <div class="tech-icon">01</div>
@@ -1223,7 +796,7 @@ background: rgba(96, 143, 195, 0.4);
       <p>Accurate attendance with real-time vacancy view and fast payroll processing.</p>
     </div>
     <div class="tech-card neon-glow">
-      <div class="tech-icon">02</div>
+      <div class="tech-icon" >02</div>
       <h3>GPS Visit Tracker</h3>
       <p>Track and verify site visits made by the ARAX team seamlessly.</p>
     </div>
@@ -1246,11 +819,13 @@ background: rgba(96, 143, 195, 0.4);
 
 
 <div class="trackker-wrapper">
-  <div class="trackker-heading"><span style="color: #222;">A<span>RA</span>X</span> Monitoring Technology</div>
-  <p class="trackker-description">
-    Our inhouse technology – <strong>TRACKKER</strong>, will help the following ongoing industry issues be resolved:
-  </p>
-  <div class="trackker-grid">
+  <div class="trackker-content">
+    <!-- Keep your original content -->
+    <div class="trackker-heading">ARAX Monitoring Technology</div>
+    <p class="trackker-description">
+      Our inhouse technology, will help the following ongoing industry issues be resolved:
+    </p>
+     <div class="trackker-grid">
     <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Real time attendance tracking</div></div>
     <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>On-time incident reporting</div></div>
     <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Remote monitoring of site</div></div>
@@ -1262,59 +837,74 @@ background: rgba(96, 143, 195, 0.4);
     <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Operations night check live data capture</div></div>
     <div class="trackker-item"><div class="trackker-point"><i class="fas fa-check-circle"></i>Report Access to clients</div></div>
   </div>
+  </div>
+
+  <div class="trackker-images">
+    <img src="{% static 'solar1.jpg' %}" alt="Monitoring Image 2">
+  </div>
 </div>
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-<section class="arax-strengths">
-    <h2 class="section-title"><span style="color: #222;">A<span>RA</span>X</span> Strengths</h2>
 
-    <div class="strengths-cards">
-      <div class="strength-card">
-        <div class="card-header">
-          <i class="fas fa-user-check"></i>
-          <h3>Hiring</h3>
-        </div>
-        <ul class="point-list">
-          <li><span>✔</span> Stringent Recruitment Criteria</li>
-          <li><span>✔</span> Induction Training & Assessment</li>
-          <li><span>✔</span> Background Verification</li>
-          <li><span>✔</span> Police Verification</li>
-        </ul>
+<section class="strengths-section">
+  <h2 class="strengths-heading">Our Strengths</h2>
+  <div class="strengths-wrapper">
+    
+   <div class="strengths-left">
+  <div class="strength-block">
+    <div class="strength-flex">
+      <div class="left-col">
+        <div class="title-text">Hiring</div>
+        <i class="fas fa-user-tie strength-icon-centered"></i>
       </div>
-
-      <div class="strength-card">
-        <div class="card-header">
-          <i class="fas fa-chalkboard-teacher"></i>
-          <h3>Training</h3>
-        </div>
-        <ul class="point-list">
-          <li><span>✔</span> Expert, Certified Trainers</li>
-          <li><span>✔</span> SOP & Job Cards</li>
-          <li><span>✔</span> Fire Safety Drill</li>
-          <li><span>✔</span> First Aid & Soft Skills</li>
-        </ul>
-      </div>
-
-      <div class="strength-card">
-        <div class="card-header">
-          <i class="fas fa-cogs"></i>
-          <h3>Operations</h3>
-        </div>
-        <ul class="point-list">
-          <li><span>✔</span> 24x7 Monitoring</li>
-          <li><span>✔</span> Day & Night Visits</li>
-          <li><span>✔</span> Risk Re-assessment</li>
-          <li><span>✔</span> Management Review</li>
-          <li><span>✔</span> Smooth Operations</li>
-        </ul>
-      </div>
+      <ul class="right-col">
+        <li>Stringent Recruitment Criteria</li>
+        <li>Induction Training & Assessment</li>
+        <li>Background Verification</li>
+        <li>Police Verification</li>
+      </ul>
     </div>
+  </div>
 
-    <div class="bottom-row">
-      <div class="highlight-card compliance">
-        <h4><i class="fas fa-file-alt"></i> Compliance</h4>
+  <div class="strength-block">
+    <div class="strength-flex">
+      <div class="left-col">
+        <div class="title-text">Training Academy</div>
+        <i class="fas fa-chalkboard-teacher strength-icon-centered"></i>
+      </div>
+      <ul class="right-col">
+        <li>Expert, Certified Trainers</li>
+        <li>SOP & Job Cards</li>
+        <li>Fire Safety Drill</li>
+        <li>First Aid & Soft Skills</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="strength-block">
+    <div class="strength-flex">
+      <div class="left-col">
+        <div class="title-text">Operations</div>
+        <i class="fas fa-cogs strength-icon-centered"></i>
+      </div>
+      <ul class="right-col">
+        <li>24x7 Monitoring</li>
+        <li>Day & Night Visits</li>
+        <li>Risk Re-assessment</li>
+        <li>Management Review</li>
+        <li>Smooth Operations</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+ <div class="strengths-right">
+      <div class="card">
+        <div class="card-header">
+          <h3>Compliance</h3>
+          <i class="fas fa-file-alt card-icon-inline"></i>
+        </div>
         <ul>
           <li>Statutory Compliance</li>
           <li>Documentation</li>
@@ -1322,8 +912,11 @@ background: rgba(96, 143, 195, 0.4);
         </ul>
       </div>
 
-      <div class="highlight-card welfare">
-        <h4><i class="fas fa-hand-holding-heart"></i> Welfare</h4>
+      <div class="card">
+        <div class="card-header">
+          <h3>Welfare</h3>
+          <i class="fas fa-hand-holding-heart card-icon-inline"></i>
+        </div>
         <ul>
           <li>Rewards & Recognition</li>
           <li>On-time Salaries</li>
@@ -1331,153 +924,44 @@ background: rgba(96, 143, 195, 0.4);
           <li>Subsidized Accommodation</li>
         </ul>
       </div>
-
-      <div class="highlight-image">
-        <img src="{% static 'strength.jpg' %}" alt="Arax Strengths Image" />
-      </div>
     </div>
-  </section>
-
-<section class="scanner-section">
-  <div class="scanner-container">
-
-    <!-- Left: Scanner Image -->
-    <div class="scanner-image">
-      <div class="qr-wrapper">
-        <img src="{% static 'scanner.jpeg' %}" alt="Scan to Visit Arax">
-        <div class="scan-badge">📲 Scan Now</div>
-      </div>
-    </div>
-
-    <!-- Right: Content -->
-  
-      <div class="scanner-content">
-  <h2>Scan & Instantly Access the <span style="color: #222;">A<span>RA</span>X</span> Website</h2>
-  <p>Simply point your smartphone camera at the QR code to be instantly directed to the official Arax website. It’s fast, secure, and requires no extra apps or downloads.</p>
-  <p>This feature is designed for quick access by employees, visitors, and clients — perfect for use at entrance gates, reception desks, community lobbies, or any checkpoint.</p>
-  <p>Get direct access to important information about our security services, staff deployment, training, and support. Stay informed, stay connected — all with just one scan.</p>
-</div>
 
   </div>
 </section>
 
-
-<section class="why-choose-structured">
-  <h2>Why <span style="color: #222;">A<span>RA</span>X</span>?</h2>
-
-  <div class="why-choose-grid">
-
-    <!-- Left Top -->
-    <div class="why-box left light">
+<section class="why-arax-row-section">
+  <h2 class="why-title">Why Arax?</h2>
+  <div class="why-arax-row">
+    <div class="why-box gold">
       <i class="fas fa-th-large"></i>
       <h4>Integrated Solutions</h4>
       <p>Complete, end-to-end service offerings under one roof.</p>
     </div>
-
-    <!-- Left Bottom -->
-    <div class="why-box left lighter">
+    <div class="why-box dark">
       <i class="fas fa-check-circle"></i>
       <h4>Quality Assurance</h4>
       <p>Strict quality control and performance checks.</p>
     </div>
-
-    <!-- Center Image -->
-    <div class="why-image">
-      <img src="{% static 'homesecurityimage.png' %}" alt="Arax Team">
-    </div>
-
-    <!-- Right Bottom Left -->
-    <div class="why-box right teal">
+    <div class="why-box gold">
       <i class="fas fa-balance-scale"></i>
       <h4>Compliance Assurance</h4>
       <p>Fully compliant with legal, safety and industry regulations.</p>
     </div>
-
-    <!-- Right Bottom Right -->
-    <div class="why-box right black">
+    <div class="why-box dark">
       <i class="fas fa-headset"></i>
-      <h4>24/7 Support</h4>
+      <h4>Training Academy and 24/7 Support</h4>
       <p>Always available for emergencies and client needs.</p>
     </div>
-
   </div>
 </section>
+
 
 
 
   
 </section>
 
-<section class="clients">
-  <h2><span style="color: #222;">A<span>RA</span>X</span> Esteemed Clients</h2>
 
-  <div class="client-logos-wrapper">
-    <div class="client-logos scroll">
-      <!-- Repeat logos twice for seamless loop -->
-      <div class="client-logo"><img src="{% static 'client1.jpg' %}" alt="Client 1"></div>
-      <div class="client-logo"><img src="{% static 'client2.png' %}" alt="Client 2"></div>
-      <div class="client-logo"><img src="{% static 'client3.jpg' %}" alt="Client 3"></div>
-      <div class="client-logo"><img src="{% static 'client4.png' %}" alt="Client 4"></div>
-      <div class="client-logo"><img src="{% static 'client1.jpg' %}" alt="Client 5"></div>
-      <div class="client-logo"><img src="{% static 'client2.png' %}" alt="Client 6"></div>
-
-      <!-- Duplicated logos for smooth loop -->
-     <div class="client-logo"><img src="{% static 'client3.jpg' %}" alt="Client 1"></div>
-      <div class="client-logo"><img src="{% static 'client4.png' %}" alt="Client 2"></div>
-      <div class="client-logo"><img src="{% static 'client1.jpg' %}" alt="Client 3"></div>
-      <div class="client-logo"><img src="{% static 'client2.png' %}" alt="Client 4"></div>
-      <div class="client-logo"><img src="{% static 'client3.jpg' %}" alt="Client 5"></div>
-      <div class="client-logo"><img src="{% static 'client4.png' %}" alt="Client 6"></div>
-    </div>
-  </div>
-</section>
-  <script>
-  const slides = document.querySelectorAll('.carousel-slide');
-  const prevBtn = document.querySelector('.carousel-control.prev');
-  const nextBtn = document.querySelector('.carousel-control.next');
-  let current = 0;
-  let interval;
-
-  function showSlide(nextIndex, direction = 'left') {
-    slides[current].classList.remove('active');
-    slides[current].classList.add(direction === 'left' ? 'out-left' : 'out-right');
-
-    slides[nextIndex].classList.remove('out-left', 'out-right');
-    slides[nextIndex].classList.add('active');
-
-    current = nextIndex;
-  }
-
-  function nextSlide() {
-    const next = (current + 1) % slides.length;
-    showSlide(next, 'left');
-  }
-
-  function prevSlide() {
-    const prev = (current - 1 + slides.length) % slides.length;
-    showSlide(prev, 'right');
-  }
-
-  // Auto-slide every 5 seconds
-  function startAutoSlide() {
-    interval = setInterval(nextSlide, 5000);
-  }
-
-  // Manual controls
-  nextBtn.addEventListener('click', () => {
-    clearInterval(interval);
-    nextSlide();
-    startAutoSlide();
-  });
-
-  prevBtn.addEventListener('click', () => {
-    clearInterval(interval);
-    prevSlide();
-    startAutoSlide();
-  });
-
-  startAutoSlide();
-</script>
-
+ 
 
 {% endblock %}

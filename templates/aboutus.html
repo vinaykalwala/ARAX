@@ -11,101 +11,39 @@
   /* General Reset */
  
   body {
-    color: #333;
-  }
+ background-color:  #32322c;
+    font-family: 'Segoe UI', sans-serif;  }
 
   /* Hero Section (Reverted to Original) */
-  .hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-background: linear-gradient(to right, rgba(96, 143, 195, 0.6), rgba(96, 143, 195, 0.6)), url('{% static "about.jpg" %}') no-repeat center center/cover;
-    background-attachment: fixed;
-    padding: 0 20px;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, #ff914d, transparent);
-    animation: glow 4s infinite ease-in-out;
-  }
-
-  @keyframes glow {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.5; }
-  }
-
-  .hero h1 {
-    font-size: 36px;
-    font-weight: 900;
-    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: slideIn 1.5s ease forwards;
-    color: #fff;
-  }
-
-  .hero h1 span {
-  color: #ff914d;
-  font-size: 60px;
-  text-shadow: 0 0 8px #ff914d;
-  animation: lubdub 1.5s ease-in-out infinite;
-  display: inline-block; /* required for transform to work */
-}
-
-@keyframes lubdub {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(1.15);
-  }
-  20% {
-    transform: scale(1);
-  }
-  30% {
-    transform: scale(1.08);
-  }
-  40% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-
-  @keyframes slideIn {
-    0% { opacity: 0; transform: translateY(50px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
+ 
 
   /* About Section */
   .about {
     display: flex;
     flex-wrap: wrap;
-    padding: 60px 20px;
+    padding: 0 20px;
     align-items: center;
     justify-content: center;
     gap: 80px;
     text-align: left;
-    background: white;
+    padding-bottom: 40px;
+    padding-top: 30px;
   }
+@media screen and (max-width: 768px) {
+  .about {
+    gap: 20px; /* or 0px if you want no gap at all */
+  }
+}
+@media screen and (max-width: 480px) {
+  .about {
+    gap: 10px;
+  }
+}
 
   .angled-frame {
     position: relative;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     height: auto;
     overflow: hidden;
     border-radius: 12px;
@@ -128,18 +66,20 @@ background: linear-gradient(to right, rgba(96, 143, 195, 0.6), rgba(96, 143, 195
 
   .about-text {
     max-width: 500px;
-    color: #111;
+    color: #fff;
     opacity: 0;
     animation: fadeIn 1s ease forwards 0.5s;
   }
 
   .about-text h2 {
-    font-size: 28px;
+    font-size: 36px;
     margin-bottom: 10px;
+    color: #D4A649 ;
+    font-weight: bolder;
   }
 
-  .about-text h2 span {
-    color: #ff914d;
+   strong {
+    color: #D4A649;
   }
 
   .about-text p {
@@ -166,15 +106,16 @@ background: linear-gradient(to right, rgba(96, 143, 195, 0.6), rgba(96, 143, 195
 
   /* Core Values Section */
   .core-values {
-    padding: 40px 20px;
-    background:#608fc3;
+    padding:0 20px;
     text-align: center;
     color: #fff;
+    padding-bottom: 40px;
   }
 
   .core-values h2 {
-    font-size: 28px;
+    font-size: 36px;
     margin-bottom: 40px;
+    color: #D4A649;
   }
 
   .core-values h2 span {
@@ -192,14 +133,14 @@ span{
   }
 
   .value-box {
-    background:#dceeff;
-    color: #333;
+    color: #fff;
     padding: 40px 30px;
     border-radius: 12px;
     text-align: center;
     transition: transform 0.3s ease;
     opacity: 0;
     animation: fadeIn 1s ease forwards;
+    background-color: #D4A649;
   }
 
   .value-box:nth-child(1) { animation-delay: 0.2s; }
@@ -214,7 +155,7 @@ span{
   .value-box i {
     font-size: 28px;
     margin-bottom: 15px;
-    color: #608fc3;
+    color: #fff;
   }
 
   .value-box h3 {
@@ -224,34 +165,88 @@ span{
 
   .value-box.orange-card {
     background-color:#fff;
+    color: #32322c;
   }
 
   .value-box.orange-card i {
-    color:#608fc3;
+    color: #D4A649;
   }
 
   .value-box.orange-card:hover {
-    background-color:#dceeff;
+    background-color:#f9f2a1;
   }
+/* Responsive: Core Values Section */
+@media screen and (max-width: 992px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .value-box {
+    padding: 30px 20px;
+  }
+
+  .core-values h2 {
+    font-size: 30px;
+  }
+
+  .value-box h3 {
+    font-size: 18px;
+  }
+
+  .value-box p {
+    font-size: 14px;
+  }
+
+  span {
+    font-size: 34px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .value-box {
+    padding: 24px 18px;
+  }
+
+  .core-values h2 {
+    font-size: 26px;
+  }
+
+  .value-box h3 {
+    font-size: 16px;
+  }
+
+  .value-box p {
+    font-size: 13px;
+  }
+
+  span {
+    font-size: 30px;
+  }
+}
 
   /* Why Choose Us Section */
   .why-choose {
     padding:0 20px;
-    background: #fff;
     text-align: center;
     color: #222;
-    padding-bottom: 70px;
-    padding-top: 30px;
+    padding-bottom: 40px;
+    padding-top: 25px;
   }
 
   .why-choose h2 {
-    font-size: 28px;
-    margin-bottom: 40px;
+    font-size:36px;
+    margin-bottom: 60px;
+    color: #D4A649;
+
   }
 
-  .why-choose h2 span {
-    color: #ff914d;
-  }
+  
 
   .why-grid {
     display: grid;
@@ -262,14 +257,15 @@ span{
   }
 
   .why-box {
-    background:#dceeff;
-    color: #000040;
+    background-color:#363636;
+    color:#ffff;
     padding: 40px 30px;
     border-radius: 12px;
     text-align: center;
     transition: transform 0.3s ease;
     opacity: 0;
     animation: fadeIn 1s ease forwards;
+    border:2px solid #D4A649;
   }
 
   .why-box:nth-child(1) { animation-delay: 0.2s; }
@@ -285,7 +281,7 @@ span{
   .why-box i {
     font-size: 28px;
     margin-bottom: 15px;
-    color:#608fc3;
+    color:#D4A649;
   }
 
   .why-box p {
@@ -293,7 +289,7 @@ span{
   }
 
   .why-box.orange-card {
-    background-color: #608fc3;
+    background-color:#D4A649;
   }
 
   .why-box.orange-card i {
@@ -301,13 +297,61 @@ span{
   }
 
   .why-box.orange-card:hover {
-    background-color:#297ad6;
+    background-color:#ba9343;
   }
+/* Responsive: Why Choose Us Section */
+@media screen and (max-width: 992px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .why-box {
+    padding: 30px 20px;
+  }
+
+  .why-choose h2 {
+    font-size: 30px;
+  }
+
+  .why-box i {
+    font-size: 24px;
+  }
+
+  .why-box p {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .why-box {
+    padding: 24px 18px;
+  }
+
+  .why-choose h2 {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
+
+  .why-box i {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .why-box p {
+    font-size: 14px;
+  }
+}
 
 /* ------ Business Verticals ------ */
 .business-verticals {
   text-align: center;
-  padding: 10px 20px;
+  padding: 0 20px;
   position: relative;
   overflow: hidden;
 }
@@ -321,7 +365,6 @@ span{
   height: 100%;
   
   z-index: 0;
-  background: #dceeff;
 }
 
 .section-header {
@@ -331,19 +374,16 @@ span{
 }
 
 .business-verticals h2 {
-      font-size: 30px;
-    margin-bottom: 40px;
+      font-size: 36px;
+    margin-bottom: 50px;
+color: #D4A649;
 }
 
-.business-verticals h2 span {
-  color: #ff914d;
-  position: relative;
-}
 
 
 
 .section-subtitle {
-  color: #666;
+  color:#fff;
   font-size: 16px;
   max-width: 600px;
   margin: 0 auto 25px;
@@ -385,7 +425,7 @@ span{
   left: 0;
   width: 100%;
   height: 5px;
-  background: linear-gradient(90deg,#608fc3, #7eb0e8);
+  background: linear-gradient(90deg, #D4A649, #ba9343);
 }
 
 .bv-card:hover {
@@ -397,7 +437,7 @@ span{
   position: absolute;
   width: 20px;
   height: 20px;
-  border: 2px solid #608fc3;
+  border: 2px solid #D4A649;
   transition: all 0.3s ease;
 }
 
@@ -452,7 +492,7 @@ span{
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background:#608fc3;
+  background:#D4A649;
   border-radius: 2px;
 }
 
@@ -484,14 +524,14 @@ span{
   transform: translateX(-50%);
   width: 60px;
   height: 100%;
-  background:#dceeff;
+  background:#D4A649;
   clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%, 10% 50%);
 }
 
 /* Number & title */
 .bv-number {
   font: 700 16px/1 "Poppins", Arial;
-  color:#608fc3;
+  color:#D4A649;
   margin-bottom: 8px;
   letter-spacing: 1px;
 }
@@ -511,7 +551,7 @@ span{
   left: 0;
   width: 40px;
   height: 2px;
-  background:#608fc3;
+  background:#D4A649;
   transition: width 0.3s ease;
 }
 
@@ -529,7 +569,7 @@ span{
 
 .bv-learn-more {
   display: inline-block;
-  color:#608fc3;
+  color:#D4A649;
   font-weight: 600;
   font-size: 14px;
   text-decoration: none;
@@ -545,7 +585,7 @@ span{
   left: 0;
   width: 0;
   height: 2px;
-  background:#608fc3;
+  background:#D4A649;
   transition: width 0.3s ease;
 }
 
@@ -600,583 +640,138 @@ span{
   }
 }
 
+.org-structure {
+  padding: 0 20px;
+  text-align: center;
+  padding-bottom: 40px;
+}
 
-.tree-container {
+.org-heading {
+  font-size: 36px;
+  color: #D4A649;
+  margin-bottom: 40px;
+  font-weight: bold;
+  animation: fadeInDown 1s ease-in-out;
+  text-align: center;
+}
+
+.vertical-flowchart {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  padding-top: 20px;
+  gap: 2px;
+  margin: 0 auto;
+  max-width:350px;
 }
 
-.tree-level {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 50px; /* Space between levels */
-  position: relative;
-}
-
-.tree-level:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -25px; /* Half of the margin-bottom */
-  width: 2px;
-  height: 25px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.tree-node {
-  background-color: #8a2be2; /* Default purple */
+.flow-step {
+  background-color: #D4A649;
   color: white;
-  padding: 15px 25px;
-  margin: 0 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  min-width: 180px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.tree-node h3 {
-  margin: 0;
-  font-size: 1.1em;
+  padding: 14px 10px;
+  border-radius: 10px;
+  font-size: 14px;
   font-weight: bold;
+  width: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
 }
 
-/* Specific node styling based on the image */
-.tree-node.managing {
-  background-color: #9370db; /* Managing Director - Light purple */
+.flow-arrow {
+  font-size: 24px;
+  color: #D4A649;
+  animation: pulseArrow 1.2s infinite ease-in-out;
 }
 
-.tree-node.gm {
-  background-color: #ff914d; /* GM - Reddish orange */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.tree-node.marketing,
-.tree-node.accountant {
-  background-color: #9370db; /* Marketing Manager, Accountant Manager - Light purple */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.tree-node.operation,
-.tree-node.training,
-.tree-node.office,
-.tree-node.hr {
-  background-color: #8a2be2; /* Operation, Training, Office, HR - Darker purple */
+@keyframes pulseArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
 }
 
-/* Define each field-related node separately for individual margin control */
-.tree-node.field-sup-1 {
-  background-color: #3cb371; /* Field Supervisor - Green */
-  margin-right: 604px; /* Adjust this value to shift Field Supervisor (Level 4, left) */
+/* Trigger fade-in for all steps */
+.fade-up {
+  animation: fadeInUp 0.7s ease-in-out forwards;
 }
 
-.tree-node.field-sup-2 {
-  background-color: #3cb371; /* Field Supervisor - Green */
-  margin-right: 848px; /* Adjust this value to shift Field Supervisor (Level 5) */
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .org-heading {
+    font-size: 26px;
+  }
+
+  .flow-step {
+    font-size: 14px;
+    padding: 14px 18px;
+  }
+
+  .flow-arrow {
+    font-size: 20px;
+  }
 }
 
-.tree-node.field-officer {
-  background-color: #3cb371; /* Field Officer - Green */
-  margin-right: 842px; /* Adjust this value to shift Field Officer (Level 6) */
+.org-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:30px 80px; /* equal padding on left and right corners */
 }
 
-.tree-node.recruiting {
-  background-color: #3cb371; /* Recruiting Manager - Green */
+.logo-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
-
-
-/* Connecting lines */
-
-/* Connect Managing Director to Level 2 (Marketing, GM, Accountant) */
-.tree-level[data-level="1"] .tree-node.managing::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -50px; /* Extends line down to the middle of the next level's connections */
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-  z-index: 0;
+.side-logo {
+  max-height: 100%;
+  max-height: 800px; /* limits height so it doesn't exceed structure */
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
-
-.tree-level[data-level="2"] {
-  padding-top: 50px; /* Create space for incoming lines */
-}
-
-.tree-level[data-level="2"]::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  {% comment %} background-color: #666; {% endcomment %}
-  width: calc(45% - 20px); /* Adjust width to span across nodes */
-  margin: 0 auto;
-}
-
-.tree-level[data-level="2"] .tree-node::before {
-  content: '';
-  position: absolute;
-  top: -50px; /* Position above the node */
-  left: 50%;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-}
-
-/* Connect GM to Level 3 (Operation, Training, Office, HR) */
-.tree-level[data-level="2"] .tree-node.gm::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -50px;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.tree-level[data-level="3"] {
-  padding-top: 50px;
-}
-
-.tree-level[data-level="3"]::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  {% comment %} background-color: #666; {% endcomment %}
-  width: calc(75% - 20px);
-  margin: 0 auto;
-}
-
-.tree-level[data-level="3"] .tree-node::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-}
-
-
-/* Connect Operation Manager to Field Supervisor (Level 4) */
-.tree-level[data-level="3"] .tree-node.operation::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -50px;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.tree-level[data-level="4"] .tree-node.field-sup-1::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-}
-
-
-/* Connect Human Resource Manager to Recruiting Manager (Level 4) */
-.tree-level[data-level="3"] .tree-node.hr::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -50px;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.tree-level[data-level="4"] .tree-node.recruiting::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-}
-
-/* Connect Field Supervisor (Level 4) to Field Supervisor (Level 5) */
-.tree-level[data-level="4"] .tree-node.field-sup-1::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -50px;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.tree-level[data-level="5"] .tree-node.field-sup-2::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-}
-
-/* Connect Field Supervisor (Level 5) to Field Officer (Level 6) */
-.tree-level[data-level="5"] .tree-node.field-sup-2::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -50px;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.tree-level[data-level="6"] .tree-node.field-officer::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  width: 2px;
-  height: 50px;
-  {% comment %} background-color: #666; {% endcomment %}
-  transform: translateX(-50%);
-}
-
-
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
-  .tree-level {
+@media screen and (max-width: 768px) {
+  .org-wrapper {
     flex-direction: column;
     align-items: center;
+    padding:30px; /* equal padding on left and right corners */
+
+    
   }
 
-  .tree-node {
-    margin: 10px 0;
-    min-width: 250px;
+  .logo-side {
+    margin-top: 30px;
   }
 
-  .tree-level:not(:last-child)::after {
-    left: 50%;
-    bottom: -25px;
-    transform: translateX(-50%);
-  }
-
-  .tree-level[data-level="2"]::before,
-  .tree-level[data-level="3"]::before {
-    display: none; /* Hide horizontal lines on smaller screens */
-  }
-
-  .tree-level[data-level="2"] .tree-node::before,
-  .tree-level[data-level="3"] .tree-node::before {
-    top: -25px;
-    height: 25px;
-  }
-
-  .tree-level[data-level="1"] .tree-node.managing::after,
-  .tree-level[data-level="2"] .tree-node.gm::after,
-  .tree-level[data-level="3"] .tree-node.operation::after,
-  .tree-level[data-level="3"] .tree-node.hr::after,
-  .tree-level[data-level="4"] .tree-node.field-sup-1::after,
-  .tree-level[data-level="5"] .tree-node.field-sup-2::after {
-    bottom: -25px;
-    height: 25px;
+  .side-logo {
+    max-width: 80%;
+    max-height: 300px;
   }
 }
 
-.org-structure {
-  background:#dceeff;
-  padding: 40px 20px;
-  text-align: center;
-  color: #333;
-  position: relative;
-  z-index: 1;
-}
-
-.org-structure h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-  color: #333;
-}
-
-.org-structure h2 span {
-  color: #ff914d; /* gold or yellow highlight */
-  font-size: 48px;
-}
-
-.org-structure img {
-  max-width: 90%;
-  height: auto;
-  border-radius: 12px;
-  margin-top: 30px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.org-structure img:hover {
-  transform: scale(1.03);
-}
-
-
-
-  {% comment %} .tree-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    height: auto;
-    position: relative;
-  }
-
-  .tree-level {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-    gap: 20px;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-  }
-
-  .tree-level:nth-child(1) { animation-delay: 0.2s; }
-  .tree-level:nth-child(2) { animation-delay: 0.4s; }
-  .tree-level:nth-child(3) { animation-delay: 0.6s; }
-  .tree-level:nth-child(4) { animation-delay: 0.8s; }
-
-  .tree-node {
-    background: #222;
-    color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    width: 150px;
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  .tree-node:hover {
-    transform: translateY(-5px);
-  }
-
-  .tree-node h3 {
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .tree-node.orange-card {
-    background-color: #ff914d;
-  }
-
-  .tree-node.orange-card:hover {
-    background-color: #ff914d;
-  } {% endcomment %}
-
-  svg.tree-branches {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-
-  svg path.branch {
-    stroke: #ff914d;
-    stroke-width: 3;
-    fill: none;
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
-    transition: stroke-dashoffset 1s ease;
-  }
-
-  svg path.branch.visible {
-    stroke-dashoffset: 0;
-  }
-
-  /* Services Section */
-  .services {
-    padding: 60px 20px;
-    background: #fff;
-    text-align: center;
-  }
-
-  .services h2 {
-    font-size: 28px;
-    margin-bottom: 40px;
-  }
-
-  .services h2 span {
-    color: #ff914d;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  .service-box {
-    background: #fff;
-    color: #222;
-    padding: 40px 30px;
-    border: 2px solid #608fc3;
-    border-radius: 12px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-  }
-
-  .service-box:nth-child(1) { animation-delay: 0.2s; }
-  .service-box:nth-child(2) { animation-delay: 0.4s; }
-  .service-box:nth-child(3) { animation-delay: 0.6s; }
-  .service-box:nth-child(4) { animation-delay: 0.8s; }
-  .service-box:nth-child(5) { animation-delay: 1s; }
-  .service-box:nth-child(6) { animation-delay: 1.2s; }
-  .service-box:nth-child(7) { animation-delay: 1.4s; }
-  .service-box:nth-child(8) { animation-delay: 1.6s; }
-  .service-box:nth-child(9) { animation-delay: 1.8s; }
-
-  .service-box:hover {
-    transform: translateY(-5px);
-  }
-
-  .service-box i {
-    font-size: 28px;
-    margin-bottom: 15px;
-    color:#608fc3;
-  }
-
-  .service-box h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  /* Responsive Design */
-  @media (max-width: 992px) {
-    .values-grid,
-    .services-grid,
-    .why-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      height: 80vh;
-      background-attachment: scroll;
-    }
-
-    .hero h1 {
-      font-size: 28px;
-    }
-
-    .about {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .about-text {
-      text-align: center;
-    }
-
-    .angled-frame {
-      max-width: 350px;
-      height: 400px;
-    }
-
-    .values-grid,
-    .services-grid,
-    .why-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .tree-level {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .tree-node {
-      width: 100%;
-      max-width: 200px;
-      margin: 10px 0;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero h1 {
-      font-size: 24px;
-    }
-
-    .about-text h2,
-    .core-values h2,
-    .why-choose h2,
-    .org-structure h2,
-    .services h2 {
-      font-size: 24px;
-    }
-
-    .angled-frame {
-      max-width: 300px;
-      height: 350px;
-    }
-
-    .value-box,
-    .why-box,
-    .service-box {
-      padding: 30px 20px;
-    }
-  }
 
   
 </style>
 
-<!-- Hero Section -->
-<section class="hero" role="banner">
-  <h1>About &nbsp;<span style="color: #fff;">A<span>RA</span>X</span>&nbsp; People Services </h1>
-</section>
+
 
 <!-- About Us Section -->
 <section class="about" role="region" aria-labelledby="about-heading">
   <div class="angled-frame">
-    <img src="{% static 'aboutimage.png' %}" alt="Arax Security team in action" loading="lazy">
+    <img src="{% static 'aiabout.webp' %}" alt="Arax Security team in action" loading="lazy">
   </div>
   <div class="about-text">
-    <h2 id="about-heading">About <span style="color: #222;">A<span>RA</span>X</span></h2>
-    <p>Arax Security Management Services is a leading provider of private security solutions, headquartered in Madhapur, Hyderabad. Founded with the mission to protect lives and assets with utmost professionalism and integrity, we offer a comprehensive range of security services tailored to meet the unique needs of residential communities, corporate offices, commercial establishments, construction sites, and industrial operations.</p>
+    <h2 id="about-heading">About Us</h2>
       <p><strong>Established - 2025:</strong> We understand our customers and their businesses well and we are committed to perform. We help assess the risks they face now and, in the future, so that we provide top class tailored solutions that stop financial, human, and brand losses.</p>
   
   <p><strong>Key Strengths</strong></p>
@@ -1190,7 +785,7 @@ span{
 
 <!-- Core Values Section -->
 <section class="core-values" role="region" aria-labelledby="values-heading">
-  <h2 id="values-heading"><span style="color: #fff;">A<span>RA</span>X</span> Core Values</h2>
+  <h2 id="values-heading">Our  Core Values</h2>
   <div class="values-grid">
     <div class="value-box">
       <i class="fas fa-handshake"></i>
@@ -1219,8 +814,7 @@ span{
 <!-- Business Verticals Section -->
 <section class="business-verticals">
   <div class="section-header">
-    <h2><span style="color: #222;">A<span>RA</span>X</span> Business Verticals</h2>
-    <p class="section-subtitle">Comprehensive solutions tailored to your business needs</p>
+    <h2>Business Verticals</h2>
 
   <div class="verticals-wrapper">
     <!-- Card 01 -->
@@ -1237,7 +831,6 @@ span{
       <div class="bv-img">
         <img src="{% static 'images/about-security.png' %}" alt="Security Services">
       </div>
-      <p class="bv-description">Comprehensive protection solutions for your business and assets</p>
      
     </div>
 
@@ -1255,7 +848,6 @@ span{
       <div class="bv-img">
         <img src="{% static 'images/about-business.jpg' %}" alt="Facility Management">
       </div>
-      <p class="bv-description">Streamlined operations and maintenance for optimal facility performance</p>
       
     </div>
 
@@ -1273,7 +865,6 @@ span{
       <div class="bv-img">
         <img src="{% static 'images/about-security2.png' %}" alt="Staffing Solutions">
       </div>
-      <p class="bv-description">Tailored workforce solutions to meet your organizational needs</p>
      
     </div>
   </div>
@@ -1281,7 +872,7 @@ span{
 
 <!-- Why Choose Us Section -->
 <section class="why-choose" role="region" aria-labelledby="why-choose-heading">
-  <h2 id="why-choose-heading">In Summary Why Choose <span style="color: #222;">A<span>RA</span>X</span></h2>
+  <h2 id="why-choose-heading">In Summary Why Choose ARAX</h2>
   <div class="why-grid">
     <div class="why-box">
       <i class="fas fa-star"></i>
@@ -1323,231 +914,42 @@ span{
 </section>
 
 
-<section class="org-structure" role="region" aria-labelledby="org-structure-heading">
-  <h2 id="org-structure-heading"><span style="color: #222;">A<span>RA</span>X</span> Organization Structure</h2>
-   <img src="{% static 'org.png' %}" alt="Arax" loading="lazy">
-  {% comment %} <div class="tree-container">
 
-    <div class="tree-level" data-level="1">
-      <div class="tree-node managing" role="treeitem" aria-label="Managing Director">
-        <h3>Managing Director</h3>
-      </div>
+
+<div class="org-wrapper">
+  <section class="org-structure">
+    <!-- your original HTML here -->
+    <h2 class="org-heading">Organization Structure</h2>
+    <div class="vertical-flowchart">
+      <div class="flow-step fade-up">Managing Director</div>
+      <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="flow-step fade-up">Director</div>
+      <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="flow-step fade-up">Vice President</div>
+      <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="flow-step fade-up">Assistant Vice President</div>
+      <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="flow-step fade-up">General Manager</div>
+      <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="flow-step fade-up">Assistant General Manager</div>
+      <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="flow-step fade-up">Operation Manager</div>
+      <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="flow-step fade-up">Operation Officer</div>
+      <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
+      <div class="flow-step fade-up">Recruiters</div>
     </div>
+  </section>
 
-    <div class="tree-level" data-level="2">
-      <div class="tree-node marketing" role="treeitem" aria-label="Marketing Manager">
-        <h3>Marketing Manager</h3>
-      </div>
-      <div class="tree-node gm" role="treeitem" aria-label="GM">
-        <h3>GM</h3>
-      </div>
-      <div class="tree-node accountant" role="treeitem" aria-label="Accountant Manager">
-        <h3>Accountant Manager</h3>
-      </div>
-    </div>
-
-    <div class="tree-level" data-level="3">
-      <div class="tree-node operation" role="treeitem" aria-label="Operation Manager">
-        <h3>Operation Manager</h3>
-      </div>
-      <div class="tree-node training" role="treeitem" aria-label="Training Manager">
-        <h3>Training Manager</h3>
-      </div>
-      <div class="tree-node office" role="treeitem" aria-label="Office Administration Officer">
-        <h3>Office Administration Officer</h3>
-      </div>
-      <div class="tree-node hr" role="treeitem" aria-label="Human Resource Manager">
-        <h3>Human Resource Manager</h3>
-      </div>
-    </div>
-
-    <div class="tree-level" data-level="4">
-      <div class="tree-node field-sup-1" role="treeitem" aria-label="Field Supervisor">
-        <h3>Field Supervisor</h3>
-      </div>
-      <div class="tree-node recruiting" role="treeitem" aria-label="Recruiting Manager">
-        <h3>Recruiting Manager</h3>
-      </div>
-    </div>
-
-    <div class="tree-level" data-level="5">
-      <div class="tree-node field-sup-2" role="treeitem" aria-label="Field Supervisor">
-        <h3>Field Supervisor</h3>
-      </div>
-    </div>
-
-    <div class="tree-level" data-level="6">
-      <div class="tree-node field-officer" role="treeitem" aria-label="Field Officer">
-        <h3>Field Officer</h3>
-      </div>
-    </div>
-
-  </div> {% endcomment %}
-</section>
-
-
-{% comment %} <!-- Organizational Structure Section -->
-<section class="org-structure" role="region" aria-labelledby="org-structure-heading">
-  <h2 id="org-structure-heading"><span style="color: #222;">A<span>RA</span>X</span> Organization Structure</h2>
-  <div class="tree-container">
-    <!-- Level 1: Director -->
-    <div class="tree-level" data-level="1">
-      <div class="tree-node director orange-card" role="treeitem" aria-label="Director">
-        <h3>Director</h3>
-      </div>
-      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMin meet">
-        <path d="M500,150 L500,250" class="branch" />
-      </svg>
-    </div>
-
-    <!-- Level 2: GM -->
-    <div class="tree-level" data-level="2">
-      <div class="tree-node gm" role="treeitem" aria-label="General Manager">
-        <h3>General Manager</h3>
-      </div>
-      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMin meet">
-        <path d="M500,350 L250,450" class="branch" />
-        <path d="M500,350 L500,450" class="branch" />
-        <path d="M500,350 L750,450" class="branch" />
-      </svg>
-    </div>
-
-    <!-- Level 3: Managers -->
-    <div class="tree-level" data-level="3">
-      <div class="tree-node hr-manager orange-card" role="treeitem" aria-label="HR Manager">
-        <h3>HR Manager</h3>
-      </div>
-      <div class="tree-node marketing-manager" role="treeitem" aria-label="Marketing Manager">
-        <h3>Marketing Manager</h3>
-      </div>
-      <div class="tree-node operation-manager orange-card" role="treeitem" aria-label="Operations Manager">
-        <h3>Operations Manager</h3>
-      </div>
-      <svg class="tree-branches" width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMin meet">
-        <path d="M250,550 L150,650" class="branch" />
-        <path d="M250,550 L250,650" class="branch" />
-        <path d="M750,550 L650,650" class="branch" />
-        <path d="M750,550 L850,650" class="branch" />
-      </svg>
-    </div>
-
-    <!-- Level 4: Officers -->
-    <div class="tree-level" data-level="4">
-      <div class="tree-node recruiting-officer" role="treeitem" aria-label="Recruiting Officer">
-        <h3>Recruiting Officer</h3>
-      </div>
-      <div class="tree-node employee-officer orange-card" role="treeitem" aria-label="Employee Relations Officer">
-        <h3>Employee Relations</h3>
-      </div>
-      <div class="tree-node field-officer" role="treeitem" aria-label="Field Officer">
-        <h3>Field Officer</h3>
-      </div>
-      <div class="tree-node training-officer orange-card" role="treeitem" aria-label="Training Officer">
-        <h3>Training Officer</h3>
-      </div>
-    </div>
+  <div class="logo-side">
+    <img src="{% static 'araxnewlogo.png' %}" alt="Company Logo" class="side-logo">
   </div>
-</section> {% endcomment %}
+</div>
 
-<!-- Services Section -->
-<section class="services" role="region" aria-labelledby="services-heading">
-  <h2 id="services-heading"><span style="color: #222;">A<span>RA</span>X</span> Services</h2>
-  <div class="services-grid">
-    <div class="service-box">
-      <i class="fas fa-home"></i>
-      <h3>Residentail Gated community A to Z facility services </h3>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-building"></i>
-      <h3>Corporate / Non-Corporate Security & A to Z facility services</h3>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-store"></i>
-      <h3>Commercial Establishment Security & A to Z facility services</h3>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-calendar-alt"></i>
-      <h3>Event Management, Bouncers, Security Staff Male Female Excutive Services & A to Z facility services</h3>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-warehouse"></i>
-      <h3>Warehouse And Logistics Security & A to Z facility services</h3>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-industry"></i>
-      <h3>Industrial / Non-Industrial Security & A to Z facility services</h3>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-key"></i>
-      <h3>Access Control / Visitor Management & A to Z facility services</h3>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-fire-extinguisher"></i>
-      <h3>Fire & Safety Officer Assignment  & A to Z facility services</h3>
-    </div>
-    <div class="service-box">
-      <i class="fas fa-user-shield"></i>
-      <h3>Escort, Parking Guards &  VIP Protection & A to Z facility services</h3>
-    </div>
-     <div class="service-box">
-    <i class="fas fa-building"></i>
-    <h3>MNC / Non-MNC Security & A to Z facility services</h3>
-  </div>
 
-  <!-- Hospital Industry -->
-  <div class="service-box">
-    <i class="fas fa-hospital"></i>
-    <h3>Hospitals Security & A to Z facility services</h3>
-  </div>
+<!-- Font Awesome for arrows -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- Housekeeping -->
-  <div class="service-box">
-    <i class="fas fa-broom"></i>
-    <h3>Hospitality Industry Services & A to Z facility services</h3>
-  </div>
-  <div class="service-box">
-<i class="fas fa-video"></i>    <h3>CCTV, Lift Operator Access Control Services & A to Z facility services</h3>
-  </div>
-  </div>
-</section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const levels = document.querySelectorAll('.tree-level');
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          const connectedBranches = entry.target.querySelectorAll('path.branch');
-          connectedBranches.forEach(branch => {
-            branch.classList.add('visible');
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    levels.forEach(level => {
-      observer.observe(level);
-    });
-
-    // Keyboard navigation for tree nodes
-    const treeNodes = document.querySelectorAll('.tree-node');
-    treeNodes.forEach(node => {
-      node.setAttribute('tabindex', '0');
-      node.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          node.click();
-        }
-      });
-    });
-  });
-</script>
 {% endblock %}
