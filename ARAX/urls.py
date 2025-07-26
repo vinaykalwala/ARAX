@@ -16,6 +16,7 @@ urlpatterns = [
     path('video/',video, name='video'),
     path('qrt/',qrt, name='qrt'),
     path('ert/',ert, name='ert'),
+    path('technology/',technology, name='technology'),
     path('gallery/', gallery, name='gallery'),
     path('contactus/',contact_us, name='contact_us'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),

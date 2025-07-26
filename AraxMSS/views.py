@@ -27,6 +27,9 @@ def qrt(request):
 def ert(request):
     return render(request, 'ert.html')
 
+def technology(request):
+    return render(request, 'technology.html')
+
 
 from django.shortcuts import render, redirect
 from .models import GalleryImage
