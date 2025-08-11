@@ -740,7 +740,7 @@ color: #D4A649;
   height: auto;
   object-fit: contain;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .org-wrapper {
     flex-direction: column;
     align-items: center;
@@ -758,10 +758,384 @@ color: #D4A649;
     max-height: 300px;
   }
 }
+@media screen and (min-width: 1400px) {
+  .org-wrapper {
+    max-width: 1600px; /* allow it to expand */
+    margin: 0 auto; /* keep it centered overall */
+    padding-left: 300px; /* side gap */
+    padding-right: 300px; /* side gap */
+    justify-content: space-between; /* spread items apart */
+  }
+}
 
+.sri-section {
+    padding:0 20px;
+    background-color: #32322c;
+    color: #fff;
+    padding-top: 50px;
+    padding-bottom: 1px;
+}
 
+.sri-hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.sri-founder-photo {
+    width: 450px;
+    height:auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    object-fit: cover;
+    animation: fadeIn 1s ease forwards;
+}
+
+.sri-hero-text {
+    max-width: 600px;
+    animation: fadeIn 1s ease forwards 0.3s;
+}
+
+.sri-hero-text h1 {
+    font-size: 30px;
+    color: #D4A649;
+    margin-bottom: 10px;
+}
+
+.sri-role {
+    font-size: 18px;
+    color: #ff914d;
+    margin-bottom: 15px;
+}
+
+.sri-hero-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.sri-contact p {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.sri-contact i {
+    color: #D4A649;
+    margin-right: 8px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .sri-hero-text h1 {
+        font-size: 30px;
+    }
+    
+}
+  .sri-heading {
+    font-size: 36px;
+    color: #D4A649;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.sri-points {
+    max-width:1200px;
+    margin: auto;
+}
+.sri-point {
+    background: #363636;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1.5px solid #D4A649;
+    font-size: 16px;
+    line-height: 1.6;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+}
+.sri-point:nth-child(1) { animation-delay: 0.1s; }
+.sri-point:nth-child(2) { animation-delay: 0.2s; }
+.sri-point:nth-child(3) { animation-delay: 0.3s; }
+.sri-point:nth-child(4) { animation-delay: 0.4s; }
+.sri-point:nth-child(5) { animation-delay: 0.5s; }
+.sri-point:nth-child(6) { animation-delay: 0.6s; }
+.sri-point:nth-child(7) { animation-delay: 0.7s; }
+/* Alternate background color for company profile points */
+.sri-point:nth-child(odd) {
+    background: #363636; /* dark background */
+    color: #fff;
+}
+
+.sri-point:nth-child(even) {
+    background: #D4A649; /* gold background */
+    color: #fff;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sri-heading {
+        font-size: 28px;
+    }
+    .sri-point {
+        font-size: 15px;
+        padding: 15px;
+    }
+}
+.sri-clientele {
+    padding: 0px 40px; /* space on sides */
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+.sri-client-intro {
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.sri-client-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sri-client-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    padding: 0 20px;
+    scrollbar-width: none; /* hide Firefox scrollbar */
+    padding-top: 20px;
+}
+.sri-client-grid::-webkit-scrollbar {
+    display: none; /* hide Chrome scrollbar */
+}
+
+.sri-client-card {
+    flex: 0 0 auto;
+    width: 180px;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+.sri-client-card img {
+    max-width: 100%;
+    max-height: 100px;
+    object-fit: contain;
   
+    transition: filter 0.3s ease;
+}
+
+.sri-client-card:hover img {
+    filter: grayscale(0%);
+}
+
+/* Carousel buttons */
+.sri-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #D4A649;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease;
+}
+.sri-carousel-btn:hover {
+    background: #ff914d;
+}
+.sri-carousel-btn.prev {
+    left: -20px;
+}
+.sri-carousel-btn.next {
+    right: -20px;
+}
+
+@media (max-width: 768px) {
+    .sri-clientele {
+        padding: 30px 15px;
+    }
+}
+@media (max-width: 768px) {
+    .sri-clientele {
+        padding: 30px 15px 60px 15px; /* extra bottom gap */
+    }
+
+    .sri-client-grid {
+        gap: 15px; /* slightly less gap between cards */
+        padding: 0 15px;
+    }
+
+    .sri-client-card {
+        width: 150px; /* slightly smaller cards for small screens */
+        padding: 15px;
+    }
+
+    .sri-client-card img {
+        max-height: 80px; /* smaller logo height for better fit */
+    }
+
+    .sri-carousel-btn.prev {
+        left: -10px; /* pull buttons closer */
+    }
+    .sri-carousel-btn.next {
+        right: -10px;
+    }
+}
+@media (min-width: 1540px) {
+    .sri-client-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* center horizontally */
+        width: 100%; /* stretch to container width */
+        overflow-x: hidden; /* remove horizontal scroll */
+        gap: 20px;
+    }
+
+    .sri-carousel-btn {
+        display: none; /* hide arrows */
+    }
+
+    .sri-client-card {
+        flex: 0 0 auto; /* keep fixed card width */
+    }
+}
+
+
+.sri-capabilities-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.sri-capabilities-text {
+    flex: 2;
+}
+
+.sri-project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sri-project-list li {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+}
+.sri-project-list li::before {
+    content: "➤";
+    color: #D4A649;
+    position: absolute;
+    left: 0;
+    font-size: 16px;
+}
+
+.sri-key-projects,
+.sri-key-clients {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+    margin-left: 40px;
+}
+.sri-key-clients li {
+    display: inline-block;
+    background: #D4A649;
+    padding: 5px 15px;
+    border-radius: 15px;
+    margin-right: 8px;
+    color: #fff;
+}
+
+.sri-capabilities-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.sri-capabilities-images img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .sri-capabilities-wrapper {
+        flex-direction: column;
+    }
+    .sri-capabilities-images {
+        flex-direction: row;
+        gap: 15px;
+    }
+    .sri-capabilities-images img {
+        width: 50%;
+    }
+}
+@media (max-width: 500px) {
+    .sri-capabilities-images {
+        flex-direction: column;
+    }
+    .sri-capabilities-images img {
+        width: 100%;
+    }
+}
+@media (min-width: 1250px) {
+    .sri-capabilities-wrapper {
+        max-width: 1400px; /* limit max content width */
+        margin: 0 auto;    /* center the block */
+        padding: 0 60px;   /* side gap */
+    }
+}
+
+.sri-heading-divider {
+    text-align: center;
+    font-size: 38px;
+    font-weight: bold;
+    color: #D4A649;
+    margin-bottom: 10px;
+}
+
+.sri-divider {
+    border: none;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #D4A649, transparent);
+    margin: 20px auto 40px auto;
+    width: 90%;
+    border-radius: 2px;
+}
+
 </style>
+
+
 
 
 
@@ -809,7 +1183,160 @@ color: #D4A649;
     </div>
   </div>
 </section>
+<hr class="sri-divider">
+<section class="sri-section sri-hero">
+    <img src="{% static 'araxnewlogo.png' %}" alt="Founder Mahesh Algol" class="sri-founder-photo">
+    <div class="sri-hero-text">
+        <h1>Mahesh Algol</h1>
+        <p class="sri-role"><strong>Proprietor </strong></p>
+        <p>Founder of sri Shiva 9 electricals. Mr. 
+Mahesh is an electrical engineer 
+having 9 years of experience and 
+knowledge on commissioning and 
+installing electrical systems for 
+government as well as private sector. <br>
+SS 9 Electricals achieved total 
+consolidated turnover  of <strong>23.8cr</strong>.</p>
+       <div class="sri-contact">
+    <p><i class="fas fa-phone"></i>
+        <a href="tel:9689665599" style="color: #fff; text-decoration: none;">Mobile: 9689665599</a>
+    </p>
+    <p><i class="fas fa-envelope"></i>
+        <a href="mailto:ss9eshiva@gmail.com" style="color: #fff; text-decoration: none;">Email: ss9eshiva@gmail.com</a>
+    </p>
+</div>
 
+    </div>
+</section>
+<section class="sri-section">
+    <h2 class="sri-heading">Founder's Previous Experience</h2>
+    <div class="sri-points">
+        <div class="sri-point">
+            Sri Shiva 9 Electricals have been operating within the Electrical Infrastructure for over 8 years since being established in 2012.
+        </div>
+        <div class="sri-point">
+            We are an SME (Small Medium Enterprise) electrical engineering firm with an impressive track record of delivering projects and services.
+        </div>
+        <div class="sri-point">
+            Our approach is to build long lasting client relationships based on first class customer service, putting safety first; providing a competitive price and being responsive due to being a lean SME organisation.
+        </div>
+        <div class="sri-point">
+            Our ethos is to get it right first time every time! We cannot be complacent about this approach; it comes through putting Safety First in our thinking and planning and is part of our organisational culture of Zero Harm.
+        </div>
+        <div class="sri-point">
+            Our organisation has seen the doubling of its turnover in the last eight years to currently approximately 238M, and we believe that critical to our success is growing and learning with our clients. This can only be achieved through a long-term partnership approach lasting years and not just over a single contract period.
+        </div>
+        <div class="sri-point">
+            We have over 40 electrical engineers in our organisation, many of whom are well experienced ex-utility professionals our clients depend on and ask for by first name.
+        </div>
+        <div class="sri-point">
+            We are the first to implement Gas Insulated Substation with 33KV in INDIA.
+        </div>
+    </div>
+</section>
+
+<section class="sri-section sri-clientele">
+    <h2 class="sri-heading">Clientele</h2>
+
+    <p class="sri-client-intro">
+        We are a trusted supplier for electrical engineering products and services and have
+        completed numerous projects for installation and allied services in various
+        government as well as private sectors.
+    </p>
+
+    <p class="sri-client-intro">
+        Some of our valued clients include:
+    </p>
+
+    <div class="sri-client-carousel">
+        <button class="sri-carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+
+        <div class="sri-client-grid">
+            <div class="sri-client-card">
+                <img src="{% static 'images/client1.jpg' %}" alt="Client 1">
+            </div>
+            <div class="sri-client-card">
+                <img src="{% static 'images/client2.jpg' %}" alt="Client 2">
+            </div>
+            <div class="sri-client-card">
+                <img src="{% static 'images/client3.jpg' %}" alt="Client 3">
+            </div>
+            <div class="sri-client-card">
+                <img src="{% static 'images/client4.png' %}" alt="Client 4">
+            </div>
+            <div class="sri-client-card">
+                <img src="{% static 'images/client5.png' %}" alt="Client 5">
+            </div>
+            <div class="sri-client-card">
+                <img src="{% static 'images/client6.png' %}" alt="Client 6">
+            </div>
+        </div>
+
+        <button class="sri-carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</section>
+
+
+
+<script>
+document.querySelector(".sri-carousel-btn.prev").addEventListener("click", function() {
+    document.querySelector(".sri-client-grid").scrollBy({ left: -200, behavior: 'smooth' });
+});
+document.querySelector(".sri-carousel-btn.next").addEventListener("click", function() {
+    document.querySelector(".sri-client-grid").scrollBy({ left: 200, behavior: 'smooth' });
+});
+</script>
+
+<!-- Font Awesome for arrows -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<section class="sri-section sri-company-capabilities">
+    <h2 class="sri-heading" style="margin-top:2px; margin-bottom: 50px;">Company Capabilities</h2>
+
+    <div class="sri-capabilities-wrapper">
+        
+        <!-- LEFT SIDE: TEXT -->
+        <div class="sri-capabilities-text">
+            <ul class="sri-project-list" style="text-align: justify;">
+                <li><strong>M/s Sunil Hitech Engg Ltd.</strong> New 33/11 KV Sub – Stations 11kv DTC, LT & HT Line and 33Kv Line, 33KV Underground cable, Package on total Turnkey Basis, Amravati for LOA:CE(Infra)/Mumbai/lnfraPart-II/Ph.Dl/EE-l/T-85/LOA-M/1661, S-1662, C-1663 MSEDCL. Work order worth Rs.19 Crores.</li>
+
+                <li><strong>M/s SMS Infra Pvt Ltd.</strong> New 33/11kv Sub-Station and 33&11kv line, PSI project, in Buldhana Maharashtra. Work order worth Rs.35 Lakhs.</li>
+
+                <li><strong>M/s NCC Ltd.</strong> Supply & erection of Gaothan feeder Separation Scheme (GFSS) for left out villages of 50km, In Amravati Zone Maharashtra. Work order worth Rs.30 Lakhs.</li>
+
+                <li><strong>M/s Bharat Electricals</strong> 33 kv Bay HT&LT Line works and DTC work under Infra Project T-32 Phase II, in Buldhana Maharashtra. Work order worth Rs.15 Lakhs.</li>
+
+                <li><strong>M/s Pratibha & Pratik Associates.</strong> 33kv Bay HT&LT Line work in Kolhapur Maharashtra. Work order worth Rs.50 Lakhs.</li>
+
+                <li><strong>M/s SHREEM Electricals,</strong> 05 No’s of New 33/11kv Sub-Stations, 1No additional and Line Erection Works are in progress at Kolhapur Maharashtra. Work order worth Rs.2.5 Crores.</li>
+
+                <li><strong>M/s ASHOKA BUILDCON LTD.</strong> 1No New 33/11kv substation in Barshi Division, Solapur circle. Work order worth Rs.45 Lakhs.</li>
+
+                <li><strong>M/s BHARAT ELECTRICALS PVT LTD.</strong> 1No New 33/11kv substation in Jath Division, Sangli circle. Work order worth Rs.54 Lakhs.</li>
+            </ul>
+
+            <h3 class="sri-subheading">Key Project - In Hand</h3>
+            <ul class="sri-key-projects">
+                <li>Contract for 33KV GIS-Gas Insulated Substation at Ichalkarnji-Kholapur</li>
+                <li>Sub-transmission and distribution works in Amravati zone</li>
+            </ul>
+
+            <h3 class="sri-subheading">Key Clients:</h3>
+            <ul class="sri-key-clients">
+                <li>MSEB</li>
+                <li>MSEDCL</li>
+            </ul>
+        </div>
+
+        <!-- RIGHT SIDE: 2 IMAGES -->
+        <div class="sri-capabilities-images">
+            <img src="{% static 'images/ele1.webp' %}" alt="Capability Image 1">
+            <img src="{% static 'images/ele2.jpg' %}" alt="Capability Image 2">
+        </div>
+    </div>
+</section>
+
+<hr class="sri-divider">
 
 <!-- Business Verticals Section -->
 <section class="business-verticals">
